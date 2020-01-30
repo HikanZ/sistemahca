@@ -51,7 +51,7 @@
 				<div class="col-md-8 text-center">
 					<div class="section-title" style="padding-bottom: 40px;">
 						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
+							<label class="backbtn" onclick="window.location.href='index.php'"><i class="fas fa-angle-left"></i></label>
 							Sistema
 						</h1>
 					</div>
