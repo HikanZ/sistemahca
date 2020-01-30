@@ -64,7 +64,7 @@
 				<div class="col-lg-6 col-md-8">
 					<p class="mb-30" >Versão: 2017</p>
 					<div class="input-group-icon mt-10">
-						<div class="icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+						<div class="icon"><i class="fa fa-hand-pointer" aria-hidden="true"></i></div>
 						<div class="form-select" id="default-select2">
 							<select>
 								<option value="1">Selecione o setor</option>
