@@ -37,21 +37,16 @@
 
 	<!--================ Start Header Area =================-->
 	<?php require "header.php" ?>
+	<?php require "inc/links.php" ?>
 	<!--================ End Header Area =================-->
 
-	<?php
-		$linkadduser = "window.location.href='usuarios.php'";
-		$linksearchuser = "window.location.href='usuarios.php'";
-		$linkaccessuser = "window.location.href='usuarios.php'";
-	?>
-	<!--================ Start Team Area =================-->
 	<section class="team-area section-gap-top">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-8 text-center">
 					<div class="section-title" style="padding-bottom: 40px;">
 						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="window.location.href='index.php'"><i class="fas fa-angle-left"></i></label>
+							<label class="backbtn" onclick="<?php echo $linkmenu; ?>"><i class="fas fa-angle-left"></i></label>
 							ROPs e Setores</h1>
 					</div>
 				</div>
@@ -61,7 +56,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkpages; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linkropadd; ?> ">
 							<i class="fas fa-calendar-check"></i>
 						</div>
 						<p class="title">Nova Versão ROP</p>
@@ -71,7 +66,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linknumbers; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linkropremove; ?> ">
 							<i class="fas fa-calendar-times"></i>
 						</div>
 						<p class="title">Excluir Versão ROP</p>
@@ -81,7 +76,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linknumbers; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linkroplist; ?> ">
 							<i class="fas fa-calendar-alt"></i>
 						</div>
 						<p class="title">Histórico ROP</p>
@@ -94,7 +89,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkpages; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linksetoradd; ?> ">
 							<i class="far fa-calendar-plus"></i>
 						</div>
 						<p class="title">Novo Setor</p>
@@ -104,7 +99,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkdatabase; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linksetorremove; ?> ">
 							<i class="far fa-calendar-times"></i>
 						</div>
 						<p class="title">Excluir Setor</p>
@@ -114,7 +109,7 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linknumbers; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linksetorlist; ?> ">
 							<i class="far fa-calendar-alt"></i>
 						</div>
 						<p class="title">Listar Setores</p>

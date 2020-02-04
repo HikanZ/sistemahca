@@ -37,13 +37,9 @@
 
 	<!--================ Start Header Area =================-->
 	<?php require "header.php" ?>
+	<?php require "inc/links.php" ?>
 	<!--================ End Header Area =================-->
 
-	<?php
-		$linkadduser = "window.location.href='usuarios.php'";
-		$linksearchuser = "window.location.href='usuarios.php'";
-		$linkaccessuser = "window.location.href='usuarios.php'";
-	?>
 	<!--================ Start Team Area =================-->
 	<section class="team-area section-gap-top">
 		<div class="container">
@@ -51,7 +47,7 @@
 				<div class="col-md-8 text-center">
 					<div class="section-title" style="padding-bottom: 40px;">
 						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="window.location.href='index.php'"><i class="fas fa-angle-left"></i></label>
+							<label class="backbtn" onclick="<?php echo $linkmenu; ?>"><i class="fas fa-angle-left"></i></label>
 							Sistema
 						</h1>
 					</div>

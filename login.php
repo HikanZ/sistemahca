@@ -60,7 +60,9 @@
             <input type="password" name="loginpwd" placeholder="Senha" autocomplete="new-password">
           </div>
           <button class="btn" type="submit" name="login2-submit">Entrar</button>
+					<a onclick="window.location.href='pub-cadastro.php'" style="text-align: center; font-weight: 100; color: #4db8ff; cursor:pointer;"> Cadastre-se </a> <a> | </a> <a onclick="window.location.href='pub-esquecisenha.php'" style="text-align: center; font-weight: 100; color: #4db8ff; cursor:pointer;"> Esqueci a minha senha </a>
         </form>
+
       </div>
 
 
