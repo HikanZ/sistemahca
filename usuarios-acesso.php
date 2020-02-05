@@ -53,7 +53,7 @@
 						</h1>
 						<p>Obs.: Você deverá inserir o link completo, incluindo a extensão do tipo de imagem.</p>
 						<p>As extensões podem ser do tipo .png .jpg </p>
-						<p>Exemplo.: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png </p>
+						<p>Exemplo.:</p> <p>https://www.google.com/.../1x/googlelogo.png </p>
 						<p>Você pode clicar ou pressionar uma imagem e escolher a opção copiar endereço da imagem e inserir no campo abaixo.</p>
 					</div>
 				</div>
@@ -79,9 +79,10 @@
 	<!--================ Start Footer Area =================-->
 	<footer class="footer-area section-gap fixed-bottom">
 		<div class="container">
-			<div class="row justify-content-md-center footer-inner">
-				<div class="col-sm-2"><img src="img/logologin.png" alt="" style="width:40px; height:40px;"></div>
-				<div class="col-sm-4">Sistema Healthcare Assessment</div>
+			<div class="row justify-content-md-center">
+				<div class="col-1"></div>
+				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+				<div class="col-8">Sistema Healthcare Assessment</div>
 			</div>
 		</div>
 	</footer>
