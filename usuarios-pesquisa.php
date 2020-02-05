@@ -812,9 +812,10 @@
 	<!--================ Start Footer Area =================-->
 	<footer class="footer-area section-gap static-bottom">
 		<div class="container">
-			<div class="row justify-content-md-center footer-inner">
-				<div class="col-sm-2"><img src="img/logologin.png" alt="" style="width:40px; height:40px;"></div>
-				<div class="col-sm-4">Sistema Healthcare Assessment</div>
+			<div class="row justify-content-md-center">
+				<div class="col-1"></div>
+				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+				<div class="col-8">Sistema Healthcare Assessment</div>
 			</div>
 		</div>
 	</footer>
