@@ -75,8 +75,19 @@
 			</form>
 		</div>
 	</section>
-
 	<!--================ End Team Area =================-->
+	<!--================ Start Footer Area =================-->
+	<footer class="footer-area section-gap fixed-bottom">
+		<div class="container">
+			<div class="row justify-content-md-center footer-inner">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2"><img src="img/logologin.png" alt="" style="width:40px; height:40px;"></div>
+				<div class="col-sm-4">Sistema Healthcare Assessment</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+	</footer>
+	<!--================ End Footer Area =================-->
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
 
