@@ -78,17 +78,18 @@
 			 	<!--================ End Team Area =================-->
 	   </div>
 	<!--================ Start Footer Area =================-->
-	   <footer id="footer">
-			 <div class="container">
-	 			<div class="row justify-content-md-center">
-	 				<div class="col-1"></div>
-	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
-	 				<div class="col-8">Sistema Healthcare Assessment</div>
-	 			</div>
-	 		</div>
-		 </footer>
+	<br><br>
+   <footer id="footer">
+		 <div class="container">
+ 			<div class="row justify-content-md-center">
+ 				<div class="col-1"></div>
+ 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+ 				<div class="col-8">Sistema Healthcare Assessment</div>
+ 			</div>
+ 		</div>
+	 </footer>
 	<!--================ End Footer Area =================-->
-	 </div>
+ </div>
 
 
 
