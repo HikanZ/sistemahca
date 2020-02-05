@@ -116,7 +116,7 @@
 	<!--================ End Team Area =================-->
 
 	<!--================ Start Footer Area =================-->
-	<footer class="footer-area section-gap fixed-bottom">
+	<footer class="footer-area section-gap static-bottom">
 		<div class="container">
 			<div class="row justify-content-md-center footer-inner">
 				<div class="col-sm-2"></div>
