@@ -688,7 +688,7 @@ th {
   padding: 30px 0; }
   @media (max-width: 991px) {
     .section-gap {
-      padding: 30px 0; } }
+      padding: 20px 0; } }
 
 .section-gap-top {
   padding-top: 30px; }
@@ -3233,17 +3233,9 @@ h1, h2, h3, h4, h5, h6 {
 .footer-area {
   background: rgba(0, 0, 0, .5);
   padding-top: 100px;
+  bottom: 0;
   margin: 50px 0 auto auto;}
 
-.footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  padding-top: 100px;
-  margin: 50px auto;
-  /*background-color: #f5f5f5;*/
-}
 
 .f-title {
   margin-bottom: 35px; }
