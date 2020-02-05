@@ -34,32 +34,49 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
+<!--================ Start Require Area =================-->
+<?php require "header.php" ?>
+<?php require "inc/links.php" ?>
+<!--================ End Require Area =================-->
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
+	<div id="page-container">
+	   <div id="content-wrap">
+			 <!--================ Start Team Area =================-->
+			 	<section class="team-area section-gap-top">
+			 		<div class="container">
+			 			<div class="row justify-content-center">
+			 				<div class="col-md-8 text-center">
+			 					<div class="section-title" style="padding-bottom: 40px;">
+			 						<h1 style="letter-spacing: 3px; text-transform: none;">
+			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
+			 							ERRO 404
+			 						</h1>
+			 					</div>
+			 					<div style="margin:50px auto;" class="border1"></div>
+			 					<p style="margin:150px auto; color:rgb(232, 232, 232);">Página não encontrada ou inexistente.</p>
+			 				</div>
+			 			</div>
+			 		</div>
+			 	</section>
 
-	<!--================ Start Require Area =================-->
-	<?php require "header.php" ?>
-	<?php require "inc/links.php" ?>
-	<!--================ End Require Area =================-->
+		 	<!--================ End Team Area =================-->
+	   </div>
+		 <!--================ Start Footer Area =================-->
+ 	   <footer id="footer">
+ 			 <div class="container">
+ 	 			<div class="row justify-content-md-center">
+ 	 				<div class="col-1"></div>
+ 	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+ 	 				<div class="col-8">Sistema Healthcare Assessment</div>
+ 	 			</div>
+ 	 		</div>
+ 		 </footer>
+	 	<!--================ End Footer Area =================-->
+	 </div>
 
-	<!--================ Start Team Area =================-->
-	<section class="team-area section-gap-top">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8 text-center">
-					<div class="section-title" style="padding-bottom: 40px;">
-						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
-							ERRO 404
-						</h1>
-					</div>
-					<div style="margin:50px auto;" class="border1"></div>
-					<p style="margin:150px auto; color:rgb(232, 232, 232);">Página não encontrada ou inexistente.</p>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<!--================ End Team Area =================-->
+
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
 

@@ -33,63 +33,67 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+<!--================ Start Require Area =================-->
+<?php require "header.php" ?>
+<?php require "inc/links.php" ?>
+<!--================ End Require Area =================-->
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
+	<div id="page-container">
+	   <div id="content-wrap">
+				 <!--================ Start Team Area =================-->
+			 	<section class="team-area section-gap-top">
+			 		<div class="container">
+			 			<div class="row justify-content-center">
+			 				<div class="col-md-8 text-center">
+			 					<div class="section-title" style="padding-bottom: 40px;">
+			 						<h1 style="letter-spacing: 3px; text-transform: none;">
+			 							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
+			 							Acesso usuário
+			 						</h1>
+			 						<p>Obs.: Você deverá inserir o link completo, incluindo a extensão do tipo de imagem.</p>
+			 						<p>As extensões podem ser do tipo .png .jpg </p>
+			 						<p>Exemplo.:</p> <p>https://www.google.com/.../1x/googlelogo.png </p>
+			 						<p>Você pode clicar ou pressionar uma imagem e escolher a opção copiar endereço da imagem e inserir no campo abaixo.</p>
+			 					</div>
+			 				</div>
+			 			</div>
+			 			<div class="border1"></div>
+			 			<form action="<?php echo $linksetoraddp ?>">
+			 				<div class="row justify-content-md-center">
 
-	<!--================ Start Require Area =================-->
-	<?php require "header.php" ?>
-	<?php require "inc/links.php" ?>
-	<!--================ End Require Area =================-->
-
-	<!--================ Start Team Area =================-->
-	<section class="team-area section-gap-top">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8 text-center">
-					<div class="section-title" style="padding-bottom: 40px;">
-						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
-							Acesso usuário
-						</h1>
-						<p>Obs.: Você deverá inserir o link completo, incluindo a extensão do tipo de imagem.</p>
-						<p>As extensões podem ser do tipo .png .jpg </p>
-						<p>Exemplo.:</p> <p>https://www.google.com/.../1x/googlelogo.png </p>
-						<p>Você pode clicar ou pressionar uma imagem e escolher a opção copiar endereço da imagem e inserir no campo abaixo.</p>
-					</div>
-				</div>
-			</div>
-			<div class="border1"></div>
-			<form action="<?php echo $linksetoraddp ?>">
-				<div class="row justify-content-md-center">
-
-						<div class="col-lg-6 col-md-8">
-							<h5 class="mb-30" style="color: #4db8ff;"></h3>
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-image" aria-hidden="true"></i></div>
-									<input type="text" name="first_name" placeholder="Insira o link da imagem" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o link da imagem'"
-									 required class="single-input">
-								</div>
-								<button class="btn" type="submit" name="setor-cadastrar">Trocar avatar</button>
-						</div>
-				</div>
-			</form>
-		</div>
-	</section>
-	<!--================ End Team Area =================-->
+			 						<div class="col-lg-6 col-md-8">
+			 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
+			 								<div class="input-group-icon mt-10">
+			 									<div class="icon"><i class="fas fa-image" aria-hidden="true"></i></div>
+			 									<input type="text" name="first_name" placeholder="Insira o link da imagem" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o link da imagem'"
+			 									 required class="single-input">
+			 								</div>
+			 								<button class="btn" type="submit" name="setor-cadastrar">Trocar avatar</button>
+			 						</div>
+			 				</div>
+			 			</form>
+			 		</div>
+			 	</section>
+			 	<!--================ End Team Area =================-->
+	   </div>
 	<!--================ Start Footer Area =================-->
-	<footer class="footer-area section-gap fixed-bottom">
-		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-1"></div>
-				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
-				<div class="col-8">Sistema Healthcare Assessment</div>
-			</div>
-		</div>
-	</footer>
+	   <footer id="footer">
+			 <div class="container">
+	 			<div class="row justify-content-md-center">
+	 				<div class="col-1"></div>
+	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+	 				<div class="col-8">Sistema Healthcare Assessment</div>
+	 			</div>
+	 		</div>
+		 </footer>
 	<!--================ End Footer Area =================-->
+	 </div>
+
+
+
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
-
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
