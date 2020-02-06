@@ -50,7 +50,7 @@
 		 					<div class="section-title" style="padding-bottom: 40px;">
 		 						<h1 style="letter-spacing: 3px; text-transform: none;">
 		 							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
-		 							<?php $_SERVER['REQUEST_URI'] ?>
+		 							<?php echo $_SERVER['REQUEST_URI']; ?>
 		 						</h1>
 		 					</div>
 		 				</div>
