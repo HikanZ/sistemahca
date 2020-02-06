@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" class="">
-<?php $_SERVER['REQUEST_URI'] ?>
+
 <head>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,7 +50,7 @@
 		 					<div class="section-title" style="padding-bottom: 40px;">
 		 						<h1 style="letter-spacing: 3px; text-transform: none;">
 		 							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
-		 							Pesquisar Usuários
+		 							<?php $_SERVER['REQUEST_URI'] ?>
 		 						</h1>
 		 					</div>
 		 				</div>
