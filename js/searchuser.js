@@ -1,9 +1,9 @@
 $(document).ready(function() {
   	// TRIGGERS FOR THE SEARCH FUNCTION AFTER USER UPDATES SEARCH VALUES
-    $('#search-val-name, #search-val-city, #cpf').keyup(function() {
+    $('#search-val-name, #search-email, #cpf, #cargo, #default-select2').keyup(function() {
         checkAll();
     });
-  	$('.checkradio').change(function(){
+  	$('#primary-switch-user').change(function(){
       checkAll();
     })
 
@@ -26,10 +26,10 @@ $(document).ready(function() {
                 $(this).find('td:eq(0)').text().toLowerCase().indexOf($('#search-val-name').val().toLowerCase()) >= 0 &&
                 $(this).find('td:eq(1)').text().toLowerCase().indexOf($('#cpf').val().toLowerCase()) >= 0 &&
               	// 2.) check for text match...
-                $(this).find('td:eq(2)').text().toLowerCase().indexOf($('#search-val-city').val().toLowerCase()) >= 0 &&
-
+                $(this).find('td:eq(2)').text().toLowerCase().indexOf($('#search-email').val().toLowerCase()) >= 0 &&
+                $(this).find('td:eq(3)').text().toLowerCase().indexOf($('#cargo').val().toLowerCase()) >= 0 &&
                 // 3.) check for presence of a value in cell
-                !$(this).find('td:eq(4)').is(":empty") == $('input[name="searchvalhasphone"]').prop('checked')
+                !$(this).find('td:eq(5)').is(":empty") == $('input[name="searchvalhasphone"]').prop('checked')
             ) {
                 $(this).show();
             } else {
