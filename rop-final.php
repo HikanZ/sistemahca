@@ -40,6 +40,71 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
+	<style>
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #4db8ff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
 </head>
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
@@ -70,29 +135,37 @@
 									<?php
 									for ($j = 1; $j <= $_POST['numropgrupo'.$i]; $j++ ){ ?>
 										<br>
-										<small>ROP <?php echo $i; echo "."; echo $j; ?></small>
+										<small style="color: #bababa; font-weight: 100;">ROP <?php echo $i; echo "."; echo $j; ?></small>
 										<div class="row">
-											<div class="col-sm-10">
+											<div class="col-lg-10">
 												<div class="input-group">
-													<textarea rows="1" style="line-height:25px; height:60px;" type="text" id="search-val-name" name="first_name" placeholder="Digite o nome do grupo #id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do grupo #id'"
+													<textarea rows="1" style="line-height:25px; height:60px;" type="text" id="rop<?php echo $i; echo "_"; echo $j; ?>" name="rop<?php echo $i; echo "_"; echo $j; ?>" placeholder="Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>'"
 													 required class="single-textarea"></textarea>
 												</div>
 											</div>
 											<div class="col-sm-2">
-												<div class="switch-wrap d-flex justify-content-between">
-														<p>Maior</p>
+												<label class="container" style="color: #bababa; font-weight: 100;">Maior
+												  <input type="radio" checked="checked" name="radio">
+												  <span class="checkmark"></span>
+												</label>
+												<label class="container" style="color: #bababa; font-weight: 100;">Menor
+												  <input type="radio" name="radio">
+												  <span class="checkmark"></span>
+												</label>
+												<!--div class="switch-wrap d-flex justify-content-between">
+														<p style="color: #d1d1d1; font-weight: 100;">Maior</p>
 														<div class="primary-radio">
 															<input class="radio" type="radio" id="default-radio-1" name=radio value=1>
-															<label class="radio" for="default-radio-1"></label>
+															<label class="radio" id="default-radio-1" for="default-radio-1"></label>
 														</div>
 												</div>
 												<div class="switch-wrap d-flex justify-content-between">
-														<p>Menor</p>
+														<p style="color: #d1d1d1; font-weight: 100;">Menor</p>
 														<div class="primary-radio">
 															<input class="radio" type="radio" id="default-radio-2" name=radio value=1>
-															<label class="radio" for="default-radio-2"></label>
+															<label class="radio" id="default-radio-2" for="default-radio-2"></label>
 														</div>
-												</div>
+												</div-->
 											</div>
 										</div>
 								<?php
