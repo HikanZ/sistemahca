@@ -1,21 +1,23 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access.php";
+?>
+<!--================ End Require Area =================-->
+
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Minha Conta | Sistema HcA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 	<!-- Mobile Specific Meta -->
+	<link rel="shortcut icon" href="img/fav.png"> 	<!-- Favicon-->
+	<meta name="author" content="CodePixar"> 	<!-- Author Meta -->
+	<meta name="description" content="">	<!-- Meta Description -->
+	<meta name="keywords" content="">	<!-- Meta Keyword -->
+	<meta charset="UTF-8">	<!-- meta character set -->
+
+	<title>Minha Conta | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -33,11 +35,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
@@ -70,41 +67,42 @@
 		 			    		        </div>
 		 			    		        <div class="profile-thumb-block">
 		 												<a onclick="<?php echo $linkaccavatar; ?>" data-tooltip="Clique para alterar o seu avatar" data-tooltip-location="bottom" style="cursor:pointer;color:#4db8ff; font-size:10px; top:-32px; ; z-index:100000;">Alterar</a>
-		 			    		            <img src="img/card-1-back1.png" alt="profile-image" class="profile"/>
+		 			    		            <img src="<?php echo $_SESSION['userAvatar'];?>" alt="profile-image" class="profile"/>
 		 			    		        </div>
 		 			    		        <div class="card-content">
-		 			                    <h2>Guilherme Kanashiro<small>Estagiário - Super Administrador</small></h2>
+		 			                    <h2><?php echo $_SESSION['userUid'];?> <?php echo $_SESSION['userLastUid'];?><small><?php echo $_SESSION['userCargo'];?> - <?php if ($_SESSION['admincheck']==1 || $_SESSION['admincheck']==7)
+																																										{if ($_SESSION['admincheck'] == 7) {echo 'Super Administrador';} else {echo 'Admininstrador';}} else echo 'Usuário';?></small></h2>
 		 													<div class="border1" style="margin: 25px auto;"></div>
-		 													<form action="#">
+		 													<form action="inc/updatemyacc.inc.php" method="post">
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
-		 															<input type="text" name="first_name" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome'"
-		 															 required class="single-input">
+		 															<input type="text" name="first_name" placeholder="Nome: <?php echo $_SESSION['userUid'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome: <?php echo $_SESSION['userUid'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user-friends" aria-hidden="true"></i></div>
-		 															<input type="text" name="last_name" placeholder="Sobrenome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome'"
-		 															 required class="single-input">
+		 															<input type="text" name="last_name" placeholder="Sobrenome: <?php echo $_SESSION['userLastUid'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome: <?php echo $_SESSION['userLastUid'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></div>
-		 															<input type="text" id="birth-date" name="first_name" placeholder="Data de Nascimento DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento DD/MM/AAAA'"
-		 															 required class="single-input">
+		 															<input type="text" id="birth-date" name="birth_date" placeholder="Data de Nascimento: <?php echo $_SESSION['userBirth'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento: <?php echo $_SESSION['userBirth'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-		 															<input type="text" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'"
-		 															 required class="single-input">
+		 															<input type="text" name="email" placeholder="Email: <?php echo $_SESSION['userMail'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email: <?php echo $_SESSION['userMail'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-		 															<input type="text" name="cargo" placeholder="Cargo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo'"
-		 															 required class="single-input">
+		 															<input type="text" name="cargo" placeholder="Cargo: <?php echo $_SESSION['userCargo'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo: <?php echo $_SESSION['userCargo'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
-		 															<input type="text" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'"
-		 															 required class="single-input">
+		 															<input type="text" id="cpf" name="cpf" placeholder="CPF: <?php echo $_SESSION['usercpf'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF: <?php echo $_SESSION['usercpf'];?>'"
+		 															 class="single-input">
 		 														</div>
 		 														<!--div class="mt-10">
 		 															<div class="switch-wrap d-flex">
@@ -115,7 +113,7 @@
 		 																<label style="margin-left: 20px;"> Administrador? * </label>
 		 															</div>
 		 														</div-->
-		 														<button class="btn" type="submit" name="usuario-cadastrar">Atualizar os meus dados</button>
+		 														<button class="btn" type="submit" name="usuario-alterar">Atualizar os meus dados</button>
 		 														<h2><small onclick="<?php echo $linkaccpassword; ?>" style="color: #4db8ff; cursor:pointer;">Trocar a senha</small></h2>
 		 													</form>
 		 			                </div>

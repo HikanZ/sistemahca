@@ -1,27 +1,26 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Minha Conta | Sistema HcA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 	<!-- Mobile Specific Meta -->
+	<link rel="shortcut icon" href="img/fav.png"> 	<!-- Favicon-->
+	<meta name="author" content="CodePixar"> 	<!-- Author Meta -->
+	<meta name="description" content="">	<!-- Meta Description -->
+	<meta name="keywords" content="">	<!-- Meta Keyword -->
+	<meta charset="UTF-8">	<!-- meta character set -->
+
+	<title>Minha Conta | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
-	<!--
-			CSS
-			============================================= -->
+	<!-- CSS ============================================= -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/linearicons.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -33,15 +32,10 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
-
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
-				 <!--================ Start Team Area =================-->
+				 <!--================ Start Content Area =================-->
 			 	<section class="team-area section-gap-top">
 			 		<div class="container">
 			 			<div class="row justify-content-center">
@@ -51,31 +45,28 @@
 			 							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
 			 							Acesso usuário
 			 						</h1>
-			 						<p>Obs.: Você deverá inserir o link completo, incluindo a extensão do tipo de imagem.</p>
-			 						<p>As extensões podem ser do tipo .png .jpg </p>
-			 						<p>Exemplo.:</p> <p>https://www.google.com/.../1x/googlelogo.png </p>
-			 						<p>Você pode clicar ou pressionar uma imagem e escolher a opção copiar endereço da imagem e inserir no campo abaixo.</p>
+									<p>Nota: A conta do usuário não será excluída, mas bloqueada, impedindo que a mesma seja acessada.</p>
+									<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linksearchuser; ?>">aqui</b> se deseja procurar ou ver uma lista dos usuários.</p>
 			 					</div>
 			 				</div>
 			 			</div>
 			 			<div class="border1"></div>
 			 			<form action="<?php echo $linksetoraddp ?>">
 			 				<div class="row justify-content-md-center">
-
 			 						<div class="col-lg-6 col-md-8">
 			 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
 			 								<div class="input-group-icon mt-10">
-			 									<div class="icon"><i class="fas fa-image" aria-hidden="true"></i></div>
-			 									<input type="text" name="first_name" placeholder="Insira o link da imagem" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o link da imagem'"
+			 									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
+			 									<input type="text" name="first_name" placeholder="Insira o email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o email *'"
 			 									 required class="single-input">
 			 								</div>
-			 								<button class="btn" type="submit" name="setor-cadastrar">Trocar avatar</button>
+			 								<button class="btn" type="submit" name="setor-cadastrar">Liberar ou Bloquear conta</button>
 			 						</div>
 			 				</div>
 			 			</form>
 			 		</div>
 			 	</section>
-			 	<!--================ End Team Area =================-->
+			 	<!--================ End Content Area =================-->
 	   </div>
 	<!--================ Start Footer Area =================-->
 	<br><br>
@@ -90,8 +81,6 @@
 	 </footer>
 	<!--================ End Footer Area =================-->
  </div>
-
-
 
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
@@ -115,5 +104,4 @@
 	<script src="js/main.js"></script>
 	<script src="js/searchuser.js"></script>
 </body>
-
 </html>

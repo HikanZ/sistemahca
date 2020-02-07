@@ -1,27 +1,26 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Usuários | Sistema HcA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 	<!-- Mobile Specific Meta -->
+	<link rel="shortcut icon" href="img/fav.png"> 	<!-- Favicon-->
+	<meta name="author" content="CodePixar"> 	<!-- Author Meta -->
+	<meta name="description" content="">	<!-- Meta Description -->
+	<meta name="keywords" content="">	<!-- Meta Keyword -->
+	<meta charset="UTF-8">	<!-- meta character set -->
+
+	<title>Usuários | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
-	<!--
-			CSS
-			============================================= -->
+	<!-- CSS ============================================= -->
 	<link rel="stylesheet" href="css/linearicons.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/availability-calendar.css">
@@ -32,12 +31,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
-
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -58,57 +51,49 @@
 		 			<div class="row justify-content-md-center">
 		 				<div class="col-lg-6 col-md-8">
 		 					<h5 class="mb-30" style="color: #4db8ff;">Os campos marcados com  *  são obrigatórios.</h3>
-		 					<form action="#">
+		 					<form method="post" action="inc/signup.inc.php" autocomplete="off">
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
-		 							<input type="text" name="first_name" placeholder="Nome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome *'"
-		 							 required class="single-input">
+		 							<input type="text" name="uid" placeholder="Nome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome *'" required class="single-input">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-user-friends" aria-hidden="true"></i></div>
-		 							<input type="text" name="last_name" placeholder="Sobrenome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome *'"
-		 							 required class="single-input">
+		 							<input type="text" name="uidlast" placeholder="Sobrenome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome *'" required class="single-input">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></div>
-		 							<input type="text" id="birth-date" name="first_name" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'"
-		 							 required class="single-input">
+		 							<input type="text" id="birth-date" name="birthdayuid" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'" required class="single-input">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-		 							<input type="text" name="email" placeholder="Email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email *'"
-		 							 required class="single-input">
+		 							<input type="text" name="mail" placeholder="Email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email *'" required class="single-input" autocomplete="off">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
-		 							<input type="text" name="password1" placeholder="Senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha *'"
-		 							 required class="single-input">
+		 							<input type="password" name="pwd" placeholder="Senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha *'" required class="single-input" autocomplete="new-password">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
-		 							<input type="text" name="password2" placeholder="Repita a senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha *'"
-		 							 required class="single-input">
+		 							<input type="password" name="pwd-repeat" placeholder="Repita a senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha *'" required class="single-input" autocomplete="new-password">
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-		 							<input type="text" name="cargo" placeholder="Cargo *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo *'"
-		 							 required class="single-input">
+		 							<input type="text" class="single-input" name="functionuid" placeholder="Cargo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo'" >
 		 						</div>
 		 						<div class="input-group-icon mt-10">
 		 							<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
-		 							<input type="text" id="cpf" name="cpf" placeholder="CPF *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF *'"
-		 							 required class="single-input">
+		 							<input type="text" id="cpf" name="cpfUser" placeholder="CPF *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF *'" required class="single-input">
 		 						</div>
 		 						<div class="mt-10">
 		 							<div class="switch-wrap d-flex">
 		 								<div class="primary-switch">
-		 									<input type="checkbox" id="primary-switch">
+		 									<input type="checkbox" id="primary-switch" name="checkadmin">
 		 									<label for="primary-switch"  ></label>
 		 								</div>
 		 								<label style="margin-left: 20px;"> Administrador? * </label>
 		 							</div>
 		 						</div>
-		 						<button class="btn" type="submit" name="usuario-cadastrar">Cadastrar</button>
+		 						<button class="btn" type="submit" name="signup-submit">Cadastrar</button>
 		 					</form>
 		 				</div>
 		 			</div>
@@ -129,9 +114,6 @@
  		 </footer>
 	 	<!--================ End Footer Area =================-->
 	 </div>
-
-
-
 
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->

@@ -19,9 +19,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
-	<!--
-			CSS
-			============================================= -->
+	<!-- CSS ============================================= -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/linearicons.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -34,48 +32,63 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
+<!--================ Start Require Area =================-->
+<?php require "header.php" ?>
+<?php require "inc/links.php" ?>
+<!--================ End Require Area =================-->
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
-
-	<!--================ Start Require Area =================-->
-	<?php require "header.php" ?>
-	<?php require "inc/links.php" ?>
-	<!--================ End Require Area =================-->
-
-	<!--================ Start Team Area =================-->
-	<section class="team-area section-gap-top">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8 text-center">
-					<div class="section-title" style="padding-bottom: 40px;">
-						<h1 style="letter-spacing: 3px; text-transform: none;">
-							<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-							Cadastrar nova versão de ROP
-						</h1>
-					</div>
-				</div>
-			</div>
-			<div class="border1"></div>
-			<form action="<?php echo $linkropgroup ?>">
-				<div class="row justify-content-md-center">
-
-						<div class="col-lg-6 col-md-8">
-							<h5 class="mb-30" style="color: #4db8ff;"></h3>
-								<div class="input-group mt-10">
-									<input type="text" id="search-val-name" name="ano_rop" placeholder="Insira o ano da versão (aaaa)" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o ano da versão (aaaa)'"
-									 required class="single-input">
-								</div>
-								<div class="input-group mt-10">
-									<input type="text" id="cpf" name="num_group" placeholder="Insira o número de grupos" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o número de grupos'"
-									 required class="single-input">
-								</div>
-								<button class="btn" type="submit" name="rop-ano-cadastrar">Próxima Etapa (1/3)</button>
+	<div id="page-container">
+	   <div id="content-wrap">
+			<!--================ Content Area =================-->
+			<section class="team-area section-gap-top">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-8 text-center">
+							<div class="section-title" style="padding-bottom: 40px;">
+								<h1 style="letter-spacing: 3px; text-transform: none;">
+									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
+									Cadastrar nova versão de ROP
+								</h1>
+							</div>
 						</div>
-				</div>
-			</form>
-		</div>
-	</section>
+					</div>
+					<div class="border1"></div>
+					<form action="<?php echo $linkropgroup ?>">
+						<div class="row justify-content-md-center">
 
-	<!--================ End Team Area =================-->
+								<div class="col-lg-6 col-md-8">
+									<h5 class="mb-30" style="color: #4db8ff;"></h3>
+										<div class="input-group mt-10">
+											<input type="text" id="search-val-name" name="ano_rop" placeholder="Insira o ano da versão (aaaa)" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o ano da versão (aaaa)'"
+											 required class="single-input">
+										</div>
+										<div class="input-group mt-10">
+											<input type="text" id="cpf" name="num_group" placeholder="Insira o número de grupos" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o número de grupos'"
+											 required class="single-input">
+										</div>
+										<button class="btn" type="submit" name="rop-ano-cadastrar">Próxima Etapa (1/3)</button>
+								</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		 	<!--================ Content Area =================-->
+	   </div>
+		 <!--================ Start Footer Area =================-->
+		 <br><br>
+ 	   <footer id="footer">
+ 			 <div class="container">
+ 	 			<div class="row justify-content-md-center">
+ 	 				<div class="col-1"></div>
+ 	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+ 	 				<div class="col-8">Sistema Healthcare Assessment</div>
+ 	 			</div>
+ 	 		</div>
+ 		 </footer>
+	 	<!--================ End Footer Area =================-->
+	 </div>
+
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
 
