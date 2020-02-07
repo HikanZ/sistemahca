@@ -83,52 +83,68 @@
 		 			    		            <!--img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/-->
 		 			    		        </div>
 		 			    		        <div class="profile-thumb-block" >
-														<?php $linkresetavatar = "window.location.href='inc/avatarreset.inc.php'"; ?>
-		 												<a onclick="<?php echo $linkresetavatar; ?>" data-tooltip="Clique para resetar este avatar" data-tooltip-location="bottom" style="cursor:pointer;color:#4db8ff; font-size:10px; top:-32px; ; z-index:100000;">Resetar</a>
-		 			    		          <img src="<?php echo $rowUser['avatarLinkUser']; ?>" onclick="$linkresetavatar"  alt="profile-image" class="profile"/>
+														<?php if( $rowUser['adminSystem'] > $_SESSION['admincheck'] ){
+															$linkresetavatar = "window.location.href='#'";
+															$cursortype = "no-drop";
+															$linkpwdreset = "window.location.href='#'";
+															$linkform = "#";
+															$linkaccess = "window.location.href='#'";
+														}else{
+															$linkresetavatar = "window.location.href='inc/avatarreset.inc.php'";
+															$cursortype = "pointer";
+															$linkpwdreset = "window.location.href='inc/passwordreset.inc.php?password=reset&fieldmail=".$rowUser['emailUsers']."'";
+															$linkform = "inc/dataupdate.inc.php";
+															$linkaccess = "window.location.href='usuarios-acesso.php'";
+														}?>
+		 												<a onclick="<?php echo $linkresetavatar; ?>" data-tooltip="Clique para resetar este avatar" data-tooltip-location="bottom" style="  cursor:<?php echo $cursortype; ?>;  color:#4db8ff; font-size:10px; top:-32px; ; z-index:100000;">Resetar</a>
+		 			    		          <img src="<?php echo $rowUser['avatarLinkUser']; ?>" alt="profile-image" class="profile" style="  cursor:<?php echo $cursortype; ?>;" />
 		 			    		        </div>
 		 			    		        <div class="card-content">
 		 			                    <h2><?php echo $rowUser['uidUsers']; echo ' '; echo $rowUser['uidLastUsers']; ?>
 		 														<small><?php echo $rowUser['roleUsers']; ?> - <?php if ($rowUser['adminSystem']==1 || $rowUser['adminSystem']==7)
-																 																											{if ($rowUser['adminSystem'] == 7 && $_SESSION['admincheck']==7) {echo 'Super Administrador';} else {echo 'Admininstrador';}} else echo 'Usuário';?></small>
-		 														<small onclick="<?php echo $linkaccessuser; ?>" style="cursor:pointer;">
+																 																											{if ($rowUser['adminSystem'] == 7) {echo 'Super Administrador';} else {echo 'Admininstrador';}} else echo 'Usuário';?></small>
+		 														<small>
+																	<b onclick="<?php echo $linkaccess; ?>" style="cursor:<?php echo $cursortype; ?>;">
 		 															<?php if ($rowUser['activeUsers']==1){?> <b style="color: #4db8ff; font-weight: 100;">Conta ativa</b>
 		 															<?php }else{ ?> <b style="color: red; font-weight: 100;">Conta bloqueada</b>
 		 															<?php } ?>
-		 														</small>
+																	</b> <b style="font-weight: 100;">&nbsp;&nbsp;&nbsp;</b>
+																	<b onclick="<?php echo $linkpwdreset; ?>" style="/*color: #4db8ff;*/ cursor:<?php echo $cursortype; ?>; font-weight: 100;" data-tooltip="Clique para resetar a senha. A senha nova é o CPF da pessoa, somente números" data-tooltip-location="bottom" >Resetar a senha</b>
+																</small>
 		 													</h2>
 		 													<div class="border1" style="margin: 10px auto;"></div>
-		 													<form action="inc/dataupdate.inc.php" method="post">
+		 													<form action="<?php echo $linkform; ?>" method="post">
+																<input type="hidden" name="idusuarioacc" value="<?php echo $rowUser['idUsers'];?>" placeholder="<?php echo $rowUser['idUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['idUsers'];?>'" style="/*visibility:hidden;*/ margin: 0; height:5px; width:5px;">
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
-		 															<input type="text" class="single-input" name="nome" placeholder="<?php echo $rowUser['uidUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['uidUsers'];?>'">
+		 															<input type="text" class="single-input" name="nome" value="<?php echo $rowUser['uidUsers'];?>" placeholder="<?php echo $rowUser['uidUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['uidUsers'];?>'">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user-friends" aria-hidden="true"></i></div>
-		 															<input type="text" class="single-input" name="sobrenome" placeholder="<?php echo $rowUser['uidLastUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['uidLastUsers'];?>'">
+		 															<input type="text" class="single-input" name="sobrenome" value="<?php echo $rowUser['uidLastUsers'];?>" placeholder="<?php echo $rowUser['uidLastUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['uidLastUsers'];?>'">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></div>
-		 															<input type="text" id="birth-date" class="single-input" name="dtnasc" placeholder="<?php echo $rowUser['birthUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['birthUsers'];?>'">
+		 															<input type="text" id="birth-date" class="single-input" name="dtnasc" value="<?php echo $rowUser['birthUsers'];?>" placeholder="<?php echo $rowUser['birthUsers'];?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['birthUsers'];?>'">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-		 															<input type="text" class="single-input" name="email" placeholder="<?php echo $rowUser['emailUsers']; $_SESSION['emailchange'] = $rowUser['emailUsers']; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['emailUsers']; ?>'">
+		 															<input type="text" class="single-input" name="email" value="<?php echo $rowUser['emailUsers']; ?>" placeholder="<?php echo $rowUser['emailUsers']; $_SESSION['emailchange'] = $rowUser['emailUsers']; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['emailUsers']; ?>'">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-		 															<input type="text" class="single-input" name="cargo" placeholder="<?php echo $rowUser['roleUsers']; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['roleUsers']; ?>'">
+		 															<input type="text" class="single-input" name="cargo" value="<?php echo $rowUser['roleUsers']; ?>" placeholder="<?php echo $rowUser['roleUsers']; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['roleUsers']; ?>'">
 		 														</div>
 		 														<div class="input-group-icon mt-10">
 		 															<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
-		 															<input type="text" id="cpf" class="single-input" name="cpf" placeholder="<?php echo $rowUser['cpfUser']; $_SESSION['cpfchange'] = $rowUser['cpfUser']; ?>	" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['cpfUser']; ?>'">
+		 															<input type="text" id="cpf" class="single-input" name="cpf" value="<?php echo $rowUser['cpfUser']; ?>" placeholder="<?php echo $rowUser['cpfUser']; $_SESSION['cpfchange'] = $rowUser['cpfUser']; ?>	" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $rowUser['cpfUser']; ?>'">
 		 														</div>
-																<?php if( $rowUser['adminSystem'] > $_SESSION['admincheck'] ){ } else{?>
+																<?php if( $rowUser['adminSystem'] > $_SESSION['admincheck'] ){ } else{ /*  */?>
 			 														<div class="input-group-icon mt-10">
 			 															<div class="icon"><i class="fa fa-hand-pointer" aria-hidden="true"></i></div>
 			 															<div class="form-select" id="default-select2">
 			 																<select name="tipousuario">
-			 																	<option selected disabled>Selecione o tipo de conta</option>
+			 																	<option selected disabled value="<?php $rowUser['adminSystem'] ?>">Selecione o tipo de conta</option>
 			 																	<option value="0">Usuário</option>
 			 																	<option value="1">Administrador</option>
 																				<?php if ($_SESSION['admincheck']==7 ){ ?>
@@ -138,11 +154,8 @@
 			 															</div>
 			 														</div>
 																<?php } ?>
-		 														<button class="btn" type="submit" name="alterar-cadastro">Alterar dados cadastrais</button>
-																<?php
-																	$linkpwdreset = "window.location.href='inc/passwordreset.inc.php?password=reset&fieldmail=".$rowUser['emailUsers']."'";
-																?>
-		 														<h2><small onclick="<?php echo $linkpwdreset; ?>" style="color: #4db8ff; cursor:pointer;" data-tooltip="Clique para resetar a senha. A senha nova é o CPF da pessoa, somente números" data-tooltip-location="bottom" >Resetar a senha</small></h2>
+		 														<button class="btn" type="submit" name="alterar-cadastro" style="cursor:<?php echo $cursortype; ?>;">Alterar dados cadastrais</button>
+
 
 		 													</form>
 															<div class="border1" style="margin: 20px auto;"></div>

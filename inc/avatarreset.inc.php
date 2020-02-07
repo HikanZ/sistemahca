@@ -44,6 +44,8 @@
     //echo "<br><br>CHEGOU<br>";
     //echo $password;
     $_SESSION['userAvatar'] = $resetavatar;
+    unset($_SESSION['emailchange']);
+    unset($_SESSION['cpfchange']);
     header("Location: ../visualizar-acc.php?search=success&fieldmail=$emailrequest"); //Retornará à pag anterior
     exit();
   }
