@@ -1,3 +1,14 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+	$version = $_POST['ano_rop']; echo $version; echo "<br>";
+	$numgroup = $_POST['num_group']; echo $numgroup; echo "<br>";
+	$i = 0;
+
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -26,11 +37,6 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
-
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -44,18 +50,27 @@
 									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
 									Cadastrar grupos do ROP
 								</h1>
+								<p> Versão: <?php echo $version; ?> </p>
 							</div>
 						</div>
 					</div>
 					<div class="border1"></div>
-					<form action="<?php echo $linkropfinal ?>">
+					<form action="<?php echo $linkropfinal ?>" method="post">
+						<input type="hidden" name="ano_rop" value="<?php echo $version; ?>"/>
+						<input type="hidden" name="num_group" value="<?php echo $numgroup; ?>"/>
 						<div class="row justify-content-md-center">
 							<div class="col-lg-6 col-md-8">
 								<h5 class="mb-30" style="color: #4db8ff;"></h3>
-									<div class="input-group mt-10">
-										<input type="text" id="search-val-name" name="first_name" placeholder="Digite o nome do grupo #id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do grupo #id'"
-										 required class="single-input">
-									</div>
+									<?php for ($i = 1; $i <= $numgroup; $i++) { ?>
+										<div class="input-group mt-10">
+											<small> Grupo <?php echo $i; ?></small>
+											<input type="text" id="search-val-name" name="nomegrupo<?php echo $i; ?>" placeholder="Digite o nome do grupo <?php echo $i; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do grupo <?php echo $i; ?>'"
+											 required class="single-input">
+											 <input type="text" id="search-val-name" name="numropgrupo<?php echo $i; ?>" placeholder="Digite o número de ROPs do grupo <?php echo $i; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o número de ROPs do grupo <?php echo $i; ?>'"
+ 											 required class="single-input">
+										</div>
+									<?php } ?>
+									<small>&nbsp;</small>
 									<button class="btn" type="submit" name="usuario-cadastrar">Próxima Etapa (2/3)</button>
 							</div>
 						</div>

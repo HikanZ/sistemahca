@@ -1,21 +1,22 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>ROPs | Sistema HcA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 	<!-- Mobile Specific Meta -->
+	<link rel="shortcut icon" href="img/fav.png"> 	<!-- Favicon-->
+	<meta name="author" content="CodePixar"> 	<!-- Author Meta -->
+	<meta name="description" content="">	<!-- Meta Description -->
+	<meta name="keywords" content="">	<!-- Meta Keyword -->
+	<meta charset="UTF-8">	<!-- meta character set -->
+
+	<title>ROPs | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -31,11 +32,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
@@ -54,9 +50,8 @@
 						</div>
 					</div>
 					<div class="border1"></div>
-					<form action="<?php echo $linkropgroup ?>">
+					<form action="<?php echo $linkropgroup ?>" method="post">
 						<div class="row justify-content-md-center">
-
 								<div class="col-lg-6 col-md-8">
 									<h5 class="mb-30" style="color: #4db8ff;"></h3>
 										<div class="input-group mt-10">

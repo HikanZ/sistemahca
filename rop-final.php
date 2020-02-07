@@ -1,3 +1,19 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+	$version = $_POST['ano_rop']; echo $version; echo "<br>";
+	$numgroup = $_POST['num_group']; echo $numgroup; echo "<br>";
+	/*for ($i = 1; $i <= $numgroup; $i++) {
+		echo "<br>"; echo $_POST['nomegrupo'.$i];
+		echo " - "; echo $_POST['numropgrupo'.$i];
+		for ($j = 1; $j <= $_POST['numropgrupo'.$i]; $j++ ){
+			echo $j; echo " ";
+		}
+	}*/
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -26,11 +42,6 @@
 	<link rel="stylesheet" href="css/main.css">
 </head>
 
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
-
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -51,33 +62,50 @@
 					<form action="<?php echo $linkropfinal ?>">
 						<div class="row justify-content-md-center">
 							<div class="col-lg-6 col-lg-16">
-								<h5 class="mb-30" style="color: #4db8ff;">Grupo 1: Nome do grupo</h3>
-									<div class="row">
-										<div class="col-sm-1">1.1.</div>
-										<div class="col-sm-8">
-											<div class="input-group">
-												<textarea rows="1" style="line-height:25px;" type="text" id="search-val-name" name="first_name" placeholder="Digite o nome do grupo #id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do grupo #id'"
-												 required class="single-textarea"></textarea>
+								<?php
+									for ($i = 1; $i <= $numgroup; $i++) {
+									//echo "<br>"; echo $_POST['nomegrupo'.$i];
+									//echo " - "; echo $_POST['numropgrupo'.$i];?>
+									<b class="mb-30" style="color: #4db8ff; font-weight: 100;">Grupo <?php echo $i; ?>: <?php echo " "; echo $_POST['nomegrupo'.$i]; ?></b>
+									<?php
+									for ($j = 1; $j <= $_POST['numropgrupo'.$i]; $j++ ){ ?>
+										<br>
+										<small>ROP <?php echo $i; echo "."; echo $j; ?></small>
+										<div class="row">
+											<div class="col-sm-10">
+												<div class="input-group">
+													<textarea rows="1" style="line-height:25px; height:60px;" type="text" id="search-val-name" name="first_name" placeholder="Digite o nome do grupo #id" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do grupo #id'"
+													 required class="single-textarea"></textarea>
+												</div>
+											</div>
+											<div class="col-sm-2">
+												<div class="switch-wrap d-flex justify-content-between">
+														<p>Maior</p>
+														<div class="primary-radio">
+															<input class="radio" type="radio" id="default-radio-1" name=radio value=1>
+															<label class="radio" for="default-radio-1"></label>
+														</div>
+												</div>
+												<div class="switch-wrap d-flex justify-content-between">
+														<p>Menor</p>
+														<div class="primary-radio">
+															<input class="radio" type="radio" id="default-radio-2" name=radio value=1>
+															<label class="radio" for="default-radio-2"></label>
+														</div>
+												</div>
 											</div>
 										</div>
-										<div class="col-sm-2">
-											<div class="switch-wrap d-flex justify-content-between">
-													<p>Maior</p>
-													<div class="primary-radio">
-														<input class="radio" type="radio" id="default-radio-1" name=radio value=1>
-														<label class="radio" for="default-radio-1"></label>
-													</div>
-											</div>
-											<div class="switch-wrap d-flex justify-content-between">
-													<p>Menor</p>
-													<div class="primary-radio">
-														<input class="radio" type="radio" id="default-radio-2" name=radio value=1>
-														<label class="radio" for="default-radio-2"></label>
-													</div>
-											</div>
-										</div>
-									</div>
+								<?php
+								} ?>
+							<br>
+							<?php
+								}?>
 
+
+
+
+
+									<small>&nbsp;</small>
 									<button class="btn" type="submit" name="usuario-cadastrar">Finalizar (3/3)</button>
 							</div>
 						</div>
@@ -87,7 +115,7 @@
 	    <!--================ End Content Area =================-->
 	   </div>
 	   <!--================ Start Footer Area =================-->
-	   <br><br>
+	   <br><br><br><br><br><br><br><br>
 	   <footer id="footer">
 	     <div class="container">
 	      <div class="row justify-content-md-center">
