@@ -3700,6 +3700,14 @@ h1, h2, h3, h4, h5, h6 {
   color: #4db8ff;
 }
 
+.border3{
+  width: 85%;
+  height: 1px;
+  background: #337ab7;
+  margin: 15px auto;
+  color: #337ab7;
+}
+
 .backbtn{
   cursor: pointer;
   color: #4db8ff;
@@ -3732,11 +3740,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 #accordion .card-header h5, button{
     display: block;
-    padding: 15px 20px 15px 30px;
+    padding: 5px 10px 5px 20px;
     background: #4db8ff;
     font-size: 20px;
     font-weight: 600;
-    color: #fff;
+    color: #000;
     border: none;
     transition: all 1s ease 0s;
 }
@@ -3745,7 +3753,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     color: #8c8c8c;
     line-height: 28px;
-    background: #f1f1f1;
+    background: #201f1f;
+    /*background: #f1f1f1;*/
     border: none;
     position: relative;
 }
@@ -3853,7 +3862,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
     border: 1px solid gray;
     width: 100%;
-	   max-width: 800px;
+	   max-width: 1000px;
 }
 
 #resultTable th {
@@ -3881,7 +3890,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #resultTable tr:hover {
-    background-color: #4db8ff;
+    background-color: #428bca;
     color: white;
 }
 
@@ -3996,6 +4005,5 @@ h1 a{color:#131313; font-weight:bold;}
 .profile-card-3 .icon-block a{
     text-decoration:none;
 }
-
 
 /* PERFIL END */
