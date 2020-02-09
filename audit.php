@@ -142,7 +142,7 @@
 							<p class="mb-30" >Versão: <?php echo $version; ?></p>
 							<div class="input-group-icon mt-10">
 								<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
-								<div class="form-select" id="default-select2">
+								<div class="form-select required" id="default-select2">
 									<select>
 										<option selected disabled>Selecione o setor</option>
 										<?php
@@ -158,7 +158,7 @@
 					<div class="border2"></div>
 					<div class="row justify-content-md-center">
 						<div class="col-lg-12 col-md-8">
-							<form action="#" method="post">
+							<form action="inc/audit.inc.php" method="post">
 							  <div class="container">
 							    <div class="accordion" id="accordion" name="accordion">
 							    <?php
@@ -206,15 +206,15 @@
 																	</div>
 																	<!-- Default inline 1-->
 																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" checked>Conforme</label>
+																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" value="C" >Conforme</label>
 																	<label class="radio-inline" style="margin-right: 25px; width:115px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não conforme</label>
+																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" value="NC">Não conforme</label>
 																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Parcial</label>
+																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" value="P">Parcial</label>
 																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não aplica</label>
+																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" value="NA" checked>Não aplica</label>
 
-																	<input type="text" Name=Teste placeholder="Teste" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teste'" class="single-input" style="width:250px;">
+																	<input type="text" Name="info<?php echo $rowGroup['numGroup']; echo $rowRop['numRop']; ?>[]" placeholder="ROP<?php echo $rowGroup['numGroup']; echo "."; echo $rowRop['numRop']; ?> Informação adicional" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teste'" class="single-input" style="width:250px;">
 																	<div class="border3"></div>
 																</div>
 
@@ -234,7 +234,7 @@
 							  <div class="row justify-content-center">
 							    <div class="col-lg-6 col-md-8">
 							      <small>&nbsp;</small>
-							      <button class="btn" type="submit" name="usuario-cadastrar">Gravar Auditoria</button>
+							      <button class="btn" type="submit" name="auditar">Gravar Auditoria</button>
 							    </div>
 							  </div>
 							</form>
