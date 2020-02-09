@@ -209,7 +209,7 @@
 																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" checked>Conforme</label>
 																	<label class="radio-inline" style="margin-right: 25px; width:115px;">
 																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não conforme</label>
-																	<label class="radio-inline" style="margin-right: 25px; width:70px;">
+																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
 																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Parcial</label>
 																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
 																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não aplica</label>
