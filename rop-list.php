@@ -1,3 +1,22 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+	require 'inc/dbh.inc.php';
+?>
+<?php
+	$sql = "SELECT versionGroup, COUNT(nameGroup) AS numGroup, SUM(qtropGroup) AS numRops, versionActive FROM ropgroup GROUP BY versionGroup ORDER BY versionGroup DESC";
+	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+		header("Location: rop-list.php?error=connectionerror"); //Retornará à pag anterior
+		exit();
+	}
+	else{ //Se a conexão for bem sucedida, fará a consulta
+		mysqli_stmt_execute($stmt);
+		$resultVersion = mysqli_stmt_get_result($stmt);
+	}
+?>
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -25,10 +44,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -42,8 +57,7 @@
 									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
 									Histórico de ROPs
 								</h1>
-								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>
-								<p>Somente a última versão é utilizada no questionário.</p>
+
 							</div>
 						</div>
 					</div>
@@ -52,23 +66,8 @@
 						<div class="col-lg-6 col-md-8">
 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
 								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
-									<input type="text" id="search-val-name" name="first_name" placeholder="Nome e/ou Sobrenome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome e/ou Sobrenome'"
-									 required class="single-input">
-								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
-									<input type="text" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'"
-									 required class="single-input">
-								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-									<input type="text" id="search-val-city" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'"
-									 required class="single-input">
-								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-									<input type="text" name="cargo" placeholder="Cargo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo'"
+									<div class="icon"><i class="fas fa-calendar-check" aria-hidden="true"></i></div>
+									<input type="number" id="search-val-name" name="first_name" placeholder="Versão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Versão'"
 									 required class="single-input">
 								</div>
 								<div class="mt-10">
@@ -89,70 +88,25 @@
 				<div class="container">
 					<!-- THE HTML TABLE DATA -->
 				<div class="table-responsive">
-					<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable">
+					<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable" style="width:30%">
 						  <tr>
-						    <th>Nome</th>
-								<th>CPF</th>
-						    <th>Email</th>
-						    <th>Cargo</th>
-						    <th>Admin.</th>
+						    <th>Versão</th>
+								<th>Qt. Grupo</th>
+						    <th>Qt. Total ROPs</th>
+						    <th>Ativo</th>
 						  </tr>
-						  <tr onclick="<?php echo $linkusers; ?>">
-						    <td>Florine Reynolds</td>
-								<td></td>
-						    <td>Lewisville</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Carmelo Waters</td>
-								<td></td>
-						    <td>Bloomington</td>
-						    <td></td>
-								<td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Carmelo Waters</td>
-								<td></td>
-						    <td>Bloomington</td>
-						    <td></td>
-								<td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Carmelo Waters</td>
-								<td></td>
-						    <td>Bloomington</td>
-						    <td></td>
-								<td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Carmelo Waters</td>
-								<td></td>
-						    <td>Bloomington</td>
-						    <td></td>
-								<td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Denis Whitney</td>
-								<td></td>
-						    <td>Hondo</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Fabian Dorsey</td>
-								<td></td>
-						    <td>Bigfoot</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Titus Morris</td>
-								<td></td>
-						    <td>Laguna Seca</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
+							<?php
+							while ($rowVersion = mysqli_fetch_assoc($resultVersion)){
+								?>
+								<tr onclick="">
+									<td><?php echo $rowVersion['versionGroup']; ?></td>
+									<td><?php echo $rowVersion['numGroup']; ?></td>
+									<td><?php echo $rowVersion['numRops']; ?></td>
+									<td><?php if ($rowVersion['versionActive']==1) echo $rowVersion['versionActive']; ?></td>
+								</tr>
+							<?php
+							}
+							?>
 					</table>
 				</div>
 				</div>
@@ -194,7 +148,7 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
+	<script src="js/searchrop.js"></script>
 </body>
 
 </html>

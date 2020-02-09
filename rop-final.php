@@ -3,8 +3,12 @@
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access-admin.php";
-	$version = $_POST['ano_rop']; echo $version; echo "<br>";
-	$numgroup = $_POST['num_group']; echo $numgroup; echo "<br>";
+	if (isset($_POST['rop-grupo-cadastrar'])) {} else{
+		header("Location: rop-ano.php?error=wrongaccess2");
+		exit();
+	}
+	$version = $_POST['ano_rop']; /*echo $version; echo "<br>";*/
+	$numgroup = $_POST['num_group']; /*echo $numgroup; echo "<br>";*/
 	/*for ($i = 1; $i <= $numgroup; $i++) {
 		echo "<br>"; echo $_POST['nomegrupo'.$i];
 		echo " - "; echo $_POST['numropgrupo'.$i];
@@ -48,7 +52,7 @@
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  /*font-size: 22px;*/
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -69,13 +73,13 @@
   left: 0;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: #838383;
   border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #838383;
 }
 
 /* When the radio button is checked, add a blue background */
@@ -104,6 +108,7 @@
 	border-radius: 50%;
 	background: white;
 }
+
 </style>
 </head>
 
@@ -112,6 +117,7 @@
 	   <div id="content-wrap">
 	    <!--================ Start Content Area =================-->
 			<section class="team-area section-gap-top">
+
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-md-8 text-center">
@@ -123,66 +129,69 @@
 							</div>
 						</div>
 					</div>
-					<div class="border1"></div>
-					<form action="<?php echo $linkropfinal ?>">
-						<div class="row justify-content-md-center">
-							<div class="col-lg-6 col-lg-16">
-								<?php
-									for ($i = 1; $i <= $numgroup; $i++) {
-									//echo "<br>"; echo $_POST['nomegrupo'.$i];
-									//echo " - "; echo $_POST['numropgrupo'.$i];?>
-									<b class="mb-30" style="color: #4db8ff; font-weight: 100;">Grupo <?php echo $i; ?>: <?php echo " "; echo $_POST['nomegrupo'.$i]; ?></b>
+					<div class="border2"></div>
+					<div class="row justify-content-md-center">
+						<div class="col-lg-10 col-md-8">
+							<form action="inc/ropversion.inc.php" method="post">
+								<input type="hidden" name="ano_rop" value="<?php echo $version; ?>">
+								<input type="hidden" name="num_group" value="<?php echo $numgroup; ?>">
+
+								<div class="container">
+									<div class="accordion" id="accordion" name="accordion">
+										<?php
+											for ($i = 1; $i <= $numgroup; $i++) { ?>
+												<div class="card">
+													<div class="card-header" id="heading<?php echo $i; ?>" data-toggle="collapse" data-target="#collapse<?php echo $i; ?>" aria-expanded="<?php if ($i==1) echo 'true'; else echo 'false';?>" aria-controls="collapse<?php echo $i; ?>" href="#top">
+														<h5 class="mb-0">
+															<button class="<?php if ($i==1) echo 'btnA'; else echo 'btnA collapsed';?>" type="button">
+																<input type="hidden" name="nomegrupo<?php echo $i; ?>" value="<?php echo $_POST['nomegrupo'.$i]; ?>">
+																<input type="hidden" name="numropgrupo<?php echo $i; ?>" value="<?php echo $_POST['numropgrupo'.$i]; ?>">
+																Grupo <?php echo $i; ?>: <?php echo " "; echo $_POST['nomegrupo'.$i]; ?>
+															</button>
+														</h5>
+													</div>
+													<div id="collapse<?php echo $i; ?>" class="<?php if ($i==1) echo 'collapse show'; else echo 'collapse';?>" aria-labelledby="heading<?php echo $i; ?>" data-parent="#accordion">
+														<div class="card-body">
+															<?php
+															for ($j = 1; $j <= $_POST['numropgrupo'.$i]; $j++ ){ ?>
+																<br>
+																<small style="color: #adadad	; font-weight: 100;">ROP <?php echo $i; echo "."; echo $j; echo "."; ?></small>
+																<div class="row">
+																	<div class="col-lg-10">
+																		<div class="input-group">
+																			<textarea rows="1" style="line-height:25px; height:60px;" type="text" id="rop<?php echo $i; echo "_"; echo $j; ?>" name="rop<?php echo $i; echo "_"; echo $j; ?>" placeholder="Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>'"
+																			 required class="single-textarea"></textarea>
+																		</div>
+																	</div>
+																	<div class="col-sm-2">
+																		<label class="container" style="color: #adadad; font-weight: 100;">Maior
+																			<input type="radio" id="<?php echo $i; echo "_"; echo $j; ?>" checked="checked" name="radio<?php echo $i; echo "_"; echo $j; ?>" value="1">
+																			<span class="checkmark"></span>
+																		</label>
+																		<label class="container" style="color: #adadad; font-weight: 100;">Menor
+																			<input type="radio" id="<?php echo $i; echo "_"; echo $j; ?>" name="radio<?php echo $i; echo "_"; echo $j; ?>" value="0">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</div>
+														<?php
+														} ?>
+														</div>
+													</div>
+												</div>
 									<?php
-									for ($j = 1; $j <= $_POST['numropgrupo'.$i]; $j++ ){ ?>
-										<br>
-										<small style="color: #bababa; font-weight: 100;">ROP <?php echo $i; echo "."; echo $j; ?></small>
-										<div class="row">
-											<div class="col-lg-10">
-												<div class="input-group">
-													<textarea rows="1" style="line-height:25px; height:60px;" type="text" id="rop<?php echo $i; echo "_"; echo $j; ?>" name="rop<?php echo $i; echo "_"; echo $j; ?>" placeholder="Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira a descrição do ROP <?php echo $i; echo "."; echo $j; ?>'"
-													 required class="single-textarea"></textarea>
-												</div>
-											</div>
-											<div class="col-sm-2">
-												<label class="container" style="color: #bababa; font-weight: 100;">Maior
-												  <input type="radio" checked="checked" name="radio">
-												  <span class="checkmark"></span>
-												</label>
-												<label class="container" style="color: #bababa; font-weight: 100;">Menor
-												  <input type="radio" name="radio">
-												  <span class="checkmark"></span>
-												</label>
-												<!--div class="switch-wrap d-flex justify-content-between">
-														<p style="color: #d1d1d1; font-weight: 100;">Maior</p>
-														<div class="primary-radio">
-															<input class="radio" type="radio" id="default-radio-1" name=radio value=1>
-															<label class="radio" id="default-radio-1" for="default-radio-1"></label>
-														</div>
-												</div>
-												<div class="switch-wrap d-flex justify-content-between">
-														<p style="color: #d1d1d1; font-weight: 100;">Menor</p>
-														<div class="primary-radio">
-															<input class="radio" type="radio" id="default-radio-2" name=radio value=1>
-															<label class="radio" id="default-radio-2" for="default-radio-2"></label>
-														</div>
-												</div-->
-											</div>
-										</div>
-								<?php
-								} ?>
-							<br>
-							<?php
-								}?>
-
-
-
-
-
-									<small>&nbsp;</small>
-									<button class="btn" type="submit" name="usuario-cadastrar">Finalizar (3/3)</button>
-							</div>
+										}?>
+									</div>
+								</div>
+								<div class="row justify-content-center">
+									<div class="col-lg-6 col-md-8">
+										<small>&nbsp;</small>
+										<button class="btn" type="submit" name="cadastrar-rop">Finalizar (3/3)</button>
+									</div>
+								</div>
+							</form>
 						</div>
-					</form>
+					</div>
 				</div>
 			</section>
 	    <!--================ End Content Area =================-->

@@ -81,43 +81,102 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 	<style>
+	/* CUSTOM RADIO BUTTON */
+	.stv-radio-buttons-wrapper {
+ 	 clear: both;
+ 	 display: inline-block;
+	 align-items: center;
+	 vertical-align: middle;
+ }
+  .stv-radio-button {
+ 	 position: absolute;
+ 	 //left: -9999em;
+ 	 //top: -9999em;
+	 //visibility: hidden;
+ }
+  .stv-radio-button + label {
+ 	 float: left;
+ 	 padding: 0.3em 1em;
+ 	 cursor: pointer;
+ 	 /*border: 1px solid #28608f;*/
+ 	 margin-right: -1px;
+ 	 color: #fff;
+ 	 background-color: #428bca;
+ }
+  .stv-radio-button + label:first-of-type {
+ 	 border-radius: 0.8em 0 0 0.8em;
+ }
+  .stv-radio-button + label:last-of-type {
+ 	 border-radius: 0 0.8em 0.8em 0;
+ }
+  .stv-radio-button:checked + label {
+ 	 background-color: #3277b3;
+ }
+	/* END CUSTOM RADIO BUTTON */
 
-	.radio-inline{
-		cursor:pointer;
-	}
-
-	.radio-inline label {
-	  margin-right: 15px;
-	  line-height: 32px;
-		cursor: pointer;
-	}
-
-	.radio-inline input {
-	  -webkit-appearance: none;
-	  -moz-appearance: none;
-	  appearance: none;
-
-	  border-radius: 50%;
-	  width: 16px;
-	  height: 16px;
-
-	  border: 1.5px solid #999;
-	  transition: 0.2s all linear;
-	  margin-right: 5px;
-
+	/* The container */
+	.container {
+	  display: block;
 	  position: relative;
-	  top: 4px;
-		cursor:pointer;
+	  padding-left: 35px;
+	  margin-bottom: 12px;
+	  cursor: pointer;
+	  /*font-size: 22px;*/
+	  -webkit-user-select: none;
+	  -moz-user-select: none;
+	  -ms-user-select: none;
+	  user-select: none;
 	}
 
-	.radio-inline input:checked {
-		color: #4db8ff;
-	  border: 8px solid #4db8ff;
+	/* Hide the browser's default radio button */
+	.container input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
 	}
 
-	.radio-inline:checked ~ label {
-  color: #337ab7;
-}
+	/* Create a custom radio button */
+	.checkmark {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 25px;
+	  width: 25px;
+	  background-color: #838383;
+	  border-radius: 50%;
+	}
+
+	/* On mouse-over, add a grey background color */
+	.container:hover input ~ .checkmark {
+	  background-color: #838383;
+	}
+
+	/* When the radio button is checked, add a blue background */
+	.container input:checked ~ .checkmark {
+	  background-color: #4db8ff;
+	}
+
+	/* Create the indicator (the dot/circle - hidden when not checked) */
+	.checkmark:after {
+	  content: "";
+	  position: absolute;
+	  display: none;
+	}
+
+	/* Show the indicator (dot/circle) when checked */
+	.container input:checked ~ .checkmark:after {
+	  display: block;
+	}
+
+	/* Style the indicator (dot/circle) */
+	.container .checkmark:after {
+	 	top: 9px;
+		left: 9px;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: white;
+	}
 	</style>
 </head>
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
@@ -189,35 +248,58 @@
 							              while($rowRop = mysqli_fetch_assoc($resultRop)){
 							          ?>
 							                <div id="example-<?php echo $rowGroup['numGroup']; echo $rowRop['numRop']; ?>" class="content" display="flex">
-							                  <div class="row d-flex justify-content-start align-items-center">
-																	<div class="col-md-1">
+							                  <div class="row d-inline-flex flex-row justify-content-start">
+							                    <div class="col-sm-1 my-auto">
 							                      <button type="button" id="btnAdd-<?php echo $rowGroup['numGroup']; echo $rowRop['numRop']; ?>" class="btn btn-primary btn-sm" style="width:35px; height:35px; font-size:15px; background:#337ab7; border:none;">
 							                        <i class="fas fa-plus" style="width:20px; height:20px; font-size:10px;"></i>
 							                      </button>
-																	</div>
+							                    </div>
+							                    <div class="col-md-11 my-auto" style="font-size:15px;">
 																		<?php echo $rowGroup['numGroup']; echo "."; echo $rowRop['numRop']; echo ". "; echo $rowRop['labelRop'];?>
+							                    </div>
 							                  </div>
-
-																<div class="row clone d-flex flex-row justify-content-start align-items-center">
-																	<div class="col-md-1">
+							                  <div class="row clonerow d-inline-flex flex-row justify-content-start" style="width:1000px;">
+																	<div class="col-sm-1 my-auto">
 																		<button type="button" class="btn btn-danger btnRemove btn-sm" style="width:35px; height:35px; font-size:15px; background:#d9534f; border:none;">
-																			<i class="fas fa-minus" style="width:20px; height:20px; font-size:10px;"></i>
-																		</button>
+							                        <i class="fas fa-minus" style="width:20px; height:20px; font-size:10px;"></i>
+							                      </button>
 																	</div>
-																	<!-- Default inline 1-->
-																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" checked>Conforme</label>
-																	<label class="radio-inline" style="margin-right: 25px; width:115px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não conforme</label>
-																	<label class="radio-inline" style="margin-right: 25px; width:70px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Parcial</label>
-																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
-																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;">Não aplica</label>
+							                    <div class="col-md-5 my-auto" style="font-size:12px;">
+																		<label class="container" style="color: #adadad; font-weight: 100;">Conforme
+																			<input type="radio" id="rop<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" checked="checked" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="C">
+																			<span class="checkmark"></span>
+																		</label>
+																		<label class="container" style="color: #adadad; font-weight: 100;">Não conforme
+																			<input type="radio" id="rop<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="NC">
+																			<span class="checkmark"></span>
+																		</label>
+																		<label class="container" style="color: #adadad; font-weight: 100;">Parcial
+																			<input type="radio" id="rop<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="P">
+																			<span class="checkmark"></span>
+																		</label>
+																		<label class="container" style="color: #adadad; font-weight: 100;">Não aplica
+																			<input type="radio" id="rop<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="NA">
+																			<span class="checkmark"></span>
+																		</label>
+							                      <!--div class="stv-radio-buttons-wrapper">
+							                        <input type="radio" class="stv-radio-button" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="C"  id="rop1<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" checked="checked" />
+							                        <label for="rop1<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" >Conforme</label>
 
-																	<input type="text" Name=Teste placeholder="Teste" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teste'" class="single-input" style="width:250px;">
-																	<div class="border3"></div>
-																</div>
+							                        <input type="radio" class="stv-radio-button" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="NC" id="rop2<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" />
+							                        <label for="rop2<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" >Não conforme</label>
 
+							                        <input type="radio" class="stv-radio-button" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="P"  id="rop3<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" />
+							                        <label for="rop3<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" >Parcial</label>
+
+							                        <input type="radio" class="stv-radio-button" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']?>[0]" value="NA" id="rop4<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" />
+							                        <label for="rop4<?php echo $rowGroup['numGroup']; echo $rowRop['numRop'] ?>[0]" >Não aplica</label>
+							                      </div-->
+							                    </div>
+																	<div class="col-md-4 my-auto" style="font-size:15px;">
+																		<input type="text" name="info<?php echo $i; echo $j; ?>[]" placeholder="Informação adicional" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Informação adicional'"
+							                       class="single-input" style="width:200px; top:-50px;">
+																	</div>
+							                  </div>
 							                </div>
 							          <?php
 							              }
@@ -261,6 +343,8 @@
 
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
+
+
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
@@ -304,7 +388,7 @@
 					$resultRop = mysqli_stmt_get_result($stmt);
 					while($rowRop = mysqli_fetch_assoc($resultRop)){ ?>
 						$('#example-<?php echo $rowGroup["numGroup"]; echo $rowRop["numRop"]; ?>').multifield({
-							section: '.clone',
+							section: '.clonerow',
 							btnAdd:'#btnAdd-<?php echo $rowGroup["numGroup"]; echo $rowRop["numRop"]; ?>',
 							btnRemove:'.btnRemove'
 						});
@@ -314,7 +398,7 @@
 		}
 	}
 	?>
-</script>
+  </script>
 </body>
 
 </html>

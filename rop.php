@@ -66,21 +66,21 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkropremove; ?> ">
-							<i class="fas fa-calendar-times"></i>
-						</div>
-						<p class="title">Excluir Versão ROP</p>
-						<p class="desc">Excluir uma versão do ROP</p>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-lg-4 col-md-4 flex">
-					<div class="service-box">
 						<div class="service-icon" onclick=" <?php echo $linkroplist; ?> ">
 							<i class="fas fa-calendar-alt"></i>
 						</div>
 						<p class="title">Histórico ROP</p>
 						<p class="desc">Listar todas as versões de ROPs</p>
+					</div>
+				</div>
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linkropremove; ?> ">
+							<i class="fas fa-calendar-times"></i>
+						</div>
+						<p class="title">Excluir Versão ROP</p>
+						<p class="desc">Excluir uma versão do ROP</p>
 					</div>
 				</div>
 			</div>
@@ -99,21 +99,21 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linksetorremove; ?> ">
-							<i class="far fa-calendar-times"></i>
-						</div>
-						<p class="title">Excluir Setor</p>
-						<p class="desc">Exclui um Setor</p>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-lg-4 col-md-4 flex">
-					<div class="service-box">
 						<div class="service-icon" onclick=" <?php echo $linksetorlist; ?> ">
 							<i class="far fa-calendar-alt"></i>
 						</div>
 						<p class="title">Listar Setores</p>
 						<p class="desc">Exibe a lista de setores</p>
+					</div>
+				</div>
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linksetorremove; ?> ">
+							<i class="far fa-calendar-times"></i>
+						</div>
+						<p class="title">Excluir Setor</p>
+						<p class="desc">Exclui um Setor</p>
 					</div>
 				</div>
 			</div>

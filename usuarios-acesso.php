@@ -60,6 +60,7 @@
 			 									<input type="text" name="first_name" placeholder="Insira o email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o email *'"
 			 									 required class="single-input">
 			 								</div>
+											<small>&nbsp;</small>
 			 								<button class="btn" type="submit" name="setor-cadastrar">Liberar ou Bloquear conta</button>
 			 						</div>
 			 				</div>

@@ -154,6 +154,7 @@
 			 															</div>
 			 														</div>
 																<?php } ?>
+																<small>&nbsp;</small>
 		 														<button class="btn" type="submit" name="alterar-cadastro" style="cursor:<?php echo $cursortype; ?>;">Alterar dados cadastrais</button>
 
 
@@ -171,7 +172,7 @@
 		 	 <!--================ End Team Area =================-->
 	   </div>
 		 <!--================ Start Footer Area =================-->
-		 <br><br>
+		 <br><br><br><br>
  	   <footer id="footer">
  			 <div class="container">
  	 			<div class="row justify-content-md-center">

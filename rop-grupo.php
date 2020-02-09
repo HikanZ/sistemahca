@@ -3,10 +3,38 @@
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access-admin.php";
-	$version = $_POST['ano_rop']; echo $version; echo "<br>";
-	$numgroup = $_POST['num_group']; echo $numgroup; echo "<br>";
-	$i = 0;
-
+	if (isset($_POST['rop-ano-cadastrar'])) {} else{
+		header("Location: rop-ano.php?error=wrongaccess");
+		exit();
+	}
+	$version = $_POST['ano_rop'];
+	$numgroup = $_POST['num_group'];
+	require 'inc/dbh.inc.php';
+	if ( empty($version) || empty($numgroup)){
+		header("Location: rop-ano.php?error=emptyfields");
+		exit();
+	}else{
+		$sql = "SELECT versionGroup FROM ropgroup WHERE versionGroup=?";
+		// Esse ? é uma questão de segurança para ngm injetar código SQL dentro do nosso banco
+		// evitando que o mesmo seja corrompido ou destruído
+		$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+		if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+			header("Location: rop-ano.php?error=sqlerror1"); //Retornará à pag anterior
+			exit();
+		}else{ //Se a conexão for bem sucedida, fará a verificação
+			mysqli_stmt_bind_param($stmt, "s", $version);
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_store_result($stmt);
+			// A variável $resultCheck armazena a qtde de linha que retornou da consulta
+			$resultCheck = mysqli_stmt_num_rows($stmt);
+			// Se houver mais do que 0 resultados (ou seja 1 ou mais)
+			// Significa que o email já foi utilizado, retornando à pag anterior
+			if ($resultCheck > 0) {
+				header("Location: new-rop.php?error=versiontaken");
+				exit();
+			}
+		}
+	}
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -71,7 +99,7 @@
 										</div>
 									<?php } ?>
 									<small>&nbsp;</small>
-									<button class="btn" type="submit" name="usuario-cadastrar">Próxima Etapa (2/3)</button>
+									<button class="btn" type="submit" name="rop-grupo-cadastrar">Próxima Etapa (2/3)</button>
 							</div>
 						</div>
 					</form>

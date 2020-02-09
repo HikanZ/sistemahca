@@ -1,3 +1,23 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+	require 'inc/dbh.inc.php';
+?>
+<?php
+	$sql = "SELECT * FROM setor";
+	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+		header("Location: setor-lista.php?error=connectionerror"); //Retornará à pag anterior
+		exit();
+	}
+	else{ //Se a conexão for bem sucedida, fará a consulta
+		mysqli_stmt_execute($stmt);
+		$resultSetor = mysqli_stmt_get_result($stmt);
+	}
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -25,10 +45,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -52,9 +68,18 @@
 						<div class="col-lg-6 col-md-8">
 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
 								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
+									<div class="icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
 									<input type="text" id="search-val-name" name="first_name" placeholder="Nome e/ou Sobrenome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome e/ou Sobrenome'"
 									 required class="single-input">
+								</div>
+								<div class="mt-10">
+									<div class="switch-wrap d-flex">
+										<div class="primary-switch">
+											<input type="checkbox" name="searchvalhasphone" id="primary-switch" class="checkradio" checked>
+											<label for="primary-switch"  ></label>
+										</div>
+										<label style="margin-left: 20px;"> Ativo? </label>
+									</div>
 								</div>
 						</div>
 					</div>
@@ -65,91 +90,21 @@
 				<div class="container">
 					<!-- THE HTML TABLE DATA -->
 				<div class="table-responsive">
-					<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable">
+					<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable" style="width:40%">
 						  <tr>
-						    <th>Nome</th>
-								<th>CPF</th>
-						    <th>Email</th>
-						    <th>Cargo</th>
-						    <th>Admin.</th>
+								<!--th>ID</th-->
+						    <th>Nome do Setor</th>
+						    <th>Estado</th>
 						  </tr>
-						  <tr onclick="<?php echo $linkusers; ?>">
-						    <td>Florine Reynolds</td>
-								<td></td>
-						    <td>Lewisville</td>
-								<td></td>
-						    <td>Sim</td>
+							<?php
+								while ($rowSetor = mysqli_fetch_assoc($resultSetor)){
+							?>
+						  <tr onclick="">
+						    <!--td><?php /*echo $rowSetor['idSetor'];*/ ?></td-->
+						    <td><?php echo $rowSetor['uidSetor']; ?></td>
+						    <td><?php echo $rowSetor['stateSetor']; ?></td>
 						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
-						  <tr>
-						    <td>Agnes Delacruz</td>
-								<td></td>
-						    <td>Sonora</td>
-								<td></td>
-						    <td>Sim</td>
-						  </tr>
+							<?php } ?>
 					</table>
 				</div>
 				</div>
@@ -191,7 +146,7 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
+	<script src="js/searchsetor.js"></script>
 </body>
 
 </html>

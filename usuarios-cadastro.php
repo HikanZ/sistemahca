@@ -93,6 +93,7 @@
 		 								<label style="margin-left: 20px;"> Administrador? * </label>
 		 							</div>
 		 						</div>
+								<small>&nbsp;</small>
 		 						<button class="btn" type="submit" name="signup-submit">Cadastrar</button>
 		 					</form>
 		 				</div>

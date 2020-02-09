@@ -59,6 +59,7 @@
 		 							<label class="backbtn" onclick="<?php echo $linkusers; ?>"><i class="fas fa-angle-left"></i></label>
 		 							Pesquisar Usuários
 		 						</h1>
+								<p>Clique no usuário para ver a sua ficha e alterar os dados.</p>
 		 					</div>
 		 				</div>
 		 			</div>

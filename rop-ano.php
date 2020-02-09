@@ -62,6 +62,7 @@
 											<input type="text" id="cpf" name="num_group" placeholder="Insira o número de grupos" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o número de grupos'"
 											 required class="single-input">
 										</div>
+										<small>&nbsp;</small>
 										<button class="btn" type="submit" name="rop-ano-cadastrar">Próxima Etapa (1/3)</button>
 								</div>
 						</div>
