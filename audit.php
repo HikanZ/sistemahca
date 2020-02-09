@@ -159,7 +159,7 @@
 					<div class="row justify-content-md-center">
 						<div class="col-lg-12 col-md-8">
 							<form action="#" method="post">
-							  <div class="container" style="width:1000px;">
+							  <div class="container">
 							    <div class="accordion" id="accordion" name="accordion">
 							    <?php
 							      while($rowGroup = mysqli_fetch_assoc($resultGroup)){
@@ -246,7 +246,7 @@
 	    <!--================ End Content Area =================-->
 		</div>
 	   <!--================ Start Footer Area =================-->
-	   <br><br>
+	   <br><br><br><br>
 	   <footer id="footer">
 	     <div class="container">
 	      <div class="row justify-content-md-center">
