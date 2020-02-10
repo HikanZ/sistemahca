@@ -52,7 +52,13 @@
 */
 	}
 
-
+	// CÓDIGO PARA ARMAZENAR O DATETIME AO INICIAR A AUDITORIA
+	try{
+			$DT = new DateTime( 'now', new DateTimeZone( 'America/Sao_Paulo') );
+	}catch( Exception $e )
+	{
+			exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="">
@@ -117,7 +123,7 @@
 
 	.radio-inline:checked ~ label {
   color: #337ab7;
-}
+	}
 	</style>
 </head>
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
@@ -126,6 +132,13 @@
 	    <!--================ Start Content Area =================-->
 			<section class="team-area section-gap-top">
 				<div class="container">
+				<!-- FORMULÁRIO -->
+				<form action="inc/audit.inc.php" method="post">
+	 			 <!-- HIDDEN INPUTS -->
+	 			 <input type="hidden" name="version" value="<?php echo $version; ?>">
+	 			 <input type="hidden" name="startAudit" value="<?php echo $DT->format('Y-m-d H:i:s'); ?>">
+	 			 <input type="hidden" name="uidfullUser" value="<?php echo $_SESSION['userUid']. " " . $_SESSION['userLastUid']; ?>">
+	 			 <!-- END HIDDEN INPUTS -->
 					<div class="row justify-content-center">
 						<div class="col-md-8 text-center">
 							<div class="section-title" style="padding-bottom: 40px;">
@@ -143,12 +156,12 @@
 							<div class="input-group-icon mt-10">
 								<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
 								<div class="form-select required" id="default-select2">
-									<select>
+									<select name="setor">
 										<option selected disabled>Selecione o setor</option>
 										<?php
 											while ($rowSetor = mysqli_fetch_assoc($resultSetor)){
 										?>
-											<option value="<?php echo $rowSetor['uidSetor']; ?>"><?php echo $rowSetor['uidSetor']; ?></option>
+											<option value="<?php echo $rowSetor['idSetor']; ?>"><?php echo $rowSetor['uidSetor']; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -158,7 +171,6 @@
 					<div class="border2"></div>
 					<div class="row justify-content-md-center">
 						<div class="col-lg-12 col-md-8">
-							<form action="inc/audit.inc.php" method="post">
 							  <div class="container">
 							    <div class="accordion" id="accordion" name="accordion">
 							    <?php
@@ -214,7 +226,8 @@
 																	<label class="radio-inline" style="margin-right: 25px; width:90px;">
 																		<input type="radio" name="rop<?php echo$rowGroup['numGroup'].$rowRop['numRop']; ?>[0]" style="margin-right: 5px;" value="NA" checked>Não aplica</label>
 
-																	<input type="text" Name="info<?php echo $rowGroup['numGroup']; echo $rowRop['numRop']; ?>[]" placeholder="ROP<?php echo $rowGroup['numGroup']; echo "."; echo $rowRop['numRop']; ?> Informação adicional" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teste'" class="single-input" style="width:250px;">
+																	<input type="text" Name="info<?php echo $rowGroup['numGroup']; echo $rowRop['numRop']; ?>[]" placeholder="ROP<?php echo $rowGroup['numGroup']; echo "."; echo $rowRop['numRop']; ?> Informação adicional" onfocus="this.placeholder = ''"
+																	onblur="this.placeholder = 'ROP<?php echo $rowGroup['numGroup']; echo "."; echo $rowRop['numRop']; ?> Informação adicional'" class="single-input" style="width:250px;">
 																	<div class="border3"></div>
 																</div>
 
@@ -229,6 +242,25 @@
 							    <?php
 							      }
 							    ?>
+									<div class="card">
+									  <div class="card-header" id="headingComment">
+									    <h5 class="mb-0"  data-toggle="collapse" data-target="#collapseComment" aria-expanded="false" aria-controls="collapseComment" href="#collapseComment">
+									      <button class="btnA" type="button">
+									        Comentário
+									      </button>
+									    </h5>
+									  </div>
+									  <div id="collapseComment" class="collapse" aria-labelledby="headingComment" data-parent="#accordion">
+									    <div class="card-body">
+									      <div class="form-g">
+									        Insira um comentário sobre esta auditoria (opcional):
+									        <textarea class="form-control" id="inputlg" type="textarea" rows="2" name="comment" placeholder="Insira o seu comentário aqui."
+													onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o seu comentário aqui.'" style="border-bottom: 1px solid #4db8ff;"></textarea>
+									      </div>
+									    </div>
+									  </div>
+									</div> <!-- END CARD -->
+
 							  </div> <!-- END ACCORDIONS -->
 							  </div>
 							  <div class="row justify-content-center">
@@ -237,10 +269,9 @@
 							      <button class="btn" type="submit" name="auditar">Gravar Auditoria</button>
 							    </div>
 							  </div>
-							</form>
-
 						</div>
 					</div>
+				</form>
 				</div>
 			</section>
 	    <!--================ End Content Area =================-->
