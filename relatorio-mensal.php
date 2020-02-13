@@ -1,6 +1,32 @@
 <!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access.php";
+	require 'inc/dbh.inc.php';
+
+	$sql = "SELECT * FROM setor WHERE stateSetor=1";
+	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+		header("Location: relatorio-anual.php?error=connectionerror1"); //Retornará à pag anterior
+		exit();
+	}
+	else{ //Se a conexão for bem sucedida, fará a consulta
+		mysqli_stmt_execute($stmt);
+		$resultSetor = mysqli_stmt_get_result($stmt);
+	}
+
+	$sql = "SELECT yearAudit FROM audit GROUP BY yearAudit ORDER BY yearAudit DESC";
+	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+		header("Location: relatorio-anual.php?error=connectionerror1"); //Retornará à pag anterior
+		exit();
+	}
+	else{ //Se a conexão for bem sucedida, fará a consulta
+		mysqli_stmt_execute($stmt);
+		$resultAno = mysqli_stmt_get_result($stmt);
+	}
+?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
@@ -13,7 +39,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>404 | Sistema HcA</title> <!-- Site Title -->
+	<title>Relatório - Anual | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -40,12 +66,58 @@
 			 				<div class="col-md-8 text-center">
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
-			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
-			 							ERRO 404
+			 							<label class="backbtn" onclick="<?php echo $linkreport; ?>"><i class="fas fa-angle-left"></i></label>
+			 							Relatório Mensal
 			 						</h1>
+									<p>Selecione o ano e o mês.</p>
 			 					</div>
-			 					<div style="margin:50px auto;" class="border1"></div>
-			 					<p style="margin:150px auto; color:rgb(232, 232, 232);">Página não encontrada ou inexistente.</p>
+			 					<div class="border1"></div>
+								<!--================ Start Content Area =================-->
+								<!-- FORM -->
+								<form action="relatorio-anual-resultado.php" method="post">
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+												<div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+												<div class="form-select required" id="default-select4">
+													<select name="anoSelecionado">
+														<option selected disabled>Selecione o ano</option>
+														<?php
+															while ($rowAno = mysqli_fetch_assoc($resultAno)){
+														?>
+															<option value="<?php echo $rowAno['yearAudit']; ?>"><?php echo $rowAno['yearAudit']; ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+												<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
+												<div class="form-select required" id="default-select2">
+													<select name="setor">
+														<option selected disabled>Selecione o setor</option>
+															<option value="ALL">Todos os setores</option>
+														<?php
+															while ($rowSetor = mysqli_fetch_assoc($resultSetor)){
+														?>
+															<option value="<?php echo $rowSetor['idSetor']; ?>"><?php echo $rowSetor['uidSetor']; ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row justify-content-center">
+								    <div class="col-lg-6 col-md-8">
+								      <small>&nbsp;</small>
+								      <button class="btn" type="submit" name="relatorio-anual">Gerar relatório anual</button>
+								    </div>
+								  </div>
+								</form>
+								<!--================ End Content Area =================-->
 			 				</div>
 			 			</div>
 			 		</div>

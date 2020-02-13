@@ -45,7 +45,7 @@ if (isset($_SESSION['userId'])) {
       <div class="login">
         <form class="" action="inc/login.inc.php" method="post">
           <h1>Login</h1>
-          <div class="textbox">
+          <div class="textbox align-items-center">
             <i class="fas fa-user"></i>
             <input type="text" name="loginmail" placeholder="Email" required class="single-input">
           </div>

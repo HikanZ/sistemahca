@@ -68,8 +68,13 @@
 						<div class="col-lg-6 col-md-8">
 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
 								<div class="input-group-icon mt-10">
+									<div class="icon"><i class="fas fa-list-ol" aria-hidden="true"></i></div>
+									<input type="text" id="search-val-name2" name="first_name2" placeholder="Código do setor" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Código do setor'"
+									 required class="single-input">
+								</div>
+								<div class="input-group-icon mt-10">
 									<div class="icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
-									<input type="text" id="search-val-name" name="first_name" placeholder="Nome e/ou Sobrenome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome e/ou Sobrenome'"
+									<input type="text" id="search-val-name" name="first_name" placeholder="Setor" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Setor'"
 									 required class="single-input">
 								</div>
 								<div class="mt-10">
@@ -92,7 +97,7 @@
 				<div class="table-responsive">
 					<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable" style="width:40%">
 						  <tr>
-								<!--th>ID</th-->
+								<th>ID</th>
 						    <th>Nome do Setor</th>
 						    <th>Estado</th>
 						  </tr>
@@ -100,7 +105,7 @@
 								while ($rowSetor = mysqli_fetch_assoc($resultSetor)){
 							?>
 						  <tr onclick="">
-						    <!--td><?php /*echo $rowSetor['idSetor'];*/ ?></td-->
+						    <td><?php echo $rowSetor['idSetor']; ?></td>
 						    <td><?php echo $rowSetor['uidSetor']; ?></td>
 						    <td><?php echo $rowSetor['stateSetor']; ?></td>
 						  </tr>

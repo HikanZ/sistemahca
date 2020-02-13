@@ -4,7 +4,7 @@
   $linksystem = "window.location.href='sistema.php'";
   $linkrop = "window.location.href='rop.php'";
   $linkaudit = "window.location.href='audit.php'";
-  $linkreport = "window.location.href='404.php'";
+  $linkreport = "window.location.href='relatorio.php'";
   $linkacc = "window.location.href='minha-acc.php'";
 
 	$linkadduser = "window.location.href='usuarios-cadastro.php'";
@@ -31,4 +31,8 @@
   $linkpages = "window.location.href='404.php'";
   $linkdatabase = "window.location.href='404.php'";
   $linknumbers = "window.location.href='404.php'";
+
+  $linkyear = "window.location.href='relatorio-anual.php'";
+  $linkmonth = "window.location.href='relatorio-mensal.php'";
+  $linkanswers = "window.location.href='404.php'";
 ?>

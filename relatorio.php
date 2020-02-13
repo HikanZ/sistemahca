@@ -2,7 +2,7 @@
 <?php
 	require "header.php";
 	require "inc/links.php";
-	require "inc/access-admin.php";
+	require "inc/access.php";
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>ROPs e Setores | Sistema HcA</title>	<!-- Site Title -->
+	<title>Relatório | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -41,7 +41,7 @@
 					<div class="section-title" style="padding-bottom: 40px;">
 						<h1 style="letter-spacing: 3px; text-transform: none;">
 							<label class="backbtn" onclick="<?php echo $linkmenu; ?>"><i class="fas fa-angle-left"></i></label>
-							ROPs e Setores</h1>
+							Relatório</h1>
 					</div>
 				</div>
 			</div>
@@ -50,64 +50,31 @@
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkropadd; ?> ">
-							<i class="fas fa-calendar-check"></i>
+						<div class="service-icon" onclick=" <?php echo $linkyear; ?> ">
+							<i class="fas fa-calendar"></i>
 						</div>
-						<p class="title">Nova Versão ROP</p>
-						<p class="desc">Cadastrar uma nova versão do ROP</p>
+						<p class="title">Visão Anual</p>
+						<p class="desc">Relatório anual</p>
 					</div>
 				</div>
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkroplist; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linkmonth; ?> ">
 							<i class="fas fa-calendar-alt"></i>
 						</div>
-						<p class="title">Histórico ROP</p>
-						<p class="desc">Listar todas as versões de ROPs</p>
+						<p class="title">Visão Mensal</p>
+						<p class="desc">Relatório mensal</p>
 					</div>
 				</div>
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkropremove; ?> ">
-							<i class="fas fa-calendar-times"></i>
+						<div class="service-icon" onclick=" <?php echo $linkanswers; ?> ">
+							<i class="fas fa-calendar-minus"></i>
 						</div>
-						<p class="title">Excluir Versão ROP</p>
-						<p class="desc">Excluir uma versão do ROP</p>
-					</div>
-				</div>
-			</div>
-			<div class="border1"></div>
-			<div class="row">
-				<!-- single member -->
-				<div class="col-lg-4 col-md-4 flex">
-					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linksetoradd; ?> ">
-							<i class="far fa-calendar-plus"></i>
-						</div>
-						<p class="title">Novo Setor</p>
-						<p class="desc">Adiciona um novo setor</p>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-lg-4 col-md-4 flex">
-					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linksetorlist; ?> ">
-							<i class="far fa-calendar-alt"></i>
-						</div>
-						<p class="title">Listar Setores</p>
-						<p class="desc">Exibe a lista de setores</p>
-					</div>
-				</div>
-				<!-- single member -->
-				<div class="col-lg-4 col-md-4 flex">
-					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linksetorremove; ?> ">
-							<i class="far fa-calendar-times"></i>
-						</div>
-						<p class="title">Excluir Setor</p>
-						<p class="desc">Exclui um Setor</p>
+						<p class="title">Histórico de Auditorias</p>
+						<p class="desc">Histórico e pesquisa das auditorias</p>
 					</div>
 				</div>
 			</div>

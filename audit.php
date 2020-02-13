@@ -5,6 +5,7 @@
 	require "inc/access.php";
 	require 'inc/dbh.inc.php';
 ?>
+<!--================ End Require Area =================-->
 <?php
 	///// Carrega os setores
 	$sql = "SELECT * FROM setor WHERE stateSetor=1";
@@ -172,7 +173,7 @@
 					<div class="row justify-content-md-center">
 						<div class="col-lg-12 col-md-8">
 							  <div class="container">
-							    <div class="accordion" id="accordion" name="accordion">
+							    <div class="accordion" id="accordion" name="accordion" style="display:none;">
 							    <?php
 							      while($rowGroup = mysqli_fetch_assoc($resultGroup)){
 							    ?>
@@ -266,7 +267,7 @@
 							  <div class="row justify-content-center">
 							    <div class="col-lg-6 col-md-8">
 							      <small>&nbsp;</small>
-							      <button class="btn" type="submit" name="auditar">Gravar Auditoria</button>
+							      <button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button>
 							    </div>
 							  </div>
 						</div>
@@ -277,7 +278,7 @@
 	    <!--================ End Content Area =================-->
 		</div>
 	   <!--================ Start Footer Area =================-->
-	   <br><br><br><br>
+	   <br><br><br><br><br>
 	   <footer id="footer">
 	     <div class="container">
 	      <div class="row justify-content-md-center">
@@ -345,6 +346,27 @@
 		}
 	}
 	?>
+</script>
+<script>
+  //Fonte: https://codepen.io/JeffAspen/pen/qOyLRB
+	$(document).ready(function() {
+	 // Executed when select is changed
+		$("select").on('change',function() {
+				var x = this.selectedIndex;
+
+				if (x == "") {
+					 $("#submit-button").hide();
+					 $("#accordion").hide();
+				} else {
+					 $("#submit-button").show();
+					 $("#accordion").show();
+				}
+		});
+
+		// It must not be visible at first time
+		$("#submit-button").css("display","none");
+		$("#accordion").css("display","none");
+	});
 </script>
 </body>
 

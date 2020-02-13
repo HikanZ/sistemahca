@@ -46,13 +46,15 @@ if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
 }
 // Depois de conseguir inserir, será feita a inserção da auditoria
 // Trecho para inserção da auditoria
-$sql = "INSERT INTO audit (idUsers, uidfullUsers, idSetor, uidSetor, versionRop, commentAudit, startAudit, endAudit) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO audit (idUsers, uidfullUsers, idSetor, uidSetor, versionRop, commentAudit, startAudit, endAudit, yearAudit, monthAudit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
   header("Location: ../audit.php?error=sqlerror2"); //Retornará à pag anterior
   exit();
 }else { //Se a conexão for bem sucedida, fará a inclusão do numgrouprop
-  mysqli_stmt_bind_param($stmt, "isisisss", $idUsers, $uidUsers, $idSetor, $uidSetor, $version, $commentAudit, $startAudit, $endAudit);
+  $yearAudit = date("Y");
+  $monthAudit = date("m");
+  mysqli_stmt_bind_param($stmt, "isisisssss", $idUsers, $uidUsers, $idSetor, $uidSetor, $version, $commentAudit, $startAudit, $endAudit, $yearAudit, $monthAudit);
   mysqli_stmt_execute($stmt); // Executa o statement
 }
 // Feito a inserção, devemos consultar o id da auditoria para adicioná-lo nas respostas
@@ -101,16 +103,16 @@ while($rowGroup = mysqli_fetch_assoc($resultGroup)){
       $k2 = 0;
       for ($k = 0; $k < $arr_lenght; $k++){
         //while(empty($_POST["rop".$i.$j][$k2])){$k2++;}
-        $sql = "INSERT INTO answer (idAudit, idRop, idGroup, numGroup, numRop, classRop, resultAnswer, infoAnswer)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO answer (idAudit, idRop, idGroup, numGroup, numRop, classRop, resultAnswer, infoAnswer, versionAudit, yearAudit, monthAudit)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
         if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
           header("Location: ../audit.php?error=sqlerror6"); //Retornará à pag anterior
           exit();
         }else{//Se a conexão for bem sucedida, fará a inclusão da rop
-          mysqli_stmt_bind_param($stmt, "iiiiiiss", $idAudit, $rowRop['idRop'], $rowGroup['idGroup'],
+          mysqli_stmt_bind_param($stmt, "iiiiiississ", $idAudit, $rowRop['idRop'], $rowGroup['idGroup'],
           $rowGroup['numGroup'], $rowRop['numRop'], $rowRop['classRop'], $_POST["rop".$rowGroup['numGroup'].$rowRop['numRop']][$k],
-          $_POST["info".$rowGroup['numGroup'].$rowRop['numRop']][$k]);
+          $_POST["info".$rowGroup['numGroup'].$rowRop['numRop']][$k], $version, $yearAudit, $monthAudit);
           mysqli_stmt_execute($stmt); // Executa o statement
         }// else do SQL insert
         //$k2++;
@@ -118,3 +120,6 @@ while($rowGroup = mysqli_fetch_assoc($resultGroup)){
     }// Fim while $rowRop
   }// else do SQL select
 }// Fim while $rowGroup
+
+header("Location: ../audit.php?success");
+exit();
