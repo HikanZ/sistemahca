@@ -3401,8 +3401,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 13px 0;
 }
 
-
-
 .textbox{
   width: 100%;
   overflow: hidden;
@@ -3410,12 +3408,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 0;
   margin: 8px 0;
   border-bottom: 1px solid #4db8ff;
+  vertical-align: middle;
 }
 
 .textbox i{
   width: 26px;
   float: left;
   text-align: center;
+  padding-top: 8px;
 }
 
 .textbox input{
@@ -3427,6 +3427,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 80%;
   float: left;
   margin: 0 10px;
+  vertical-align: middle;
 }
 
 .textbox input::placeholder{
