@@ -39,7 +39,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Relatório - Anual | Sistema HcA</title> <!-- Site Title -->
+	<title>Relatório - Mensal | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -74,7 +74,7 @@
 			 					<div class="border1"></div>
 								<!--================ Start Content Area =================-->
 								<!-- FORM -->
-								<form action="relatorio-anual-resultado.php" method="post">
+								<form action="relatorio-mensal-resultado.php" method="post">
 									<div class="row justify-content-md-center">
 										<div class="col-md-7">
 											<div class="input-group-icon mt-10">
@@ -137,7 +137,7 @@
 									<div class="row justify-content-center">
 								    <div class="col-lg-6 col-md-8">
 								      <small>&nbsp;</small>
-								      <button class="btn" type="submit" name="relatorio-anual">Gerar relatório mensal</button>
+								      <button class="btn" type="submit" name="relatorio-mensal">Gerar relatório mensal</button>
 								    </div>
 								  </div>
 								</form>

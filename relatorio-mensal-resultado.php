@@ -1,16 +1,54 @@
 <!--================ Start Require Area =================-->
 <?php
-	if (isset($_POST['relatorio-anual'])) {} else{
-		header("Location: relatorio-anual.php?error=wrongaccess");
+	if (isset($_POST['relatorio-mensal'])) {} else{
+		header("Location: relatorio-mensal.php?error=wrongaccess");
 		exit();
 	}
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access.php";
 	require 'inc/dbh.inc.php';
-	require 'inc/relatorio.inc.php';
+	require 'inc/relatoriom.inc.php';
 	$respostas = array(1=>"Conforme", 2=>"Não Conforme", 3=>"Parcial", 4=>"Não Aplica");
 	$respostasCurtas = array(1=>"C", 2=>"NC", 3=>"P", 4=>"NA");
+	switch ($_POST['mes']) {
+		case "01":
+			$mesnome = "Janeiro";
+			break;
+		case "02":
+			$mesnome = "Fevereiro";
+			break;
+		case "03":
+			$mesnome = "Março";
+			break;
+		case "04":
+			$mesnome = "Abril";
+			break;
+		case "05":
+			$mesnome = "Maio";
+			break;
+		case "06":
+			$mesnome = "Junho";
+			break;
+		case "07":
+			$mesnome = "Julho";
+			break;
+		case "08":
+			$mesnome = "Agosto";
+			break;
+		case "09":
+			$mesnome = "Setembro";
+			break;
+		case "10":
+			$mesnome = "Outubro";
+			break;
+		case "11":
+			$mesnome = "Novembro";
+			break;
+		case "12":
+			$mesnome = "Dezembro";
+			break;
+	}
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -24,7 +62,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Relatório - Anual | Sistema HcA</title> <!-- Site Title -->
+	<title>Relatório - Mensal | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -98,104 +136,109 @@ var chart = new CanvasJS.Chart("chartContainerBar",{
 });
 chart.render();
 
-var chart = new CanvasJS.Chart("chartContainerLines",{
+var chart = new CanvasJS.Chart("chartContainerBarMaior",{
 	animationEnabled: true,
 	theme: "dark2",
 	title:{
-		text: "Evolução mensal dos itens atendidos"
+		text: "Atributos do Setor (Maior)"
 	},
-	axisX:{
-		valueFormatString: "MMM/YYYY"
+	axisY:{
+		title:"Respostas"
 	},
-	axisY: {
-		title: "Respostas"
-	},
-	toolTip:{
-		shared:true
-	},
-	legend:{
-		cursor:"pointer",
-		verticalAlign: "bottom",
-		horizontalAlign: "left",
-		dockInsidePlotArea: true,
-		itemclick: toogleDataSeries
+	toolTip: {
+		shared: true,
+		reversed: true
 	},
 	data: [
-			<?php
-			$markerType = array(1=>"square", 2=>"circle", 3=>"triangle", 4=>"no marker");
-			for ($i=1; $i<=4; $i++){
-				echo "{";
-				?>
-				type: "line",
-				showInLegend: true,
-				name: "<?php echo $respostas[$i] ?>",
-				markerType: "<?php echo $markerType[$i] ?>",
-				legendText: "<?php echo $respostas[$i] ?>",
-				yValueFormatString: "#,##0",
-				xValueFormatString: "MMM",
-				dataPoints:[
-					<?php
-					if ($uidSetor == "Todos os setores"){
-						$sql = "SELECT answer.monthAudit FROM answer WHERE versionAudit=? AND yearAudit=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
-					}else{
-						$sql = "SELECT answer.monthAudit FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE versionAudit=? AND answer.yearAudit=? AND idSetor=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
-					}
-
-					$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
-					if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-						header("Location: relatorio-anual.php?error=sqlerror9"); //Retornará à pag anterior
-						exit();
-					}else{ //Se a conexão for bem sucedida, fará a verificação
-						if ($uidSetor == "Todos os setores"){
-							mysqli_stmt_bind_param($stmt, "is", $version, $anoSelecionado);
-						}else{
-							mysqli_stmt_bind_param($stmt, "isi", $version, $anoSelecionado, $idSetor);
+		<?php
+			for ($i=1; $i<=4; $i++){ ?>
+				{
+				type: "stackedColumn",
+				name: "<?php echo $respostas[$i]; ?>",
+				showInLegend: "true",
+				yValueFormatString: "",
+				dataPoints: [
+					<?php for ($j=1; $j<=$numGroup; $j++){
+						switch ($i) {
+				    case 1:
+				        echo '{ y: '.$numAnswerMaior[$j]["C"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+				    case 2:
+				        echo '{ y: '.$numAnswerMaior[$j]["NC"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+				    case 3:
+				        echo '{ y: '.$numAnswerMaior[$j]["P"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+						case 4:
+						 		echo '{ y: '.$numAnswerMaior[$j]["NA"].', label: "'.$nameGroup[$j].'"}';
+								break;
 						}
-						mysqli_stmt_execute($stmt);
-						$resultMonth = mysqli_stmt_get_result($stmt);
-					}
-					while($rowMonth = mysqli_fetch_assoc($resultMonth)){
-					switch ($i) {
-					case 1:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
-							break;
-					case 2:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
-							break;
-					case 3:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
-							break;
-					case 4:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
-							break;
-					}
-				}//fim while
-					?>
-				]//fim dataPoints
-				<?php
-				if ($i!=4) {
-					echo "},";
-				} else {
-					echo "}";
-				}
-			} ?>
-	]
-});
 
+						if ($j!=$numGroup) echo ",";;
+					}
+					?>
+				]
+			}
+			<?php
+			if ($i!=4) echo ',';
+			}
+		?>
+	]
+
+});
 chart.render();
 
-function toogleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	} else{
-		e.dataSeries.visible = true;
-	}
-	e.chart.render();
-}
+var chart = new CanvasJS.Chart("chartContainerBarMenor",{
+	animationEnabled: true,
+	theme: "dark2",
+	title:{
+		text: "Atributos do Setor (Menor)"
+	},
+	axisY:{
+		title:"Respostas"
+	},
+	toolTip: {
+		shared: true,
+		reversed: true
+	},
+	data: [
+		<?php
+			for ($i=1; $i<=4; $i++){ ?>
+				{
+				type: "stackedColumn",
+				name: "<?php echo $respostas[$i]; ?>",
+				showInLegend: "true",
+				yValueFormatString: "",
+				dataPoints: [
+					<?php for ($j=1; $j<=$numGroup; $j++){
+						switch ($i) {
+				    case 1:
+				        echo '{ y: '.$numAnswerMenor[$j]["C"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+				    case 2:
+				        echo '{ y: '.+$numAnswerMenor[$j]["NC"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+				    case 3:
+				        echo '{ y: '.+$numAnswerMenor[$j]["P"].', label: "'.$nameGroup[$j].'"}';
+				        break;
+						case 4:
+						 		echo '{ y: '.$numAnswerMenor[$j]["NA"].', label: "'.$nameGroup[$j].'"}';
+								break;
+						}
+
+						if ($j!=$numGroup) echo ",";;
+					}
+					?>
+				]
+			}
+			<?php
+			if ($i!=4) echo ',';
+			}
+		?>
+	]
+
+});
+chart.render();
 
 }
 </script>
@@ -210,7 +253,7 @@ function toogleDataSeries(e){
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
 			 							<label class="backbtn" onclick="<?php echo $linkreportyear; ?>"><i class="fas fa-angle-left"></i></label>
-			 							Relatório <?php echo $_POST['anoSelecionado']; ?>
+			 							Relatório de <?php echo $mesnome." de "; echo $_POST['anoSelecionado']; ?>
 			 						</h1>
 			 					</div>
 			 					<div class="border2" style="margin:30px auto;"></div>
@@ -235,23 +278,6 @@ function toogleDataSeries(e){
 							</div>
 							<div class="col-md-2">
 								<?php echo "Total de Itens: ".$numTotalRop; ?>
-							</div>
-						</div>
-						<div class="row justify-content-start" style="color: #8c8c8c; display:none">
-							<div class="col-md-2">
-								<?php echo "Respostas: "; ?>
-							</div>
-							<div class="col-md-2">
-								<?php echo "C: Conforme"; ?>
-							</div>
-							<div class="col-md-2">
-								<?php echo "NC: Não Conforme"; ?>
-							</div>
-							<div class="col-md-2">
-								<?php echo "P: Parcial"; ?>
-							</div>
-							<div class="col-md-2">
-								<?php echo "NA: Não Aplica"; ?>
 							</div>
 						</div>
 						<div class="row justify-content-center" style="color: #8c8c8c;">
@@ -303,7 +329,18 @@ function toogleDataSeries(e){
 						</div>
 						<div class="border2" style="margin:20px auto;"></div>
 						<div class="row justify-content-start" style="color: #8c8c8c;">
-								<div id="chartContainerLines" style="height: 400px; width: 100%;"></div>
+							<div class="col-lg-6">
+								<div id="chartContainerBarMaior" style="height: 400px; width: 100%;"></div>
+							</div>
+							<div class="col-lg-6">
+								<div id="chartContainerBarMenor" style="height: 400px; width: 100%;"></div>
+							</div>
+						</div>
+						<div class="border2" style="margin:20px auto;"></div>
+						<div class="row justify-content-start" style="color: #8c8c8c;">
+							<?php for ($cg = 1; $cg <= $numGroup; $cg++){ ?>
+								<div id="chartContainerG<?php echo $cg; ?>" style="height: 400px; width: 100%;"></div>
+							<?php } ?>
 						</div>
 						<!--================ End Content Area =================-->
 			 		</div>

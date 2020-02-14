@@ -1,43 +1,65 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<script>
-window.onload = function () {
-
-var options = {
+//////////// SCRIPT GRAFICOS DOS GRUPOS
+<?php $i=1;//for ($i=1; $i<=$numGroup; $i++){?>
+var chart = new CanvasJS.Chart("chartContainerG<?php echo $i; ?>",{
 	animationEnabled: true,
-	title: {
-		text: "Annual Salary Range - UK"
+	title:{
+		text: "<?php $nameGroup[$i] ?>"
 	},
-	axisY: {
-		title: "Annual Salary (in British Pound)",
-		prefix: "£",
-		interval: 35000
+	axisY:{
+		title:"Respostas"
+	},
+	toolTip: {
+		shared: true,
+		reversed: true
 	},
 	data: [{
-		type: "boxAndWhisker",
-		upperBoxColor: "#68D46F",
-		lowerBoxColor: "#8062EF",
-		color: "black",
-		yValueFormatString: "£#,##0",
+		type: "stackedColumn",
+		name: "Maior",
+		showInLegend: "true",
+		yValueFormatString: "",
 		dataPoints: [
-			{ label: "Data Scientist", y: [26109, 30000, 46000, 59119, 38455] },
-			{ label: "Web Developer", y: [16734, 20000, 31000, 37167, 24901] },
-			{ label: "System Analyst", y: [20964, 25000, 38000, 45238, 30060] },
-			{ label: "Application Engineer", y: [20176, 24000, 34000, 39821, 29035] },
-			{ label: "Aerospace Engineer", y: [22255, 26000, 40000, 52153, 31935] },
-			{ label: "Research Scientist", y: [21555, 26000, 35000, 40517, 30178] }
+			<?php for ($j=1; $j<=4; $j++){
+				switch ($j) {
+					case 1:
+							echo '{ y: '.$numAnswerMaior[$i]["C"].', label: Confirma},';
+							break;
+					case 2:
+							echo '{ y: '.$numAnswerMaior[$i]["NC"].', label: Não Confirma},';
+							break;
+					case 3:
+							echo '{ y: '.$numAnswerMaior[$i]["P"].', label: Parcial},';
+							break;
+					case 4:
+							echo '{ y: '.$numAnswerMaior[$i]["NA"].', label: Não Aplica},';
+							break;
+				}
+			}?>
+		]
+	},
+	{
+		type: "stackedColumn",
+		name: "Menor",
+		showInLegend: "true",
+		yValueFormatString: "",
+		dataPoints: [
+			<?php for ($j=1; $j<=4; $j++){
+				switch ($j) {
+					case 1:
+							echo '{ y: '.$numAnswerMenor[$i]["C"].', label: Confirma},';
+							break;
+					case 2:
+							echo '{ y: '.$numAnswerMenor[$i]["NC"].', label: Não Confirma},';
+							break;
+					case 3:
+							echo '{ y: '.$numAnswerMenor[$i]["P"].', label: Parcial},';
+							break;
+					case 4:
+							echo '{ y: '.$numAnswerMenor[$i]["NA"].', label: Não Aplica},';
+							break;
+				}
+			} ?>
 		]
 	}]
-};
-$("#chartContainer").CanvasJSChart(options);
+});
 
-}
-</script>
-</head>
-<body>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-</body>
-</html>
+chart.render();
