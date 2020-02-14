@@ -179,7 +179,27 @@ if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
   //echo "<br><br>";
   //var_dump($resultCountAnswer);
   //echo "<br><br>";
+  $token = 1;
   while($rowCountRop = mysqli_fetch_assoc($resultCountAnswer)){
+    if ($token){
+        $token = 0;
+        $numAnswerMaiorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["C"] = 0;
+        $numAnswerMaiorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["NC"] = 0;
+        $numAnswerMaiorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["P"] = 0;
+        $numAnswerMaiorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["NA"] = 0;
+        $numAnswerMenorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["C"] = 0;
+        $numAnswerMenorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["NC"] = 0;
+        $numAnswerMenorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["P"] = 0;
+        $numAnswerMenorMesG[ $rowCountRop['monthAudit'] ][ $rowCountRop['numGroup'] ]["NA"] = 0;
+        $numAnswerMaiorMes[ $rowCountRop['monthAudit'] ]["C"] = 0;
+        $numAnswerMaiorMes[ $rowCountRop['monthAudit'] ]["NC"] = 0;
+        $numAnswerMaiorMes[ $rowCountRop['monthAudit'] ]["P"] = 0;
+        $numAnswerMaiorMes[ $rowCountRop['monthAudit'] ]["NA"] = 0;
+        $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["C"] = 0;
+        $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["NC"] = 0;
+        $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["P"] = 0;
+        $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["NA"] = 0;
+    }
     if ($rowCountRop['classRop']){
       $numAnswerMaior[ $rowCountRop['numGroup'] ][ $rowCountRop['resultAnswer'] ]++;
       $numAnswerMaiorTotal[ $rowCountRop['resultAnswer'] ]++;

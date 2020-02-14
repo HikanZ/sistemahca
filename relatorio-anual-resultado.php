@@ -7,6 +7,13 @@
 	require 'inc/relatorio.inc.php';
 	$respostas = array(1=>"Conforme", 2=>"Não Conforme", 3=>"Parcial", 4=>"Não Aplica");
 	$respostasCurtas = array(1=>"C", 2=>"NC", 3=>"P", 4=>"NA");
+	var_dump($numAnswerMaiorMes);
+	echo "<br>";
+	echo $numAnswerMaiorMes["02"]["NC"];
+	echo "<br>";
+	var_dump($numAnswerMenorMes);
+	echo "<br>";
+	echo $numAnswerMenorMes["02"]["NC"];
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -154,19 +161,19 @@ var chart = new CanvasJS.Chart("chartContainerLines",{
 					switch ($i) {
 					case 1:
 							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]).'},';
+								($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
 							break;
 					case 2:
 							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]).'},';
+								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
 							break;
 					case 3:
 							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]).'},';
+								($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
 							break;
 					case 4:
 							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]).'},';
+								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
 							break;
 					}
 				}//fim while
@@ -194,7 +201,6 @@ function toogleDataSeries(e){
 }
 
 }
-
 </script>
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
@@ -267,10 +273,38 @@ function toogleDataSeries(e){
 
 						<div class="border2" style="margin:30px auto;"></div>
 
-						<div class="row justify-content-start" style="color: #8c8c8c;">
-								<div id="chartContainerBar" style="height: 400px; width: 100%;"></div>
+						<div class="row justify-content-center" style="color: #8c8c8c;">
+							<div class="col-lg-10">
+									<div id="chartContainerBar" style="height: 400px; width: 100%;"></div>
+							</div>
 						</div>
-						<div class="border2" style="margin:10px auto;"></div>
+						<div class="row justify-content-center" style="color: #8c8c8c;">
+							<div class="col-lg-10">
+								<div class="table-responsive">
+									<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable">
+											<tr>
+												<th>Grupo</th>
+												<th>Conforme</th>
+												<th>Não Conforme</th>
+												<th>Parcial</th>
+												<th>Não Aplica</th>
+											</tr>
+											<?php
+											for ($w=1; $w<=$numGroup; $w++){ ?>
+												<tr>
+													<td><?php echo $nameGroup[$w];?></td>
+													<td>Total: <?php echo ($numAnswerMaior[$w]["C"]+$numAnswerMenor[$w]["C"]);?> <br>Maior: <?php echo $numAnswerMaior[$w]["C"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["C"];?></td>
+													<td>Total: <?php echo ($numAnswerMaior[$w]["NC"]+$numAnswerMenor[$w]["NC"]);?> <br>Maior: <?php echo $numAnswerMaior[$w]["NC"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["NC"];?></td>
+													<td>Total: <?php echo ($numAnswerMaior[$w]["P"]+$numAnswerMenor[$w]["P"])?> <br>Maior: <?php echo $numAnswerMaior[$w]["P"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["P"];?></td>
+													<td>Total: <?php echo ($numAnswerMaior[$w]["NA"]+$numAnswerMenor[$w]["NA"])?> <br>Maior: <?php echo $numAnswerMaior[$w]["NA"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["NA"];?></td>
+												</tr>
+											<?php
+											} ?>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="border2" style="margin:20px auto;"></div>
 						<div class="row justify-content-start" style="color: #8c8c8c;">
 								<div id="chartContainerLines" style="height: 400px; width: 100%;"></div>
 						</div>
