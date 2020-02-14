@@ -69,7 +69,7 @@
 			 							<label class="backbtn" onclick="<?php echo $linkreport; ?>"><i class="fas fa-angle-left"></i></label>
 			 							Relatório Mensal
 			 						</h1>
-									<p>Selecione o ano e o mês.</p>
+									<p>Selecione o ano, o mês e o setor (ou todos os setores).</p>
 			 					</div>
 			 					<div class="border1"></div>
 								<!--================ Start Content Area =================-->
@@ -95,8 +95,32 @@
 									<div class="row justify-content-md-center">
 										<div class="col-md-7">
 											<div class="input-group-icon mt-10">
-												<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
+												<div class="icon"><i class="fa fa-calendar-alt" aria-hidden="true"></i></div>
 												<div class="form-select required" id="default-select2">
+													<select name="mes">
+														<option selected disabled>Selecione o mês</option>
+															<option value="01">Janeiro</option>
+															<option value="02">Fevereiro</option>
+															<option value="03">Março</option>
+															<option value="04">Abril</option>
+															<option value="05">Maio</option>
+															<option value="06">Junho</option>
+															<option value="07">Julho</option>
+															<option value="08">Agosto</option>
+															<option value="09">Setembro</option>
+															<option value="10">Outubro</option>
+															<option value="11">Novembro</option>
+															<option value="12">Dezembro</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+												<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
+												<div class="form-select" id="default-select2">
 													<select name="setor">
 														<option selected disabled>Selecione o setor</option>
 															<option value="ALL">Todos os setores</option>
@@ -113,7 +137,7 @@
 									<div class="row justify-content-center">
 								    <div class="col-lg-6 col-md-8">
 								      <small>&nbsp;</small>
-								      <button class="btn" type="submit" name="relatorio-anual">Gerar relatório anual</button>
+								      <button class="btn" type="submit" name="relatorio-anual">Gerar relatório mensal</button>
 								    </div>
 								  </div>
 								</form>

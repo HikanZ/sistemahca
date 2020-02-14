@@ -7,13 +7,6 @@
 	require 'inc/relatorio.inc.php';
 	$respostas = array(1=>"Conforme", 2=>"Não Conforme", 3=>"Parcial", 4=>"Não Aplica");
 	$respostasCurtas = array(1=>"C", 2=>"NC", 3=>"P", 4=>"NA");
-	var_dump($numAnswerMaiorMes);
-	echo "<br>";
-	echo $numAnswerMaiorMes["02"]["NC"];
-	echo "<br>";
-	var_dump($numAnswerMenorMes);
-	echo "<br>";
-	echo $numAnswerMenorMes["02"]["NC"];
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -212,7 +205,7 @@ function toogleDataSeries(e){
 			 				<div class="col-md-8 text-center">
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
-			 							<label class="backbtn" onclick="<?php echo $linkreport; ?>"><i class="fas fa-angle-left"></i></label>
+			 							<label class="backbtn" onclick="<?php echo $linkreportyear; ?>"><i class="fas fa-angle-left"></i></label>
 			 							Relatório <?php echo $_POST['anoSelecionado']; ?>
 			 						</h1>
 			 					</div>

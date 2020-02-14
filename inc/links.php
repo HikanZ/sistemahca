@@ -35,4 +35,6 @@
   $linkyear = "window.location.href='relatorio-anual.php'";
   $linkmonth = "window.location.href='relatorio-mensal.php'";
   $linkanswers = "window.location.href='404.php'";
+
+  $linkreportyear = "window.location.href='relatorio-anual.php'";
 ?>
