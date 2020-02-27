@@ -1,5 +1,8 @@
 <?php
   session_start();
+  if (!empty($_SESSION['liberaoubloqueia'])){
+    unset($_SESSION['liberaoubloqueia']);
+  }
   if (empty($_SESSION['userId'])) {
     header("Location: ../login.php");
     exit();
@@ -13,6 +16,7 @@
 
   //avatarreset.inc.php
   $cpf = $_SESSION['cpfchange'];
+  $idacc = $_SESSION['idchange'];
   $clear = array(".", "-");
   $password = str_replace($clear, "", $cpf);
   /*
@@ -31,14 +35,14 @@
   echo $emailrequest;
   echo "<br><br>";
   echo $resetavatar;
-  $sql = "UPDATE users SET avatarLinkUser=? WHERE emailUsers=?";
+  $sql = "UPDATE users SET avatarLinkUser=? WHERE idUsers=?";
   $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
   if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
     header("Location: ../visualizar-acc.php?error=sqlerror"); //Retornará à pag anterior
     exit();
   }
   else { //Se a conexão for bem sucedida, fará a atualização da senha
-    mysqli_stmt_bind_param($stmt, "ss", $resetavatar, $emailrequest);
+    mysqli_stmt_bind_param($stmt, "si", $resetavatar, $idacc);
     mysqli_stmt_execute($stmt); // Executa o statement
 
     //echo "<br><br>CHEGOU<br>";
@@ -46,6 +50,6 @@
     $_SESSION['userAvatar'] = $resetavatar;
     unset($_SESSION['emailchange']);
     unset($_SESSION['cpfchange']);
-    header("Location: ../visualizar-acc.php?search=success&fieldmail=$emailrequest"); //Retornará à pag anterior
+    header("Location: ../visualizar-acc.php?search=success&fieldmail=$idacc"); //Retornará à pag anterior
     exit();
   }

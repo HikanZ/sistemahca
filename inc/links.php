@@ -11,6 +11,7 @@
 	$linksearchuser = "window.location.href='usuarios-pesquisa.php'";
 	$linkaccessuser = "window.location.href='usuarios-acesso.php'";
   $linkaccvisualize = "window.location.href='visualizar-acc.php'";
+  $linkuseraccess = 'usuarios-acesso-email.php';
 
   $linkropadd = "window.location.href='rop-ano.php'";
   $linkropremove = "window.location.href='rop-remove.php'";
@@ -28,13 +29,16 @@
   $linkaccavatar = "window.location.href='minha-acc-avatar.php'";
   $linkaccpassword = "window.location.href='minha-acc-senha.php'";
 
-  $linkpages = "window.location.href='404.php'";
+  $linkpages = "window.location.href='asdlkf.php'";
   $linkdatabase = "window.location.href='404.php'";
-  $linknumbers = "window.location.href='404.php'";
+  $linknumbers = "window.location.href='geral.php'";
 
   $linkyear = "window.location.href='relatorio-anual.php'";
   $linkmonth = "window.location.href='relatorio-mensal.php'";
   $linkanswers = "window.location.href='404.php'";
 
   $linkreportyear = "window.location.href='relatorio-anual.php'";
+  $linkreportbetween = "window.location.href='relatorio-intervalo.php'";
+  $linkreporthistoric = "window.location.href='relatorio-historico.php'";
+  $linkreportaudit = "window.location.href='relatorio-audit.php'";
 ?>

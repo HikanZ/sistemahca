@@ -1,5 +1,8 @@
 <?php
   session_start();
+  if (!empty($_SESSION['liberaoubloqueia'])){
+    unset($_SESSION['liberaoubloqueia']);
+  }
 //dataupdate.inc.php
 $emailrequest = $_SESSION['emailchange'];
 if (isset($_POST['alterar-cadastro'])) {
@@ -35,7 +38,7 @@ if (isset($_POST['alterar-cadastro'])) {
       }else{
         mysqli_stmt_bind_param($stmt, "sssssii", $nome, $sobrenome, $dtnasc, $cargo, $cpf, $tipousuario, $idacc);
         mysqli_stmt_execute($stmt); // Executa o statement
-        header("Location: ../visualizar-acc.php?search=success&fieldmail=$emailrequest"); //Retornará à pag anterior
+        header("Location: ../visualizar-acc.php?search=success&fieldmail=".$idacc.""); //Retornará à pag anterior
         exit();
       }
       ///////////////
@@ -62,7 +65,7 @@ if (isset($_POST['alterar-cadastro'])) {
           }else{
             mysqli_stmt_bind_param($stmt, "ssssssii", $nome, $sobrenome, $dtnasc, $email, $cargo, $cpf, $tipousuario, $idacc);
             mysqli_stmt_execute($stmt); // Executa o statement
-            header("Location: ../visualizar-acc.php?search=success&fieldmail=$emailrequest"); //Retornará à pag anterior
+            header("Location: ../visualizar-acc.php?search=success&fieldmail=$idacc"); //Retornará à pag anterior
             exit();
           }
           ///////////////
