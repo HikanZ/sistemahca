@@ -1,10 +1,51 @@
-<!--================ Start Require Area =================-->
 <?php
-	require "header.php";
-	require "inc/links.php";
-	require "inc/access-admin.php";
+
+if (isset($_POST['recuperar-senha'])) {
+  //Verifica se alguem chegou nessa página sem que tenha sido pelo submit do botão do login
+  //Se chegou por aqui pelo botão, tudo bem, executará o código abaixo
+  //Detalhe que as funções exit garante que se houver um erro terminará a execução no momento
+  //Evitando que haja a conexão e execução de forma ilegal ou erronea.
+
+  require 'inc/dbh.inc.php';
+  $mailuid   = $_POST['email'];
+  $dtnasc    = $_POST['dtnasc'];
+  $cpf       = $_POST['cpf'];
+
+  if (empty($mailuid) || empty($dtnasc) || empty($cpf)){
+    header("Location: pub-esquecisenha.php?error=emptyfield1");
+    exit();
+  }
+  else {
+    $sql = "SELECT * FROM users WHERE emailUsers=? AND birthUsers=? AND cpfUser=?"; //Verifica se o email confere
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+      header("Location: pub-esquecisenha.php?error=sqlerror1"); //Retornará à pag anterior
+      exit();
+    }
+    else { //Se o email conferir e não tiver erro de sql, a senha será conferida
+      mysqli_stmt_bind_param($stmt, "sss", $mailuid, $dtnasc, $cpf);
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)) {
+        if ($row['activeUsers']!=1){
+          //Verifica se a conta está ativa, se for diferente de 1, significa que não está ativa
+          header("Location: pub-esquecisenha.php?error=accnotfound");
+          exit();
+        }
+      }else {
+        header("Location: pub-esquecisenha.php?error=accnotfound"); //Retornará à pag anterior
+        exit();
+      }
+    }
+  }
+
+}
+else{//Se chegou nessa pág de forma ilegal ou erronea (que não tenha sido pelo button)
+  //Será expulso dessa pág retornando à pág que deveria ter vindo.
+  header("Location: pub-esquecisenha.php");
+  exit();
+}
 ?>
-<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -16,7 +57,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>ROPs | Sistema HcA</title>	<!-- Site Title -->
+	<title>Recuperar senha | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -32,6 +73,7 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -42,25 +84,33 @@
 						<div class="col-md-8 text-center">
 							<div class="section-title" style="padding-bottom: 40px;">
 								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-									Remover versão de ROP
+									<label class="backbtn" onclick="window.location.href='pub-esquecisenha.php'"><i class="fas fa-angle-left"></i></label>
+									Trocar a senha esquecida
 								</h1>
-								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>
-								<p>Somente a última versão é utilizada no questionário.</p>
-								<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linkroplist; ?>">aqui</b> se deseja ver uma lista das versões de ROPs.</p>
+                <p style="color: #8c8c8c;">Por medida de segurança, ao trocar a senha, sua conta estará bloqueada e deverá ser liberada por um administrador do sistema.</p>
 							</div>
 						</div>
 					</div>
 					<div class="border1"></div>
-					<form action="rop-remove-confirmacao.php" method="post">
+					<form action="inc/forgotpass.inc.php"  method="post" autocomplete="off">
+            <input type="hidden" name="email" value="<?php echo $mailuid; ?>">
+            <input type="hidden" name="dtnasc" value="<?php echo $dtnasc; ?>">
+            <input type="hidden" name="cpf" value="<?php echo $cpf; ?>">
 						<div class="row justify-content-md-center">
 								<div class="col-lg-6 col-md-8">
 									<h5 class="mb-30" style="color: #4db8ff;"></h3>
-										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="ano_rop" placeholder="Digite o ano do ROPs para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o ano do ROPs para ser removido'"
-											 required class="single-input">
+										<div class="input-group-icon mt-10">
+											<div class="icon"><i class="fas fa-unlock" aria-hidden="true"></i></div>
+											<input type="password" id="password" name="password" placeholder="Digite a nova senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite a nova senha *'"
+											 required class="single-input" data-pwmatch="NewPW" data-pwmatch-length="5"  autocomplete="off">
 										</div>
-										<button class="btn" type="submit" name="rop-remove">Remover ROPs</button>
+										<div class="input-group-icon mt-10">
+											<div class="icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+											<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Repita a nova senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a nova senha *'"
+											 required class="single-input"  data-pwmatch="ConfirmPW"  autocomplete="off">
+										</div>
+										<span id="PasswordMatch" style="color:red; font-weight: 50;">As novas senhas são diferentes</span>
+										<button class="btn" type="submit" name="pass-change-abc">Trocar a senha</button>
 								</div>
 						</div>
 					</form>
@@ -103,7 +153,7 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
+	<script src="js/passwordchange.js"></script>
 </body>
 
 </html>

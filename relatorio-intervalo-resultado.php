@@ -1,14 +1,14 @@
 <!--================ Start Require Area =================-->
 <?php
-	if (isset($_POST['relatorio-anual'])) {} else{
-		header("Location: relatorio-anual.php?error=wrongaccess");
+	if (isset($_POST['relatorio-intervalo'])) {} else{
+		header("Location: relatorio-intervalo.php?error=wrongaccess");
 		exit();
 	}
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access.php";
 	require 'inc/dbh.inc.php';
-	require 'inc/relatorio.inc.php';
+	require 'inc/relatorioi.inc.php';
 	$respostas = array(1=>"Conforme", 2=>"Não Conforme", 3=>"Parcial", 4=>"Não Aplica");
 	$respostasCurtas = array(1=>"C", 2=>"NC", 3=>"P", 4=>"NA");
 ?>
@@ -24,7 +24,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Relatório - Anual | Sistema HcA</title> <!-- Site Title -->
+	<title>Relatório - Intervalo | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -161,9 +161,9 @@ var chart = new CanvasJS.Chart("chartContainerLines",{
 				dataPoints:[
 					<?php
 					if ($uidSetor == "Todos os setores"){
-						$sql = "SELECT answer.monthAudit FROM answer WHERE versionAudit=? AND yearAudit=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
+						$sql = "SELECT answer.monthAudit FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE audit.startAudit BETWEEN ? AND ? AND  versionAudit=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
 					}else{
-						$sql = "SELECT answer.monthAudit FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE versionAudit=? AND answer.yearAudit=? AND idSetor=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
+						$sql = "SELECT answer.monthAudit FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE audit.startAudit BETWEEN ? AND ? AND  versionAudit=? AND idSetor=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
 					}
 
 					$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
@@ -172,9 +172,9 @@ var chart = new CanvasJS.Chart("chartContainerLines",{
 						exit();
 					}else{ //Se a conexão for bem sucedida, fará a verificação
 						if ($uidSetor == "Todos os setores"){
-							mysqli_stmt_bind_param($stmt, "is", $version, $anoSelecionado);
+							mysqli_stmt_bind_param($stmt, "ssi", $datai, $dataf, $version);
 						}else{
-							mysqli_stmt_bind_param($stmt, "isi", $version, $anoSelecionado, $idSetor);
+							mysqli_stmt_bind_param($stmt, "ssii", $datai, $dataf, $version, $idSetor);
 						}
 						mysqli_stmt_execute($stmt);
 						$resultMonth = mysqli_stmt_get_result($stmt);
@@ -235,8 +235,9 @@ function toogleDataSeries(e){
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
 			 							<label class="backbtn" onclick="<?php echo $linkreportyear; ?>"><i class="fas fa-angle-left"></i></label>
-			 							Relatório <?php echo $_POST['anoSelecionado']; ?>
+			 							Relatório Intervalo
 			 						</h1>
+                  <p style="color: #8c8c8c;">Intervalo entre <?php echo $mesi."/".$anoi." e ".$mesf."/".$anof ?></p>
 			 					</div>
 			 					<div class="border2" style="margin:30px auto;"></div>
 			 				</div>
@@ -286,13 +287,15 @@ function toogleDataSeries(e){
 								$countid = 1;
 								while($rowidAudit = mysqli_fetch_assoc($resultidAudit)){
 									$link[$countid] = "relatorio-audit-id.php?id=".$rowidAudit['idAudit'];
+									//$link[$countid] = "window.open(".$link.",'_blank')";
+									//$link[$countid] = "window.location.href='relatorio-audit-id.php?id=".$rowidAudit['idAudit']."'";
 								?>
 									<a href="<?php echo $link[$countid]; ?>" target="_blank" style="cursor:pointer;"><?php echo $rowidAudit['idAudit'];?> </a>
+
 								<?php
 									$countid++;
 								}
 									echo ".";
-
 								?>
 							</div>
 						</div>

@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Sistema | Sistema HcA</title>
+	<title>Banco de Dados | Sistema HcA</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -59,20 +59,20 @@
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
 						<div class="service-icon" onclick=" <?php echo $linkpages; ?> ">
-							<i class="fas fa-code"></i>
+							<i class="fas fa-server"></i>
 						</div>
-						<p class="title">Alterar Páginas</p>
-						<p class="desc">Modificar o texto das páginas</p>
+						<p class="title">Servidor</p>
+						<p class="desc">Dados do Servidor</p>
 					</div>
 				</div>
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
 						<div class="service-icon" onclick=" <?php echo $linkdatabase; ?> ">
-							<i class="fas fa-database"></i>
+							<i class="fas fa-exclamation-triangle"></i>
 						</div>
-						<p class="title">Banco de Dados</p>
-						<p class="desc">Gerenciar o Banco de Dados</p>
+						<p class="title">Resetar o Banco de Dados</p>
+						<p class="desc">Apagar todos os dados atuais</p>
 					</div>
 				</div>
 				<!-- single member -->

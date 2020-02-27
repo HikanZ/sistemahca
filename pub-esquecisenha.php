@@ -1,27 +1,36 @@
+<!--================ Start Require Area =================-->
+<?php require "header.php" ?>
+<?php
+/*
+function randomPassword() {
+    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+    $pass = array(); //remember to declare $pass as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 8; $i++) {
+        $n = rand(0, $alphaLength);
+        $pass[] = $alphabet[$n];
+    }
+    return implode($pass); //turn the array into a string
+}*/
+//echo randomPassword();
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Usuários | Sistema HcA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 	<!-- Mobile Specific Meta -->
+	<link rel="shortcut icon" href="img/fav.png"> 	<!-- Favicon-->
+	<meta name="author" content="CodePixar"> 	<!-- Author Meta -->
+	<meta name="description" content="">	<!-- Meta Description -->
+	<meta name="keywords" content="">	<!-- Meta Keyword -->
+	<meta charset="UTF-8">	<!-- meta character set -->
+
+	<title>Recuperar senha | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
-	<!--
-			CSS
-			============================================= -->
+	<!-- CSS ============================================= -->
 	<link rel="stylesheet" href="css/linearicons.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/availability-calendar.css">
@@ -35,10 +44,7 @@
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 
-	<!--================ Start Require Area =================-->
-	<?php require "header.php" ?>
-	<?php require "inc/links.php" ?>
-	<!--================ End Require Area =================-->
+
 
 	<!--================ Start Team Area =================-->
 	<section class="team-area section-gap-top">
@@ -56,24 +62,25 @@
 			<div class="border1"></div>
 			<div class="row justify-content-md-center">
 				<div class="col-lg-6 col-md-8">
-					<h5 class="mb-30" style="color: #4db8ff;">Os campos marcados com  *  são obrigatórios.</h3>
-					<form action="#">
+					<h5 class="mb-30" style="color: #4db8ff;">Os campos marcados com  *  são obrigatórios.</h5>
+					<p style="color: #8c8c8c;">Por medida de segurança, ao trocar a senha, sua conta estará bloqueada e deverá ser liberada por um administrador do sistema.</p>
+					<form action="pub-trocarsenha.php" method="post" autocomplete="off">
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></div>
-							<input type="text" id="birth-date" name="first_name" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'"
-							 required class="single-input">
+							<input type="text" id="birth-date" name="dtnasc" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'"
+							 required class="single-input" autocomplete="off">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
 							<input type="text" name="email" placeholder="Email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email *'"
-							 required class="single-input">
+							 required class="single-input" autocomplete="off">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
 							<input type="text" id="cpf" name="cpf" placeholder="CPF *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF *'"
-							 required class="single-input">
+							 required class="single-input" autocomplete="off">
 						</div>
-						<button class="btn" type="submit" name="usuario-cadastrar">Solicitar nova senha</button>
+						<button class="btn" type="submit" name="recuperar-senha">Solicitar nova senha</button>
 					</form>
 				</div>
 			</div>

@@ -1,8 +1,11 @@
 <!--================ Start Require Area =================-->
+<?php require "header.php" ?>
+<?php require "inc/links.php" ?>
 <?php
-	require "header.php";
-	require "inc/links.php";
-	require "inc/access-admin.php";
+if ($_SESSION['admincheck']!=7){
+	header("Location: sistema.php");
+	exit();
+}
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -16,7 +19,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>ROPs | Sistema HcA</title>	<!-- Site Title -->
+	<title>Servidor | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -32,55 +35,64 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
-	    <!--================ Start Content Area =================-->
-			<section class="team-area section-gap-top">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-8 text-center">
-							<div class="section-title" style="padding-bottom: 40px;">
-								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-									Remover versão de ROP
-								</h1>
-								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>
-								<p>Somente a última versão é utilizada no questionário.</p>
-								<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linkroplist; ?>">aqui</b> se deseja ver uma lista das versões de ROPs.</p>
-							</div>
-						</div>
-					</div>
-					<div class="border1"></div>
-					<form action="rop-remove-confirmacao.php" method="post">
-						<div class="row justify-content-md-center">
-								<div class="col-lg-6 col-md-8">
-									<h5 class="mb-30" style="color: #4db8ff;"></h3>
-										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="ano_rop" placeholder="Digite o ano do ROPs para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o ano do ROPs para ser removido'"
-											 required class="single-input">
-										</div>
-										<button class="btn" type="submit" name="rop-remove">Remover ROPs</button>
+			 <!--================ Start Team Area =================-->
+			 	<section class="team-area section-gap-top">
+			 		<div class="container">
+			 			<div class="row justify-content-center">
+			 				<div class="col-md-8 text-center">
+			 					<div class="section-title" style="padding-bottom: 40px;">
+			 						<h1 style="letter-spacing: 3px; text-transform: none;">
+			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
+			 							Servidor
+			 						</h1>
+			 					</div>
+			 					<div style="margin:50px auto;" class="border1"></div>
+								<div class="row justify-content-between" style="color: #8c8c8c; margin:50px auto;">
+									<div class="col-md-10" align="left" >
+										<?php echo "Servername: us-cdbr-iron-east-04.cleardb.ne"; ?>
+									</div>
 								</div>
-						</div>
-					</form>
-				</div>
-			</section>
-	    <!--================ End Content Area =================-->
+								<div class="row justify-content-between" style="color: #8c8c8c; margin:50px auto;">
+									<div class="col-md-10" align="left">
+										<?php echo "Usuário DB: b6410e88315b1f"; ?>
+									</div>
+								</div>
+								<div class="row justify-content-between" style="color: #8c8c8c; margin:50px auto;">
+									<div class="col-md-10" align="left">
+										<?php echo "Senha DB: 62903730"; ?>
+									</div>
+								</div>
+								<div class="row justify-content-between" style="color: #8c8c8c; margin:50px auto;">
+									<div class="col-md-10" align="left">
+										<?php echo "Nome do Banco de Dados: heroku_7a83877cb41c4ba"; ?>
+									</div>
+								</div>
+			 				</div>
+			 			</div>
+			 		</div>
+			 	</section>
+
+		 	<!--================ End Team Area =================-->
 	   </div>
-	   <!--================ Start Footer Area =================-->
-	   <br><br>
-	   <footer id="footer">
-	     <div class="container">
-	      <div class="row justify-content-md-center">
-	        <div class="col-1"></div>
-	        <div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
-	        <div class="col-8">Sistema Healthcare Assessment</div>
-	      </div>
-	    </div>
-	   </footer>
-	  <!--================ End Footer Area =================-->
+		 <!--================ Start Footer Area =================-->
+		 <br><br>
+ 	   <footer id="footer">
+ 			 <div class="container">
+ 	 			<div class="row justify-content-md-center">
+ 	 				<div class="col-1"></div>
+ 	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+ 	 				<div class="col-8">Sistema Healthcare Assessment</div>
+ 	 			</div>
+ 	 		</div>
+ 		 </footer>
+	 	<!--================ End Footer Area =================-->
 	 </div>
+
+
 
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
@@ -104,6 +116,11 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/searchuser.js"></script>
+	<script>
+		function goBack() {
+			window.history.go(-1);
+		}
+	</script>
 </body>
 
 </html>

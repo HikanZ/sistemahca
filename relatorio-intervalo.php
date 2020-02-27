@@ -25,6 +25,8 @@
 	else{ //Se a conexão for bem sucedida, fará a consulta
 		mysqli_stmt_execute($stmt);
 		$resultAno = mysqli_stmt_get_result($stmt);
+		mysqli_stmt_execute($stmt);
+		$resultAno2 = mysqli_stmt_get_result($stmt);
 	}
 ?>
 <!--================ End Require Area =================-->
@@ -39,7 +41,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Relatório - Mensal | Sistema HcA</title> <!-- Site Title -->
+	<title>Relatório | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -67,21 +69,22 @@
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
 			 							<label class="backbtn" onclick="<?php echo $linkreport; ?>"><i class="fas fa-angle-left"></i></label>
-			 							Relatório Mensal
+			 							Relatório
 			 						</h1>
-									<p>Selecione o ano, o mês e o setor (ou todos os setores).</p>
+									<p>Selecione intervalo e o setor (ou todos os setores).</p>
 			 					</div>
 			 					<div class="border1"></div>
 								<!--================ Start Content Area =================-->
 								<!-- FORM -->
-								<form action="relatorio-mensal-resultado.php" method="post">
+								<form action="relatorio-intervalo-resultado.php" method="post">
+									<small style="color: #8c8c8c;">Intervalo entre: </small>
 									<div class="row justify-content-md-center">
 										<div class="col-md-7">
 											<div class="input-group-icon mt-10">
 												<div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 												<div class="form-select required" id="default-select4">
-													<select name="anoSelecionado">
-														<option selected disabled>Selecione o ano</option>
+													<select name="anoSelecionadoIni">
+														<option selected disabled>Selecione o ano de início</option>
 														<?php
 															while ($rowAno = mysqli_fetch_assoc($resultAno)){
 														?>
@@ -97,8 +100,8 @@
 											<div class="input-group-icon mt-10">
 												<div class="icon"><i class="fa fa-calendar-alt" aria-hidden="true"></i></div>
 												<div class="form-select required" id="default-select2">
-													<select name="mes">
-														<option selected disabled>Selecione o mês</option>
+													<select name="mesIni">
+														<option selected disabled>Selecione o mês de início</option>
 															<option value="01">Janeiro</option>
 															<option value="02">Fevereiro</option>
 															<option value="03">Março</option>
@@ -116,10 +119,53 @@
 											</div>
 										</div>
 									</div>
+									<small style="color: #8c8c8c;">E</small>
 									<div class="row justify-content-md-center">
 										<div class="col-md-7">
 											<div class="input-group-icon mt-10">
-												<div class="icon"><i class="far fa-hospital" aria-hidden="true"></i></div>
+												<div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+												<div class="form-select required" id="default-select4">
+													<select name="anoSelecionadoFim">
+														<option selected disabled>Selecione o ano de fim</option>
+														<?php
+															while ($rowAno = mysqli_fetch_assoc($resultAno2)){
+														?>
+															<option value="<?php echo $rowAno['yearAudit']; ?>"><?php echo $rowAno['yearAudit']; ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+												<div class="icon"><i class="fa fa-calendar-alt" aria-hidden="true"></i></div>
+												<div class="form-select required" id="default-select2">
+													<select name="mesFim">
+														<option selected disabled>Selecione o mês de fim</option>
+															<option value="01">Janeiro</option>
+															<option value="02">Fevereiro</option>
+															<option value="03">Março</option>
+															<option value="04">Abril</option>
+															<option value="05">Maio</option>
+															<option value="06">Junho</option>
+															<option value="07">Julho</option>
+															<option value="08">Agosto</option>
+															<option value="09">Setembro</option>
+															<option value="10">Outubro</option>
+															<option value="11">Novembro</option>
+															<option value="12">Dezembro</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<small>&nbsp;</small>
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+												<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
 												<div class="form-select" id="default-select2">
 													<select name="setor">
 														<option selected disabled>Selecione o setor</option>
@@ -137,7 +183,7 @@
 									<div class="row justify-content-center">
 								    <div class="col-lg-6 col-md-8">
 								      <small>&nbsp;</small>
-								      <button class="btn" type="submit" name="relatorio-mensal">Gerar relatório mensal</button>
+								      <button class="btn" type="submit" name="relatorio-intervalo">Gerar relatório</button>
 								    </div>
 								  </div>
 								</form>
@@ -186,7 +232,6 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
 	<script>
 		function goBack() {
 			window.history.go(-1);

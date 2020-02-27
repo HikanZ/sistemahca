@@ -73,7 +73,7 @@
 									 required class="single-input">
 								</div>
 								<div class="input-group-icon mt-10">
-									<div class="icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
+									<div class="icon"><i class="far fa-hospital" aria-hidden="true"></i></div>
 									<input type="text" id="search-val-name" name="first_name" placeholder="Setor" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Setor'"
 									 required class="single-input">
 								</div>
@@ -107,7 +107,7 @@
 						  <tr onclick="">
 						    <td><?php echo $rowSetor['idSetor']; ?></td>
 						    <td><?php echo $rowSetor['uidSetor']; ?></td>
-						    <td><?php echo $rowSetor['stateSetor']; ?></td>
+						    <td><?php if ($rowSetor['stateSetor']) echo "Ativo"; ?></td>
 						  </tr>
 							<?php } ?>
 					</table>

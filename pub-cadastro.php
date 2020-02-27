@@ -59,48 +59,48 @@
 			<div class="row justify-content-md-center">
 				<div class="col-lg-6 col-md-8">
 					<h5 class="mb-30" style="color: #4db8ff;">Os campos marcados com  *  são obrigatórios.</h3>
-					<form action="#">
+					<form action="inc/signuppub.inc.php" method="post" autocomplete="off">
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-user" aria-hidden="true"></i></div>
-							<input type="text" name="first_name" placeholder="Nome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome *'"
+							<input type="text" name="uid" placeholder="Nome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome *'"
 							 required class="single-input">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-user-friends" aria-hidden="true"></i></div>
-							<input type="text" name="last_name" placeholder="Sobrenome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome *'"
+							<input type="text" name="uidlast" placeholder="Sobrenome *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Sobrenome *'"
 							 required class="single-input">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-birthday-cake" aria-hidden="true"></i></div>
-							<input type="text" id="birth-date" name="first_name" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'"
+							<input type="text" id="birth-date" name="birthdayuid" placeholder="Data de Nascimento * DD/MM/AAAA" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Nascimento * DD/MM/AAAA'"
 							 required class="single-input">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-							<input type="text" name="email" placeholder="Email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email *'"
+							<input type="text" name="mail" placeholder="Email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email *'"
 							 required class="single-input">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
-							<input type="text" name="password1" placeholder="Senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha *'"
-							 required class="single-input">
+							<input type="password" name="pwd" placeholder="Senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha *'"
+							 required class="single-input" autocomplete="new-password">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
-							<input type="text" name="password2" placeholder="Repita a senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha *'"
-							 required class="single-input">
+							<input type="password" name="pwd-repeat" placeholder="Repita a senha *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha *'"
+							 required class="single-input" autocomplete="new-password">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-							<input type="text" name="cargo" placeholder="Cargo *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo *'"
+							<input type="text" name="functionuid" placeholder="Cargo *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cargo *'"
 							 required class="single-input">
 						</div>
 						<div class="input-group-icon mt-10">
 							<div class="icon"><i class="fas fa-id-card" aria-hidden="true"></i></div>
-							<input type="text" id="cpf" name="cpf" placeholder="CPF *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF *'"
+							<input type="text" id="cpf" name="cpfUser" placeholder="CPF *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF *'"
 							 required class="single-input">
 						</div>
-						<button class="btn" type="submit" name="usuario-cadastrar">Cadastrar</button>
+						<button class="btn" type="submit" name="signup-submit-pub">Cadastrar</button>
 					</form>
 				</div>
 			</div>

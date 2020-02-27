@@ -9,19 +9,20 @@
 
 		$findme = "/hca/";
 		$pos = stripos($_SERVER['REQUEST_URI'], $findme);
-		if ($pos === false) {$emailrequest = str_replace("/visualizar-acc.php?search=success&fieldmail=", "", $_SERVER['REQUEST_URI']);
-		}else{ $emailrequest = str_replace("/hca/visualizar-acc.php?search=success&fieldmail=", "", $_SERVER['REQUEST_URI']);}
-		$sql = "SELECT * FROM users WHERE emailUsers='".$emailrequest."'";
+		if ($pos === false) {$idusuario = str_replace("/visualizar-acc.php?search=success&fieldmail=", "", $_SERVER['REQUEST_URI']);
+		}else{ $idusuario = str_replace("/hca/visualizar-acc.php?search=success&fieldmail=", "", $_SERVER['REQUEST_URI']);}
+		$sql = "SELECT * FROM users WHERE idUsers=?";
 		$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 		if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
 			header("Location: usuarios.php?error=connectionerror"); //Retornará à pag anterior
 			exit();
 		}
 		else{ //Se a conexão for bem sucedida, fará a consulta
+			mysqli_stmt_bind_param($stmt, "i", $idusuario);
 			mysqli_stmt_execute($stmt);
 			$resultUser = mysqli_stmt_get_result($stmt);
 			$rowUser = mysqli_fetch_assoc($resultUser);
-			$_SESSION['emailacc'] = $emailrequest;
+			//$_SESSION['emailacc'] = $emailrequest;
 			/*var_dump($rowUser);*/
 		}
  ?>
@@ -94,7 +95,9 @@
 															$cursortype = "pointer";
 															$linkpwdreset = "window.location.href='inc/passwordreset.inc.php?password=reset&fieldmail=".$rowUser['emailUsers']."'";
 															$linkform = "inc/dataupdate.inc.php";
-															$linkaccess = "window.location.href='usuarios-acesso.php'";
+															$_SESSION['liberaoubloqueia']=$rowUser['emailUsers'];
+															$linkaccess = "window.location.href='usuarios-acesso-email.php'";
+															$_SESSION['idchange'] = $rowUser['emailUsers'];
 														}?>
 		 												<a onclick="<?php echo $linkresetavatar; ?>" data-tooltip="Clique para resetar este avatar" data-tooltip-location="bottom" style="  cursor:<?php echo $cursortype; ?>;  color:#4db8ff; font-size:10px; top:-32px; ; z-index:100000;">Resetar</a>
 		 			    		          <img src="<?php echo $rowUser['avatarLinkUser']; ?>" alt="profile-image" class="profile" style="  cursor:<?php echo $cursortype; ?>;" />

@@ -77,10 +77,10 @@
 						<div class="col-lg-4 col-md-4 flex">
 							<div class="service-box">
 								<div class="service-icon" onclick=" <?php echo $linksystem; ?> ">
-									<i class="fas fa-laptop-code"></i>
+									<i class="fas fa-database"></i>
 								</div>
-								<p class="title">Sistema</p>
-								<p class="desc">Sistema e banco de dados</p>
+								<p class="title">Banco de Dados</p>
+								<p class="desc">Gerenciar o banco de dados</p>
 							</div>
 						</div>
 					</div>

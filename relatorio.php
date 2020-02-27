@@ -46,15 +46,15 @@
 				</div>
 			</div>
 			<div class="border1"></div>
-			<div class="row">
+			<div class="row justify-content-center">
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
 						<div class="service-icon" onclick=" <?php echo $linkyear; ?> ">
 							<i class="fas fa-calendar"></i>
 						</div>
-						<p class="title">Visão Anual</p>
-						<p class="desc">Relatório anual</p>
+						<p class="title">Relatório Anual</p>
+						<p class="desc">Visão anual</p>
 					</div>
 				</div>
 				<!-- single member -->
@@ -63,18 +63,41 @@
 						<div class="service-icon" onclick=" <?php echo $linkmonth; ?> ">
 							<i class="fas fa-calendar-alt"></i>
 						</div>
-						<p class="title">Visão Mensal</p>
-						<p class="desc">Relatório mensal</p>
+						<p class="title">Relatório Mensal</p>
+						<p class="desc">Visão mensal</p>
 					</div>
 				</div>
 				<!-- single member -->
 				<div class="col-lg-4 col-md-4 flex">
 					<div class="service-box">
-						<div class="service-icon" onclick=" <?php echo $linkanswers; ?> ">
+						<div class="service-icon" onclick=" <?php echo $linkreportbetween; ?> ">
+							<i class="far fa-calendar-alt"></i>
+						</div>
+						<p class="title">Relatório</p>
+						<p class="desc">Intervalo variável</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linkreporthistoric; ?> ">
 							<i class="fas fa-calendar-minus"></i>
 						</div>
 						<p class="title">Histórico de Auditorias</p>
 						<p class="desc">Histórico e pesquisa das auditorias</p>
+					</div>
+				</div>
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linkreportaudit; ?> ">
+							<i class="far fa-calendar-check"></i>
+						</div>
+						<p class="title">Resultado Auditoria</p>
+						<p class="desc">Relatório de uma auditoria</p>
 					</div>
 				</div>
 			</div>

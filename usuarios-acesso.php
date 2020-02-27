@@ -51,17 +51,17 @@
 			 				</div>
 			 			</div>
 			 			<div class="border1"></div>
-			 			<form action="<?php echo $linksetoraddp ?>">
+			 			<form action="<?php echo $linkuseraccess ?>" method="post">
 			 				<div class="row justify-content-md-center">
 			 						<div class="col-lg-6 col-md-8">
 			 							<h5 class="mb-30" style="color: #4db8ff;"></h3>
 			 								<div class="input-group-icon mt-10">
 			 									<div class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-			 									<input type="text" name="first_name" placeholder="Insira o email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o email *'"
+			 									<input type="text" id="emailnotnull" name="emailnotnull" placeholder="Insira o email *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o email *'"
 			 									 required class="single-input">
 			 								</div>
 											<small>&nbsp;</small>
-			 								<button class="btn" type="submit" name="setor-cadastrar">Liberar ou Bloquear conta</button>
+			 								<button class="btn" type="submit" name="usuario-acesso">Liberar ou Bloquear conta</button>
 			 						</div>
 			 				</div>
 			 			</form>

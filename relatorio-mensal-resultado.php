@@ -79,6 +79,32 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/styleradar.css">
+	<style>
+	/* unvisited link */
+	a:link {
+		color: #8c8c8c !important;
+	}
+
+	a:focus {
+		color: #8c8c8c !important;
+	}
+
+	/* visited link */
+	a:visited {
+		color: #8c8c8c !important;
+	}
+
+	/* mouse over link */
+	a:hover {
+		color: #4db8ff !important;
+	}
+
+	/* selected link */
+	a:active {
+		color: #8c8c8c !important;
+	}
+	</style>
+
 </head>
 
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
@@ -284,12 +310,18 @@ chart.render();
 							<div class="col-md-8">
 								<?php
 								echo "Lista das auditorias:";
+								$countid = 1;
 								while($rowidAudit = mysqli_fetch_assoc($resultidAudit)){
+									$link[$countid] = "relatorio-audit-id.php?id=".$rowidAudit['idAudit'];
+									//$link[$countid] = "window.open(".$link.",'_blank')";
+									//$link[$countid] = "window.location.href='relatorio-audit-id.php?id=".$rowidAudit['idAudit']."'";
+								?>
+									<a href="<?php echo $link[$countid]; ?>" target="_blank" style="cursor:pointer;"><?php echo $rowidAudit['idAudit'];?> </a>
 
-									echo " ".$rowidAudit['idAudit'];
+								<?php
+									$countid++;
 								}
 									echo ".";
-
 								?>
 							</div>
 						</div>
@@ -337,11 +369,11 @@ chart.render();
 							</div>
 						</div>
 						<div class="border2" style="margin:20px auto;"></div>
-						<div class="row justify-content-start" style="color: #8c8c8c;">
+						<!--div class="row justify-content-start" style="color: #8c8c8c;">
 							<?php for ($cg = 1; $cg <= $numGroup; $cg++){ ?>
 								<div id="chartContainerG<?php echo $cg; ?>" style="height: 400px; width: 100%;"></div>
 							<?php } ?>
-						</div>
+						</div-->
 						<!--================ End Content Area =================-->
 			 		</div>
 			 	</section>

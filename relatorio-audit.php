@@ -2,7 +2,7 @@
 <?php
 	require "header.php";
 	require "inc/links.php";
-	require "inc/access-admin.php";
+	require "inc/access.php";
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>ROPs | Sistema HcA</title>	<!-- Site Title -->
+	<title>Relatório Auditoria | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -32,55 +32,66 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
-	    <!--================ Start Content Area =================-->
-			<section class="team-area section-gap-top">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-8 text-center">
-							<div class="section-title" style="padding-bottom: 40px;">
-								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-									Remover versão de ROP
-								</h1>
-								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>
-								<p>Somente a última versão é utilizada no questionário.</p>
-								<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linkroplist; ?>">aqui</b> se deseja ver uma lista das versões de ROPs.</p>
-							</div>
-						</div>
-					</div>
-					<div class="border1"></div>
-					<form action="rop-remove-confirmacao.php" method="post">
-						<div class="row justify-content-md-center">
-								<div class="col-lg-6 col-md-8">
-									<h5 class="mb-30" style="color: #4db8ff;"></h3>
-										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="ano_rop" placeholder="Digite o ano do ROPs para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o ano do ROPs para ser removido'"
-											 required class="single-input">
+			 <!--================ Start Team Area =================-->
+			 	<section class="team-area section-gap-top">
+			 		<div class="container">
+			 			<div class="row justify-content-center">
+			 				<div class="col-md-8 text-center">
+			 					<div class="section-title" style="padding-bottom: 40px;">
+			 						<h1 style="letter-spacing: 3px; text-transform: none;">
+			 							<label class="backbtn" onclick="<?php echo $linkreport; ?>"><i class="fas fa-angle-left"></i></label>
+			 							Relatório da Auditoria
+			 						</h1> 
+									<p style="color: #8c8c8c;">Insira o ID da auditoria, ou veja a lista <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linkreporthistoric; ?>">aqui</b>.</p>
+			 					</div>
+			 					<div class="border1"></div>
+								<!--================ Start Content Area =================-->
+								<!-- FORM -->
+								<form action="inc/relatorioaudit.inc.php" method="post">
+									<div class="row justify-content-md-center">
+										<div class="col-md-7">
+											<div class="input-group-icon mt-10">
+					 							<div class="icon"><i class="far fa-newspaper" aria-hidden="true"></i></div>
+					 							<input type="text" id="idaudit1" name="idaudit1" placeholder="ID da auditoria" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID da auditoria'"
+					 							 required class="single-input">
+					 						</div>
 										</div>
-										<button class="btn" type="submit" name="rop-remove">Remover ROPs</button>
-								</div>
-						</div>
-					</form>
-				</div>
-			</section>
-	    <!--================ End Content Area =================-->
+									</div>
+
+									<div class="row justify-content-center">
+								    <div class="col-lg-6 col-md-8">
+								      <small>&nbsp;</small>
+								      <button class="btn" type="submit" name="relatorio-auditoria">Gerar relatório da auditoria</button>
+								    </div>
+								  </div>
+								</form>
+								<!--================ End Content Area =================-->
+			 				</div>
+			 			</div>
+			 		</div>
+			 	</section>
+
+		 	<!--================ End Team Area =================-->
 	   </div>
-	   <!--================ Start Footer Area =================-->
-	   <br><br>
-	   <footer id="footer">
-	     <div class="container">
-	      <div class="row justify-content-md-center">
-	        <div class="col-1"></div>
-	        <div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
-	        <div class="col-8">Sistema Healthcare Assessment</div>
-	      </div>
-	    </div>
-	   </footer>
-	  <!--================ End Footer Area =================-->
+		 <!--================ Start Footer Area =================-->
+		 <br><br>
+ 	   <footer id="footer">
+ 			 <div class="container">
+ 	 			<div class="row justify-content-md-center">
+ 	 				<div class="col-1"></div>
+ 	 				<div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
+ 	 				<div class="col-8">Sistema Healthcare Assessment</div>
+ 	 			</div>
+ 	 		</div>
+ 		 </footer>
+	 	<!--================ End Footer Area =================-->
 	 </div>
+
+
 
 	<!-- Comentários: -->
 	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
@@ -103,7 +114,11 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
+	<script>
+		function goBack() {
+			window.history.go(-1);
+		}
+	</script>
 </body>
 
 </html>

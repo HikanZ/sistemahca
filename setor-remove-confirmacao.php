@@ -3,6 +3,26 @@
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access-admin.php";
+	if (isset($_POST['setor-remove'])) {
+			require 'inc/dbh.inc.php';
+	}else{
+			header("Location: setor-remove.php?error=wrongaccess1");
+		  exit();
+		}
+		$nomesetor = $_POST['setor_nome'];
+		$sql = "SELECT * FROM setor WHERE uidSetor=?";
+		$stmt = mysqli_stmt_init($conn);
+		if(!mysqli_stmt_prepare($stmt, $sql)){
+			header("Location: setor-remove.php?error=sqlerror1");
+			exit();
+		}else{
+			mysqli_stmt_bind_param($stmt, "s", $nomesetor);
+			mysqli_stmt_execute($stmt);
+			$resultGroup = mysqli_stmt_get_result($stmt);
+			$row = mysqli_fetch_assoc($resultGroup);
+			if ($row == NULL){ $recado = "Este setor não existe.";}else{$recado=""; $actRop = $row['stateSetor']; $idSetor = $row['idSetor'];}
+
+		}
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -16,7 +36,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>ROPs | Sistema HcA</title>	<!-- Site Title -->
+	<title>Setor | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -42,34 +62,46 @@
 						<div class="col-md-8 text-center">
 							<div class="section-title" style="padding-bottom: 40px;">
 								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-									Remover versão de ROP
+									<label class="backbtn" onclick="<?php echo $linkropremove; ?>"><i class="fas fa-angle-left"></i></label>
+									Confirmação da remoção do setor <?php echo $nomesetor; ?> de ROPs
 								</h1>
-								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>
-								<p>Somente a última versão é utilizada no questionário.</p>
-								<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linkroplist; ?>">aqui</b> se deseja ver uma lista das versões de ROPs.</p>
+								<p>Nota: O setor não será excluída, mas bloqueado, impedindo que o mesmo seja selecionado.</p>
+								<p><b style="color: #ff4d5d;"><?php echo $recado; ?></b></p>
+								<br>
+								<?php if ($actRop){ ?>
+									<h4 style="color: #4db8ff;"> Essa versão está ativa no momento, ao confirmar abaixo você estará bloqueando-a. </h4>
+								<?php }else{  ?>
+									<h4 style="color: #ff4d5d;"> Essa versão está desativada no momento, ao confirmar abaixo você estará ativando-a. </h4>
+								<?php }  ?>
 							</div>
 						</div>
 					</div>
-					<div class="border1"></div>
-					<form action="rop-remove-confirmacao.php" method="post">
-						<div class="row justify-content-md-center">
-								<div class="col-lg-6 col-md-8">
-									<h5 class="mb-30" style="color: #4db8ff;"></h3>
-										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="ano_rop" placeholder="Digite o ano do ROPs para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o ano do ROPs para ser removido'"
-											 required class="single-input">
-										</div>
-										<button class="btn" type="submit" name="rop-remove">Remover ROPs</button>
-								</div>
-						</div>
-					</form>
+					<?php if ($row != NULL){ ?>
+						<div class="border1"></div>
+
+						<form action="inc/setoraccess.inc.php" method="post">
+							<input type="hidden" name="version" value="<?php echo $nomesetor; ?>">
+							<input type="hidden" name="idsetor" value="<?php echo $idSetor; ?>">
+							<input type="hidden" name="active" value="<?php echo $actRop; ?>">
+							<div class="row justify-content-md-center">
+									<div class="col-lg-6 col-md-8">
+										<h5 class="mb-30" style="color: #4db8ff;"></h3>
+											<div class="input-group mt-10">
+												Digite &#34;Confirma&#34; no campo abaixo para validar a remoção ou liberação deste setor
+												<input type="text" id="search-val-name" name="box_de_confirmacao" placeholder="Digite &#34;Confirma&#34; para validar a remoção desta versão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite &#34;Confirma&#34; para validar a remoção desta versão'"
+												 required class="single-input">
+											</div>
+											<button class="btn" type="submit" name="confirmar-setor-access">Remover Setor</button>
+									</div>
+							</div>
+						</form>
+					<?php } ?>
 				</div>
 			</section>
 	    <!--================ End Content Area =================-->
 	   </div>
 	   <!--================ Start Footer Area =================-->
-	   <br><br>
+	   <br><br><br><br><br><br>
 	   <footer id="footer">
 	     <div class="container">
 	      <div class="row justify-content-md-center">
@@ -103,7 +135,6 @@
 	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
 </body>
 
 </html>

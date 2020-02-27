@@ -95,7 +95,7 @@
 									<div class="row justify-content-md-center">
 										<div class="col-md-7">
 											<div class="input-group-icon mt-10">
-												<div class="icon"><i class="fa fa-hospital" aria-hidden="true"></i></div>
+												<div class="icon"><i class="far fa-hospital" aria-hidden="true"></i></div>
 												<div class="form-select" id="default-select2">
 													<select name="setor">
 														<option selected disabled>Selecione o setor</option>

@@ -1,3 +1,10 @@
+<!--================ Start Require Area =================-->
+<?php
+	require "header.php";
+	require "inc/links.php";
+	require "inc/access-admin.php";
+?>
+<!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
 
@@ -25,10 +32,6 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
-<!--================ Start Require Area =================-->
-<?php require "header.php" ?>
-<?php require "inc/links.php" ?>
-<!--================ End Require Area =================-->
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
 	<div id="page-container">
 	   <div id="content-wrap">
@@ -40,23 +43,23 @@
 							<div class="section-title" style="padding-bottom: 40px;">
 								<h1 style="letter-spacing: 3px; text-transform: none;">
 									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
-									Remover setor
+									Remover Setor
 								</h1>
-								<p>Nota: O setor não será excluído, mas bloqueado, impedindo que o mesma seja selecionado.</p>
+								<p>Nota: O setor não será excluída, mas bloqueado, impedindo que o mesmo seja selecionado.</p>
 								<p>Clique <b style="color: #4db8ff; cursor: pointer;" onclick="<?php echo $linksetorlist; ?>">aqui</b> se deseja ver uma lista dos setores.</p>
 							</div>
 						</div>
 					</div>
 					<div class="border1"></div>
-					<form action="<?php echo $linkropgroup ?>">
+					<form action="setor-remove-confirmacao.php" method="post">
 						<div class="row justify-content-md-center">
 								<div class="col-lg-6 col-md-8">
 									<h5 class="mb-30" style="color: #4db8ff;"></h3>
 										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="ano_rop" placeholder="Digite o setor para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o setor para ser removido'"
+											<input type="text" id="search-val-name" name="setor_nome" placeholder="Digite o nome do setor para ser removido" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Digite o nome do setor para ser removido'"
 											 required class="single-input">
 										</div>
-										<button class="btn" type="submit" name="rop-ano-cadastrar">Remover Setor</button>
+										<button class="btn" type="submit" name="setor-remove">Remover Setor</button>
 								</div>
 						</div>
 					</form>
