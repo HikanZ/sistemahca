@@ -11,6 +11,66 @@
 	require 'inc/relatorio.inc.php';
 	$respostas = array(1=>"Conforme", 2=>"Não Conforme", 3=>"Parcial", 4=>"Não Aplica");
 	$respostasCurtas = array(1=>"C", 2=>"NC", 3=>"P", 4=>"NA");
+
+/*
+	$markerType = array(1=>"square", 2=>"circle", 3=>"triangle", 4=>"no marker");
+	for ($i=1; $i<=4; $i++){
+		echo "{";
+			if ($uidSetor == "Todos os setores"){
+				$sql = "SELECT answer.monthAudit FROM answer WHERE versionAudit=? AND yearAudit=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
+			}else{
+				$sql = "SELECT answer.monthAudit FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE versionAudit=? AND answer.yearAudit=? AND idSetor=? GROUP BY answer.monthAudit ORDER BY answer.monthAudit ASC";
+			}
+
+			$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+			if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+				header("Location: ../relatorio-anual.php?error=sqlerror9"); //Retornará à pag anterior
+				exit();
+			}else{ //Se a conexão for bem sucedida, fará a verificação
+				if ($uidSetor == "Todos os setores"){
+					mysqli_stmt_bind_param($stmt, "ii", $version, $anoSelecionado);
+				}else{
+					mysqli_stmt_bind_param($stmt, "iii", $version, $anoSelecionado, $idSetor);
+				}
+				mysqli_stmt_execute($stmt);
+				$resultMonth = mysqli_stmt_get_result($stmt);
+			}
+			while($rowMonth = mysqli_fetch_assoc($resultMonth)){
+				echo $rowMonth['monthAudit'];
+				echo "<br>";
+			switch ($i) {
+			case 1:
+					if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["C"] = 0;
+					if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["C"] = 0;
+					echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+						($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
+					break;
+			case 2:
+			if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"] = 0;
+			if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NC"] = 0;
+					echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+						($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
+					break;
+			case 3:
+			if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["P"] = 0;
+			if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["P"] = 0;
+					echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+						($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
+					break;
+			case 4:
+			if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"] = 0;
+			if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NA"] = 0;
+					echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+						($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
+					break;
+			}
+		}//fim while
+		if ($i!=4) {
+			echo "},";
+		} else {
+			echo "}";
+		}
+	}*/
 ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
@@ -109,7 +169,7 @@ var chart = new CanvasJS.Chart("chartContainerBar",{
 								break;
 						}
 
-						if ($j!=$numGroup) echo ",";;
+						if ($j!=$numGroup) echo ",";
 					}
 					?>
 				]
@@ -180,24 +240,32 @@ var chart = new CanvasJS.Chart("chartContainerLines",{
 						$resultMonth = mysqli_stmt_get_result($stmt);
 					}
 					while($rowMonth = mysqli_fetch_assoc($resultMonth)){
-					switch ($i) {
-					case 1:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
-							break;
-					case 2:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
-							break;
-					case 3:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
-							break;
-					case 4:
-							echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-								($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
-							break;
-					}
+						switch ($i) {
+						case 1:
+								if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["C"] = 0;
+								if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["C"] = 0;
+								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+									($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
+								break;
+						case 2:
+						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"] = 0;
+						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NC"] = 0;
+								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+									($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
+								break;
+						case 3:
+						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["P"] = 0;
+						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["P"] = 0;
+								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+									($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
+								break;
+						case 4:
+						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"] = 0;
+						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NA"] = 0;
+								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
+									($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
+								break;
+						}
 				}//fim while
 					?>
 				]//fim dataPoints

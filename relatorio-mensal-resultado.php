@@ -4,6 +4,10 @@
 		header("Location: relatorio-mensal.php?error=wrongaccess");
 		exit();
 	}
+	if (!isset($_POST['mes'])) {
+		header("Location: relatorio-mensal.php?error=monthnotselected");
+		exit();
+	}
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access.php";
@@ -148,7 +152,7 @@ var chart = new CanvasJS.Chart("chartContainerBar",{
 								break;
 						}
 
-						if ($j!=$numGroup) echo ",";;
+						if ($j!=$numGroup) echo ",";
 					}
 					?>
 				]
@@ -278,7 +282,7 @@ chart.render();
 			 				<div class="col-md-8 text-center">
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
-			 							<label class="backbtn" onclick="<?php echo $linkreportyear; ?>"><i class="fas fa-angle-left"></i></label>
+			 							<label class="backbtn" onclick="<?php echo $linkreportmonth; ?>"><i class="fas fa-angle-left"></i></label>
 			 							Relatório de <?php echo $mesnome." de "; echo $_POST['anoSelecionado']; ?>
 			 						</h1>
 			 					</div>
