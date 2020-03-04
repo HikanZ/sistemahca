@@ -19,7 +19,7 @@ try{
 {
     exit();
 }
-var_dump($_POST);
+//var_dump($_POST);
 
 $idUsers = $_SESSION['userId'];
 $uidUsers = $_POST['uidfullUser'];
@@ -87,7 +87,7 @@ else{ //Se a conexão for bem sucedida, fará a verificação
 }
 // Inicialização para inserção das respostas
 while($rowGroup = mysqli_fetch_assoc($resultGroup)){
-  var_dump($rowGroup); echo " 1<br>";
+  //var_dump($rowGroup); echo " 1<br>";
   ///// Carrega os ROPs dessa versão
   $sql = "SELECT * FROM rop WHERE versionRop=? AND idGroup=?";
   $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
@@ -123,3 +123,4 @@ while($rowGroup = mysqli_fetch_assoc($resultGroup)){
 
 header("Location: ../audit.php?success");
 exit();
+?>
