@@ -93,3 +93,4 @@ if (isset($_POST['signup-submit'])) {
   header("Location: ../usuarios-cadastro.php");
   exit();
 }
+?>

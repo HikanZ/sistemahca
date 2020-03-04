@@ -87,3 +87,4 @@ else{//Se chegou nessa pág de forma ilegal ou erronea (que não tenha sido pelo
   exit();
 
 }
+?>

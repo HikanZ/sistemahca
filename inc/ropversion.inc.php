@@ -69,3 +69,4 @@ mysqli_close($conn);
 
 header("Location: ../rop.php?success=newversion");
 exit();
+?>

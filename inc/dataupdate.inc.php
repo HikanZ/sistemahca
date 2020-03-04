@@ -88,3 +88,4 @@ if (isset($_POST['alterar-cadastro'])) {
   header("Location: ../visualizar-acc.php?search=success&fieldmail=$emailrequest"); //Retornará à pag anterior
   exit();
 }
+?>

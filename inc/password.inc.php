@@ -58,3 +58,4 @@ if (isset($_POST['pass-change'])) {
   header("Location: ../index.php?error=wrongaccess");
   exit();
 }
+?>

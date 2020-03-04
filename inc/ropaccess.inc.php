@@ -37,3 +37,4 @@ if ($_POST['box_de_confirmacao']=="Confirma"){
   header("Location: ../rop-remove.php?error=notconfirmed");
   exit();
 }
+?>

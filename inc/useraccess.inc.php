@@ -47,3 +47,4 @@
     header("Location: ../usuarios-acesso.php?success=accessgranted");
     exit();
   }
+?>

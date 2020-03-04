@@ -22,3 +22,4 @@ if (isset($_POST['trocar-img'])) {
   header("Location: ../minha-acc.php?error=wrongaccess");
   exit();
 }
+?>

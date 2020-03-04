@@ -64,3 +64,4 @@ if (!mysqli_stmt_prepare($stmt, $sql)){
     }
   }
 }
+?>

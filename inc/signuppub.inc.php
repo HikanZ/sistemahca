@@ -120,3 +120,4 @@ if (isset($_POST['signup-submit-pub'])) {
   header("Location: ../usuarios-cadastro.php");
   exit();
 }
+?>

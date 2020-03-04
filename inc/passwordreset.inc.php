@@ -45,3 +45,4 @@
     header("Location: ../visualizar-acc.php?search=success&fieldmail=$idacc"); //Retornará à pag anterior
     exit();
   }
+?>

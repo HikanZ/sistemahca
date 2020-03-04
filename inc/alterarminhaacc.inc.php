@@ -995,3 +995,4 @@ if (isset($_POST['usuario-alterar'])) {
   header("Location: ../index.php?error=wrongaccess");
   exit();
 }
+?>

@@ -71,3 +71,4 @@ if (isset($_POST['usuario-alterar'])) {
   header("Location: ../minha-acc.php?error=wrongaccess");
   exit();
 }
+?>

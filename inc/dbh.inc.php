@@ -31,3 +31,4 @@ mysqli_set_charset($conn,"utf8");
 if (!$conn){
   die("Conexão com o banco de dados falhou. Código do erro: ". mysqli_connect_error());
 }
+?>
