@@ -16,12 +16,11 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Setor | Sistema HcA</title>	<!-- Site Title -->
+	<title>Setores | Sistema HcA</title>	<!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
 	<!-- CSS ============================================= -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/linearicons.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/availability-calendar.css">
@@ -32,57 +31,56 @@
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
 </head>
+
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
-	<div id="page-container">
-	   <div id="content-wrap">
-	    <!--================ Start Content Area =================-->
-			<section class="team-area section-gap-top">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-md-8 text-center">
-							<div class="section-title" style="padding-bottom: 40px;">
-								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linksetor; ?>"><i class="fas fa-angle-left"></i></label>
-									Cadastrar novo setor
-								</h1>
-							</div>
-						</div>
+
+	<section class="team-area section-gap-top">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8 text-center">
+					<div class="section-title" style="padding-bottom: 40px;">
+						<h1 style="letter-spacing: 3px; text-transform: none;">
+							<label class="backbtn" onclick="<?php echo $linkmenu; ?>"><i class="fas fa-angle-left"></i></label>
+							Setores</h1>
 					</div>
-					<div class="border1"></div>
-					<form action="inc/setoradd.inc.php" method="post">
-						<div class="row justify-content-md-center">
-
-								<div class="col-lg-6 col-md-8">
-									<h5 class="mb-30" style="color: #4db8ff;"></h3>
-										<div class="input-group mt-10">
-											<input type="text" id="search-val-name" name="nome_setor" placeholder="Insira o nome do setor a ser cadastrado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira o nome do setor a ser cadastrado'"
-											 required class="single-input">
-										</div>
-										<small>&nbsp;</small>
-										<button class="btn" type="submit" name="cadastrar-setor">Cadastrar Setor</button>
-								</div>
-						</div>
-					</form>
 				</div>
-			</section>
-	    <!--================ End Content Area =================-->
-	   </div>
-	   <!--================ Start Footer Area =================-->
-	   <br><br>
-	   <footer id="footer">
-	     <div class="container">
-	      <div class="row justify-content-md-center">
-	        <div class="col-1"></div>
-	        <div class="col-3"><img src="img/logologin.png" alt="" style="width:30px; height:30px;"></div>
-	        <div class="col-8">Sistema Healthcare Assessment</div>
-	      </div>
-	    </div>
-	   </footer>
-	  <!--================ End Footer Area =================-->
-	 </div>
-
-	<!-- Comentários: -->
-	<!-- Link para a máscara de data e cpf: https://bootstrapstudio.io/tutorials/input-masks -->
+			</div>
+			<div class="border1"></div>
+			<div class="row">
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linksetoradd; ?> ">
+							<i class="far fa-calendar-plus"></i>
+						</div>
+						<p class="title">Novo Setor</p>
+						<p class="desc">Adiciona um novo setor</p>
+					</div>
+				</div>
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linksetorlist; ?> ">
+							<i class="far fa-calendar-alt"></i>
+						</div>
+						<p class="title">Listar Setores</p>
+						<p class="desc">Exibe a lista de setores</p>
+					</div>
+				</div>
+				<!-- single member -->
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linksetorremove; ?> ">
+							<i class="far fa-calendar-times"></i>
+						</div>
+						<p class="title">Excluir Setor</p>
+						<p class="desc">Exclui um Setor</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Team Area =================-->
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
@@ -98,11 +96,8 @@
 	<script src="js/isotope.pkgd.min.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-	<script src="js/datemask.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/searchuser.js"></script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@
 						<div class="col-md-8 text-center">
 							<div class="section-title" style="padding-bottom: 40px;">
 								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
+									<label class="backbtn" onclick="<?php echo $linksetor; ?>"><i class="fas fa-angle-left"></i></label>
 									Lista dos Setores
 								</h1>
 								<p>Nota: A versão não será excluída, mas bloqueada, impedindo que a mesma seja respondida.</p>

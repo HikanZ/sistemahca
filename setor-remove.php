@@ -42,7 +42,7 @@
 						<div class="col-md-8 text-center">
 							<div class="section-title" style="padding-bottom: 40px;">
 								<h1 style="letter-spacing: 3px; text-transform: none;">
-									<label class="backbtn" onclick="<?php echo $linkrop; ?>"><i class="fas fa-angle-left"></i></label>
+									<label class="backbtn" onclick="<?php echo $linksetor; ?>"><i class="fas fa-angle-left"></i></label>
 									Remover Setor
 								</h1>
 								<p>Nota: O setor não será excluída, mas bloqueado, impedindo que o mesmo seja selecionado.</p>

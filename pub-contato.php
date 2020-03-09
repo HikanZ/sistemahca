@@ -137,7 +137,7 @@
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;">
 			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
-			 							O PROJETO
+			 							CONTATO
 			 						</h1>
 			 					</div>
 			 					<div style="margin:50px auto;" class="border1"></div>
@@ -147,51 +147,71 @@
 			 	</section>
 		 	<!--================ End Team Area =================-->
 	   </div>
-		 <section class="whole-wrap">
-	 		<div class="container">
-				 <div class="section-top-border">
-					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;">Titulo 1</h3>
-					 <div class="row">
-						 <div class="col-md-3">
-							 <img src="img/d.jpg" alt="" class="img-fluid">
-						 </div>
-						 <div class="col-md-9 mt-sm-20 left-align-p text-justify">
-							 <p>O Serviço Integrado de Medicina (SIM), é uma unidade de saúde de atenção especializada, de média complexidade,
-								 localizada à Praça Luiz de Araújo Máximo, 50, Jardim Paraíba, Jacareí/SP, com atendimento referenciado, que
-								 compõe a Rede Municipal de Saúde, de Jacareí e abrange a atenção à saúde aos usuários do Sistema Único de
-								 Saúde (SUS) dos municípios de Jacareí, Igaratá e Santa Branca, conforme fluxo de acesso dos pacientes definido
-								 e implementado pelos mecanismos reguladores da Secretaria Municipal de Saúde de Jacareí.</p>
-						 </div>
-					 </div>
-				 </div>
-			 </div>
-			 <section class="section-gap-top about-area">
-				 <div class="container">
-					 <div class="single-about row align-items-center">
-						 <div class="col-lg-4 col-md-6 no-padding about-left">
-							 <div class="about-content">
-								 <h1 style="color:#fff; font-size: 20px; margin-left:10px">Texto do <br> Título 2</h1>
-								 <p style="margin-left:10px">Bla bla bla teste texto ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-									 commodo consequat.</p>
-								 <a href="" class="primary-btn">Botão?</a>
-							 </div>
-						 </div>
-						 <div class="col-lg-7 col-md-6 text-center no-padding about-right">
-							 <div class="about-thumb">
-								 <img src="img/about-img.jpg" class="img-fluid info-img" alt="">
-							 </div>
-						 </div>
-						 <div class="bordered-img">
-							 <img src="img/about-img2.jpg" class="img-fluid info-img" alt="">
-						 </div>
-					 </div>
-				 </div>
-			 </section>
-		 </section>
+		 <section class="team-area section-gap">
+	 		<div class="container-fluid justify-content-md-center">
+	 			<div class="row justify-content-center">
+	 				<div class="col-md-8 text-center">
+	 					<div class="section-title">
+	 						<h3 style="color:#fff; font-size: 20px;">Titulo cima <br> continuação do título</h3>
+	 					</div>
+	 				</div>
+	 			</div>
+	 			<div class="row justify-content-center" >
+
+					<div class="col-md-2 col-sm-6" style="margin: auto 50px;">
+							<div class="our-team">
+									<img src="img/card/card-1.png" alt="">
+									<ul class="social">
+											<li><a href="#" class="fab fa-facebook"></a></li>
+											<li><a href="#" class="fab fa-instagram"></a></li>
+											<li><a href="#" class="fab fa-google-plus"></a></li>
+											<li><a href="#" class="fab fa-linkedin"></a></li>
+											<li><a href="#" class="fab fa-twitter"></a></li>
+									</ul>
+									<div class="team-content">
+											<h3 class="title" style="font-size:18px;">Profª Dra Flávia</h3>
+											<span class="post">Orientadora</span>
+									</div>
+							</div>
+					</div>
+
+					<div class="col-md-2 col-sm-6" style="margin: auto 50px;">
+							<div class="our-team">
+									<img src="img/card/card-2.jpg" alt="">
+									<ul class="social">
+											<li><a href="#" class="fab fa-facebook"></a></li>
+											<li><a href="#" class="fab fa-instagram"></a></li>
+											<li><a href="#" class="fab fa-google-plus"></a></li>
+											<li><a href="#" class="fab fa-linkedin"></a></li>
+											<li><a href="#" class="fab fa-twitter"></a></li>
+									</ul>
+									<div class="team-content">
+											<h3 class="title" style="font-size:18px;">Renata Siqueira</h3>
+											<span class="post">Idealizadora</span>
+									</div>
+							</div>
+					</div>
+
+					<div class="col-md-2 col-sm-6" style="margin: auto 50px;">
+						<div class="our-team">
+							<img src="img/card/card-3.png" alt="">
+							<ul class="social" style="height: 40%;">
+									<li><a href="https://www.instagram.com/zeron0s/" target="_blank" class="fab fa-instagram"></a></li>
+									<li><a href="https://twitter.com/CronicasOmeria" target="_blank" class="fab fa-twitter"></a></li>
+							</ul>
+							<div class="team-content">
+									<h3 class="title" style="font-size:18px;">Guilherme</h3>
+									<span class="post">Desenvolvedor</span>
+							</div>
+						</div>
+        </div>
+
+	 			</div>
+	 		</div>
+	 	</section>
 
 		 <!--================ Start Footer Area =================-->
-		 <br><br><br><br><br><br><br><br><br><br>
+		 <br><br><br><br><br><br><br><br>
  	   <footer id="footer">
  			 <div class="container">
  	 			<div class="row justify-content-md-center">

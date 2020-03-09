@@ -53,7 +53,7 @@
 	                <a class="nav-link" href="pub-projeto.php" data-tooltip="Saiba mais sobre o projeto" data-tooltip-location="bottom">Projeto</a>
 	              </li>
 	              <li class="nav-item">
-	                <a class="nav-link" href="404.php" data-tooltip="Entre em contato" data-tooltip-location="bottom">Contato</a>
+	                <a class="nav-link" href="pub-contato.php" data-tooltip="Entre em contato" data-tooltip-location="bottom">Contato</a>
 	              </li>
 	              <li class="nav-item">
 	                <a class="nav-link" href="404.php" data-tooltip="Saiba mais sobre esta plataforma online" data-tooltip-location="bottom">Sobre</a>

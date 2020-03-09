@@ -68,7 +68,7 @@
 								<div class="service-icon" onclick=" <?php echo $linkrop; ?> ">
 									<i class="fas fa-calendar-check"></i>
 								</div>
-								<p class="title">ROPs e Setores</p>
+								<p class="title">ROPs</p>
 								<p class="desc">Gerenciar a versão</p>
 							</div>
 						</div>
@@ -76,11 +76,11 @@
 						<!-- single member -->
 						<div class="col-lg-4 col-md-4 flex">
 							<div class="service-box">
-								<div class="service-icon" onclick=" <?php echo $linksystem; ?> ">
-									<i class="fas fa-database"></i>
+								<div class="service-icon" onclick=" <?php echo $linksetor; ?> ">
+									<i class="fas fa-hospital-alt"></i>
 								</div>
-								<p class="title">Banco de Dados</p>
-								<p class="desc">Gerenciar o banco de dados</p>
+								<p class="title">Setores</p>
+								<p class="desc">Gerenciar os setores</p>
 							</div>
 						</div>
 					</div>

@@ -267,9 +267,33 @@
 							  <div class="row justify-content-center">
 							    <div class="col-lg-6 col-md-8">
 							      <small>&nbsp;</small>
-							      <button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button>
+							      <!--button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button-->
+										<button type="button" class="btn" data-toggle="modal" id="submit-button-modal" data-target="#exampleModalCenter" style="display:none;">Gravar Auditoria</button>
+
 							    </div>
 							  </div>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+												Ao confirmar a gravação, não poderá alterar os dados depois. <br>
+												Para excluir uma auditoria, somente um administrador poderá fazê-lo. <br>
+												Deseja gravar a auditoria?
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+								        <button type="submit" name="auditar" class="btn btn-primary" id="submit-button">Gravar Auditoria</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 						</div>
 					</div>
 				</form>
@@ -355,16 +379,16 @@
 				var x = this.selectedIndex;
 
 				if (x == "") {
-					 $("#submit-button").hide();
+					 $("#submit-button-modal").hide();
 					 $("#accordion").hide();
 				} else {
-					 $("#submit-button").show();
+					 $("#submit-button-modal").show();
 					 $("#accordion").show();
 				}
 		});
 
 		// It must not be visible at first time
-		$("#submit-button").css("display","none");
+		$("#submit-button-modal").css("display","none");
 		$("#accordion").css("display","none");
 	});
 </script>
