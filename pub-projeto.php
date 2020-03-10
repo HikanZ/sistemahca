@@ -150,17 +150,17 @@
 		 <section class="whole-wrap">
 	 		<div class="container">
 				 <div class="section-top-border">
-					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;">Titulo 1</h3>
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;">Projeto</h3>
 					 <div class="row">
 						 <div class="col-md-3">
 							 <img src="img/d.jpg" alt="" class="img-fluid">
 						 </div>
 						 <div class="col-md-9 mt-sm-20 left-align-p text-justify">
-							 <p>O Serviço Integrado de Medicina (SIM), é uma unidade de saúde de atenção especializada, de média complexidade,
-								 localizada à Praça Luiz de Araújo Máximo, 50, Jardim Paraíba, Jacareí/SP, com atendimento referenciado, que
-								 compõe a Rede Municipal de Saúde, de Jacareí e abrange a atenção à saúde aos usuários do Sistema Único de
-								 Saúde (SUS) dos municípios de Jacareí, Igaratá e Santa Branca, conforme fluxo de acesso dos pacientes definido
-								 e implementado pelos mecanismos reguladores da Secretaria Municipal de Saúde de Jacareí.</p>
+							 <p>O <i>software</i> foi idealizado como projeto de mestrado em inovação tecnológica, frente à necessidade de contribuir
+								 com os esforços para garantia da segurança do paciente, conforme preconizado pela Organização Mundial da Saúde. </p>
+							 <p>Enquanto as instituições de saúde precisam realizar o árduo trabalho de implantar e implementar medidas de segurança,
+								 o <i>Healthcare Assessment</i> traz uma proposta de acompanhamento de todo este processo, de forma informatizada e
+								 sistematizada para a realização de auditoria de qualidade.</p>
 						 </div>
 					 </div>
 				 </div>
@@ -170,10 +170,11 @@
 					 <div class="single-about row align-items-center">
 						 <div class="col-lg-4 col-md-6 no-padding about-left">
 							 <div class="about-content">
-								 <h1 style="color:#fff; font-size: 20px; margin-left:10px">Texto do <br> Título 2</h1>
-								 <p style="margin-left:10px">Bla bla bla teste texto ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-									 commodo consequat.</p>
+								 <h1 style="color:#fff; font-size: 20px; margin-left:10px">Sobre</h1>
+								 <p style="margin-left:10px">Este sistema foi criado com o intuito de otimizar os processos de auditoria de qualidade
+									 da assistência nos serviços de saúde, com base nos requisitos abordados pela Acreditação Canadense. O site
+									 proporciona uma coleta de dados organizada com emissão automática de relatórios, permitindo a visualização do
+									 panorama de qualidade da instituição por meio de tabelas e gráficos.</p>
 								 <a href="" class="primary-btn">Botão?</a>
 							 </div>
 						 </div>

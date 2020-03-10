@@ -313,7 +313,7 @@ chart.render();
 						<div class="row justify-content-center" style="color: #8c8c8c;">
 							<div class="col-md-8">
 								<?php
-								echo "Lista das auditorias:";
+								echo "Lista das auditorias (".mysqli_num_rows($resultidAudit)."): ";
 								$countid = 1;
 								while($rowidAudit = mysqli_fetch_assoc($resultidAudit)){
 									$link[$countid] = "relatorio-audit-id.php?id=".$rowidAudit['idAudit'];
@@ -325,7 +325,6 @@ chart.render();
 								<?php
 									$countid++;
 								}
-									echo ".";
 								?>
 							</div>
 						</div>
@@ -351,7 +350,13 @@ chart.render();
 											<?php
 											for ($w=1; $w<=$numGroup; $w++){ ?>
 												<tr>
-													<td><?php echo $nameGroup[$w];?></td>
+													<td><?php echo $nameGroup[$w]; ?>
+															<br>
+															<?php
+																$totalgrupo = $numAnswerMaior[$w]["C"]+$numAnswerMenor[$w]["C"]+$numAnswerMaior[$w]["NC"]+$numAnswerMenor[$w]["NC"]+$numAnswerMaior[$w]["P"]+$numAnswerMenor[$w]["P"]+
+																$numAnswerMaior[$w]["NA"]+$numAnswerMenor[$w]["NA"];
+															echo "Total: ".$totalgrupo;?>
+													</td>
 													<td>Total: <?php echo ($numAnswerMaior[$w]["C"]+$numAnswerMenor[$w]["C"]);?> <br>Maior: <?php echo $numAnswerMaior[$w]["C"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["C"];?></td>
 													<td>Total: <?php echo ($numAnswerMaior[$w]["NC"]+$numAnswerMenor[$w]["NC"]);?> <br>Maior: <?php echo $numAnswerMaior[$w]["NC"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["NC"];?></td>
 													<td>Total: <?php echo ($numAnswerMaior[$w]["P"]+$numAnswerMenor[$w]["P"])?> <br>Maior: <?php echo $numAnswerMaior[$w]["P"];?> <br>Menor: <?php echo $numAnswerMenor[$w]["P"];?></td>
@@ -378,6 +383,51 @@ chart.render();
 								<div id="chartContainerG<?php echo $cg; ?>" style="height: 400px; width: 100%;"></div>
 							<?php } ?>
 						</div-->
+
+						<?php //var_dump($rop); ?>
+						<section class="team-area section-gap-top">
+							<div class="container">
+								<!-- THE HTML TABLE DATA -->
+							<div class="table-responsive">
+								<table class="table table-striped" cellpadding="0" cellspacing="0" id="resultTable">
+									<?php
+										for ($i=1; $i < $nGrupo; $i++){
+									?>
+										<tr>
+											<th>Grupo <?php echo $i; ?>: <?php echo " "; echo $gruponome[$i]; ?></th>
+											<th>C</th>
+											<th>NC</th>
+											<th>P</th>
+											<th>NA</th>
+											<th>Total</th>
+										</tr>
+									<?php
+											for ($j=1; $j <= $grupoqtrops[$i]; $j++){
+									?>
+												<tr>
+													<?php
+														if (!isset($rop[ $i ][ $j ]['C']) ) $rop[ $i ][ $j ]['C']=0;
+														if (!isset($rop[ $i ][ $j ]['NC']) ) $rop[ $i ][ $j ]['NC']=0;
+														if (!isset($rop[ $i ][ $j ]['P']) ) $rop[ $i ][ $j ]['P']=0;
+														if (!isset($rop[ $i ][ $j ]['NA']) ) $rop[ $i ][ $j ]['NA']=0;
+													?>
+													<td align="left"><?php echo $i; echo "."; echo $j; echo ". "; echo $ropnome[$i][$j];?> </td>
+													<td><?php echo $rop[ $i ][ $j ]['C'];  ?> </td>
+													<td><?php echo $rop[ $i ][ $j ]['NC']; ?> </td>
+													<td><?php echo $rop[ $i ][ $j ]['P'];  ?> </td>
+													<td><?php echo $rop[ $i ][ $j ]['NA']; ?> </td>
+													<td><?php $totalG2 = $rop[ $i ][ $j ]['C']+$rop[ $i ][ $j ]['NC']+$rop[ $i ][ $j ]['P']+$rop[ $i ][ $j ]['NA']; echo $totalG2; ?> </td>
+												</tr>
+									<?php
+											}
+										}
+									?>
+								</table>
+							</div>
+						</div>
+					</section>
+					<div class="border2" style="margin:20px auto;"></div>
+
 						<!--================ End Content Area =================-->
 			 		</div>
 			 	</section>

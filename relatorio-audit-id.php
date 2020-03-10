@@ -28,6 +28,9 @@
 		mysqli_stmt_execute($stmt);
 		$resultAudit = mysqli_stmt_get_result($stmt);
 		$row = mysqli_fetch_assoc($resultAudit);
+		if (!isset($row)) $token = 0;
+		else{
+		$token = 1;
 		$version = $row['versionRop'];
 		$dtmes = $row['monthAudit'];
 		$dtano = $row['yearAudit'];
@@ -38,68 +41,72 @@
 		$dtini = $row['startAudit'];
 		$dtfim = $row['endAudit'];
 		$comentario = $row['commentAudit'];
-	}
-
-	///// Carrega os grupos
-	$sql = "SELECT * FROM ropgroup WHERE versionGroup=?";
-	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
-	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-		header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
-		exit();
-	}
-	else{ //Se a conexão for bem sucedida, fará a verificação
-		mysqli_stmt_bind_param($stmt, "i", $version);
-		mysqli_stmt_execute($stmt);
-		$resultGrupo = mysqli_stmt_get_result($stmt);
-		$nGrupo = 1;
-		while($rowGroup = mysqli_fetch_assoc($resultGrupo)){
-			$gruponome[$rowGroup['numGroup']]=$rowGroup['nameGroup'];
-			$grupoqtrops[$rowGroup['numGroup']]=$rowGroup['qtropGroup'];
-			$nGrupo++;
 		}
 	}
 
-	///// Carrega os rops
-	$sql = "SELECT * FROM rop INNER JOIN ropgroup ON rop.idGroup = ropgroup.idGroup WHERE versionRop =?";
-	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
-	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-		header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
-		exit();
-	}
-	else{ //Se a conexão for bem sucedida, fará a verificação
-		mysqli_stmt_bind_param($stmt, "i", $version);
-		mysqli_stmt_execute($stmt);
-		$resulRop = mysqli_stmt_get_result($stmt);
-		while($rowRop = mysqli_fetch_assoc($resulRop)){
-			$ropnome[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['labelRop'];
-			$class[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['classRop'];
-			$resp[$rowRop['numGroup']][$rowRop['numRop']]['C'] = 0;
-			$resp[$rowRop['numGroup']][$rowRop['numRop']]['NC'] = 0;
-			$resp[$rowRop['numGroup']][$rowRop['numRop']]['P'] = 0;
-			$resp[$rowRop['numGroup']][$rowRop['numRop']]['NA'] = 0;
-			$respinfo[$rowRop['numGroup']][$rowRop['numRop']] = "";
+	if ($token==1){
+		///// Carrega os grupos
+		$sql = "SELECT * FROM ropgroup WHERE versionGroup=?";
+		$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+		if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+			header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
+			exit();
 		}
-	}
-
-	///// Carrega as respostas desta auditoria
-	$sql = "SELECT * FROM answer WHERE idAudit=?";
-	$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
-	if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-		header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
-		exit();
-	}
-	else{ //Se a conexão for bem sucedida, fará a verificação
-		mysqli_stmt_bind_param($stmt, "i", $idaudit);
-		mysqli_stmt_execute($stmt);
-		$resulResp = mysqli_stmt_get_result($stmt);
-		while($rowResp = mysqli_fetch_assoc($resulResp)){
-			$resp[ $rowResp['numGroup'] ][ $rowResp['numRop'] ][ $rowResp['resultAnswer'] ]++;
-			if ($rowResp['infoAnswer']=="" OR $rowResp['infoAnswer']==NULL){}
-			else{
-				$respinfo[ $rowResp['numGroup'] ][ $rowResp['numRop'] ] = $respinfo[ $rowResp['numGroup'] ][ $rowResp['numRop'] ]." ".$rowResp['infoAnswer']." ,";
+		else{ //Se a conexão for bem sucedida, fará a verificação
+			mysqli_stmt_bind_param($stmt, "i", $version);
+			mysqli_stmt_execute($stmt);
+			$resultGrupo = mysqli_stmt_get_result($stmt);
+			$nGrupo = 1;
+			while($rowGroup = mysqli_fetch_assoc($resultGrupo)){
+				$gruponome[$rowGroup['numGroup']]=$rowGroup['nameGroup'];
+				$grupoqtrops[$rowGroup['numGroup']]=$rowGroup['qtropGroup'];
+				$nGrupo++;
 			}
-
 		}
+
+		///// Carrega os rops
+		$sql = "SELECT * FROM rop INNER JOIN ropgroup ON rop.idGroup = ropgroup.idGroup WHERE versionRop =?";
+		$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+		if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+			header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
+			exit();
+		}
+		else{ //Se a conexão for bem sucedida, fará a verificação
+			mysqli_stmt_bind_param($stmt, "i", $version);
+			mysqli_stmt_execute($stmt);
+			$resulRop = mysqli_stmt_get_result($stmt);
+			while($rowRop = mysqli_fetch_assoc($resulRop)){
+				$ropnome[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['labelRop'];
+				$class[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['classRop'];
+				$resp[$rowRop['numGroup']][$rowRop['numRop']]['C'] = 0;
+				$resp[$rowRop['numGroup']][$rowRop['numRop']]['NC'] = 0;
+				$resp[$rowRop['numGroup']][$rowRop['numRop']]['P'] = 0;
+				$resp[$rowRop['numGroup']][$rowRop['numRop']]['NA'] = 0;
+				$respinfo[$rowRop['numGroup']][$rowRop['numRop']] = "";
+			}
+		}
+
+		///// Carrega as respostas desta auditoria
+		$sql = "SELECT * FROM answer WHERE idAudit=?";
+		$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+		if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+			header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
+			exit();
+		}
+		else{ //Se a conexão for bem sucedida, fará a verificação
+			mysqli_stmt_bind_param($stmt, "i", $idaudit);
+			mysqli_stmt_execute($stmt);
+			$resulResp = mysqli_stmt_get_result($stmt);
+			while($rowResp = mysqli_fetch_assoc($resulResp)){
+				$resp[ $rowResp['numGroup'] ][ $rowResp['numRop'] ][ $rowResp['resultAnswer'] ]++;
+				if ($rowResp['infoAnswer']=="" OR $rowResp['infoAnswer']==NULL){}
+				else{
+					$respinfo[ $rowResp['numGroup'] ][ $rowResp['numRop'] ] = $respinfo[ $rowResp['numGroup'] ][ $rowResp['numRop'] ]." ".$rowResp['infoAnswer']." ,";
+				}
+
+			}
+		}
+
 	}
 
 ?>
@@ -155,27 +162,27 @@
 										<?php echo "Id. da auditoria: ".$idaudit; ?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php echo "Versão: ".$version; ?>
+										<?php if ($token) echo "Versão: ".$version; else echo "Versão: --";?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php echo "Data: ".$dtmes."/".$dtano; ?>
+										<?php if ($token) echo "Data: ".$dtmes."/".$dtano;  else echo "Data: --/--";?>
 									</div>
 								</div>
 								<div class="row justify-content-between" style="color: #8c8c8c;">
 									<div class="col-md-7" align="left">
-										<?php echo "Auditor: ".$nome; ?>
+										<?php if ($token) echo "Auditor: ".$nome;  else echo "Auditor: --";?>
 									</div>
 									<div class="col-md-1" align="left"> </div>
 									<div class="col-md-4" align="left">
-										<?php echo "Id. do Auditor: ".$idauditor; ?>
+										<?php if ($token) echo "Id. do Auditor: ".$idauditor;  else echo "Id. do Auditor: --";?>
 									</div>
 								</div>
 								<div class="row justify-content-between" style="color: #8c8c8c;">
 									<div class="col-md-4" align="left">
-										<?php echo "Setor: ".$setor; ?>
+										<?php if ($token) echo "Setor: ".$setor;  else echo "Setor: --";?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php echo "Id do Setor: ".$idsetor; ?>
+										<?php if ($token) echo "Id do Setor: ".$idsetor;  else echo "Id do Setor: --";?>
 									</div>
 									<div class="col-md-4" align="left">
 									</div>
@@ -186,14 +193,46 @@
 										<?php echo "Data e Hora (Formato): <br>AAAA-MM-DD HH:MM:SS"; ?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php echo "Início: ".$dtini; ?>
+										<?php if ($token) echo "Início: ".$dtini;   else echo "Início: --";?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php echo "Término: ".$dtfim; ?>
+										<?php if ($token) echo "Término: ".$dtfim;   else echo "Término: : --";?>
 									</div>
 								</div>
 								<div class="border1"></div>
 								<!-- === Informações da Auditoria === -->
+
+								<?php
+									if ($token==1){
+								?>
+
+
+								<div class="row justify-content-center">
+									<div class="col-lg-6 col-md-8">
+										<!--button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button-->
+										<button type="button" class="btn" data-toggle="modal" id="submit-button-modal" data-target="#exampleModalCenter"
+										<?php
+										if ($_SESSION['admincheck']==1 || $_SESSION['admincheck']==7){
+										?>
+											style="background-color: #ff4d5d;
+											border: 2px solid #ff4d5d;"
+										<?php
+										  }else{
+										?>
+												style="background-color: #ff4d5d;
+											  border: 2px solid #ff4d5d;
+												display: none;"
+										<?php
+										  }
+										?>
+										>Apagar Auditoria</button>
+
+									</div>
+								</div>
+								<?php if ($_SESSION['admincheck']==1 || $_SESSION['admincheck']==7){ ?>
+									<div class="border1"></div>
+								<?php } ?>
+								
 
 								<section class="team-area section-gap-top">
 									<div class="container">
@@ -249,7 +288,14 @@
 									</div>
 								</div>
 							</section>
-
+							<?php
+							}else{
+							?>
+							<br><br><br>
+								<p style="font-size: 26px; color: #8c8c8c;"> Auditoria não encontrada. </p>
+							<?php
+							}
+							?>
 
 
 

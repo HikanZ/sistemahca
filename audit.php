@@ -288,8 +288,8 @@
 												Deseja gravar a auditoria?
 								      </div>
 								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-								        <button type="submit" name="auditar" class="btn btn-primary" id="submit-button">Gravar Auditoria</button>
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #ff4d5d; border: 2px solid #ff4d5d;">Não, vou revisar</button>
+								        <button type="submit" name="auditar" class="btn btn-primary" id="submit-button">Sim, gravar auditoria</button>
 								      </div>
 								    </div>
 								  </div>

@@ -100,6 +100,15 @@
 						<p class="desc">Relatório de uma auditoria</p>
 					</div>
 				</div>
+				<div class="col-lg-4 col-md-4 flex">
+					<div class="service-box">
+						<div class="service-icon" onclick=" <?php echo $linkreportaudit; ?> ">
+							<i class="far fa-calendar-times"></i>
+						</div>
+						<p class="title">Deletar Auditoria</p>
+						<p class="desc">Remove uma auditoria</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
