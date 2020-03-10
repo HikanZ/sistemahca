@@ -6,6 +6,7 @@
   $linkaudit = "window.location.href='audit.php'";
   $linkreport = "window.location.href='relatorio.php'";
   $linkacc = "window.location.href='minha-acc.php'";
+  $linksetor = "window.location.href='setor.php'";
 
 	$linkadduser = "window.location.href='usuarios-cadastro.php'";
 	$linksearchuser = "window.location.href='usuarios-pesquisa.php'";

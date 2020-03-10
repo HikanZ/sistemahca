@@ -59,7 +59,7 @@ if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
 }
 // Feito a inserção, devemos consultar o id da auditoria para adicioná-lo nas respostas
 // Trecho para consulta do id da auditoria
-$sql = "SELECT idAudit FROM audit WHERE (idUsers=? AND uidfullUsers=? AND idSetor=? AND versionRop=? AND startAudit=? AND endAudit=?);";
+$sql = "SELECT idAudit FROM audit WHERE idUsers=? AND uidfullUsers=? AND idSetor=? AND versionRop=? AND startAudit=? AND endAudit=?;";
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
   header("Location: ../audit.php?error=sqlerror3"); //Retornará à pag anterior

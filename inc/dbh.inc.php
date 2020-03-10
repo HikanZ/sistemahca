@@ -24,11 +24,11 @@ $dBName = "heroku_7a83877cb41c4ba";
 */
 
 $conn = mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
-
-// Change character set to utf8
 mysqli_set_charset($conn,"utf8");
 
 if (!$conn){
+  echo "<br><br>";
   die("Conexão com o banco de dados falhou. Código do erro: ". mysqli_connect_error());
 }
+
 ?>

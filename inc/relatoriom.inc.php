@@ -8,7 +8,7 @@ if (isset($_POST['setor'])){
     $sql = "SELECT uidSetor FROM setor WHERE idSetor=?";
     $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
     if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-      header("Location: relatorio-anual.php?error=connectionerror3"); //Retornará à pag anterior
+      header("Location: relatorio-mensal.php?error=connectionerror3"); //Retornará à pag anterior
       exit();
     }
     else{ //Se a conexão for bem sucedida, fará a consulta
@@ -40,7 +40,7 @@ $sql = "SELECT versiongroup FROM ropgroup ORDER BY versiongroup DESC LIMIT 1;";
 // evitando que o mesmo seja corrompido ou destruído
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=connectionerror4"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=connectionerror4"); //Retornará à pag anterior
   exit();
 }
 else{ //Se a conexão for bem sucedida, fará a consulta
@@ -56,7 +56,7 @@ else{ //Se a conexão for bem sucedida, fará a consulta
 $sql = "SELECT * FROM ropgroup WHERE versionGroup=?";
 $stmtG = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmtG, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=sqlerror5"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=sqlerror5"); //Retornará à pag anterior
   exit();
 }
 else{ //Se a conexão for bem sucedida, fará a verificação
@@ -85,7 +85,7 @@ else{ //Se a conexão for bem sucedida, fará a verificação
 $sql = "SELECT * FROM rop WHERE versionRop=?";
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=sqlerror6"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=sqlerror6"); //Retornará à pag anterior
   exit();
 }
 else{ //Se a conexão for bem sucedida, fará a verificação
@@ -151,18 +151,18 @@ else{ //Se a conexão for bem sucedida, fará a verificação
 if ($uidSetor == "Todos os setores"){
   $sql = "SELECT * FROM answer WHERE versionAudit=? AND yearAudit=? AND monthAudit=?";
 }else{
-  $sql = "SELECT * FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE versionAudit=? AND answer.yearAudit=? AND idSetor=? AND monthAudit=?";
+  $sql = "SELECT * FROM answer INNER JOIN audit ON answer.idAudit = audit.idAudit WHERE versionAudit=? AND answer.yearAudit=? AND idSetor=? AND answer.monthAudit=?";
 }
 
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=sqlerror7"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=sqlerror7"); //Retornará à pag anterior
   exit();
 }else{ //Se a conexão for bem sucedida, fará a verificação
   if ($uidSetor == "Todos os setores"){
-    mysqli_stmt_bind_param($stmt, "iss", $version, $anoSelecionado, $_POST['mes']);
+    mysqli_stmt_bind_param($stmt, "iii", $version, $anoSelecionado, $_POST['mes']);
   }else{
-    mysqli_stmt_bind_param($stmt, "isis", $version, $anoSelecionado, $idSetor, $_POST['mes']);
+    mysqli_stmt_bind_param($stmt, "iiii", $version, $anoSelecionado, $idSetor, $_POST['mes']);
   }
 
   mysqli_stmt_execute($stmt);
@@ -200,6 +200,14 @@ if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
         $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["P"] = 0;
         $numAnswerMenorMes[ $rowCountRop['monthAudit'] ]["NA"] = 0;
     }
+    // New feature
+    if( !isset($rop[ $rowCountRop['numGroup'] ][ $rowCountRop['numRop'] ][ $rowCountRop['resultAnswer'] ]) ){
+      $rop[ $rowCountRop['numGroup'] ][ $rowCountRop['numRop'] ][ $rowCountRop['resultAnswer'] ]=1;
+    }else{
+      $rop[ $rowCountRop['numGroup'] ][ $rowCountRop['numRop'] ][ $rowCountRop['resultAnswer'] ]++;
+    }
+    // End new feature
+
     if ($rowCountRop['classRop']){
       $numAnswerMaior[ $rowCountRop['numGroup'] ][ $rowCountRop['resultAnswer'] ]++;
       $numAnswerMaiorTotal[ $rowCountRop['resultAnswer'] ]++;
@@ -251,7 +259,7 @@ if ($uidSetor == "Todos os setores"){
 }
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=sqlerror8"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=sqlerror8"); //Retornará à pag anterior
   exit();
 }else{ //Se a conexão for bem sucedida, fará a verificação
   if ($uidSetor == "Todos os setores"){
@@ -274,7 +282,7 @@ if ($uidSetor == "Todos os setores"){
 
 $stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
 if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
-  header("Location: relatorio-anual.php?error=sqlerror9"); //Retornará à pag anterior
+  header("Location: relatorio-mensal.php?error=sqlerror9"); //Retornará à pag anterior
   exit();
 }else{ //Se a conexão for bem sucedida, fará a verificação
   if ($uidSetor == "Todos os setores"){
@@ -284,5 +292,47 @@ if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
   }
   mysqli_stmt_execute($stmt);
   $resultMonth = mysqli_stmt_get_result($stmt);
+}
+
+
+///// Carrega os grupos
+$sql = "SELECT * FROM ropgroup WHERE versionGroup=?";
+$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+  header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
+  exit();
+}
+else{ //Se a conexão for bem sucedida, fará a verificação
+  mysqli_stmt_bind_param($stmt, "i", $version);
+  mysqli_stmt_execute($stmt);
+  $resultGrupo = mysqli_stmt_get_result($stmt);
+  $nGrupo = 1;
+  while($rowGroup = mysqli_fetch_assoc($resultGrupo)){
+    $gruponome[$rowGroup['numGroup']]=$rowGroup['nameGroup'];
+    $grupoqtrops[$rowGroup['numGroup']]=$rowGroup['qtropGroup'];
+    $nGrupo++;
+  }
+}
+
+///// Carrega os rops
+$sql = "SELECT * FROM rop INNER JOIN ropgroup ON rop.idGroup = ropgroup.idGroup WHERE versionRop =?";
+$stmt = mysqli_stmt_init($conn); //Aqui faz a conexão com o banco
+if (!mysqli_stmt_prepare($stmt, $sql)) { //Se houver algum erro de sql
+  header("Location: rop-remove.php?error=sqlerror2"); //Retornará à pag anterior
+  exit();
+}
+else{ //Se a conexão for bem sucedida, fará a verificação
+  mysqli_stmt_bind_param($stmt, "i", $version);
+  mysqli_stmt_execute($stmt);
+  $resulRop = mysqli_stmt_get_result($stmt);
+  while($rowRop = mysqli_fetch_assoc($resulRop)){
+    $ropnome[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['labelRop'];
+    $class[$rowRop['numGroup']][$rowRop['numRop']] = $rowRop['classRop'];
+    $resp[$rowRop['numGroup']][$rowRop['numRop']]['C'] = 0;
+    $resp[$rowRop['numGroup']][$rowRop['numRop']]['NC'] = 0;
+    $resp[$rowRop['numGroup']][$rowRop['numRop']]['P'] = 0;
+    $resp[$rowRop['numGroup']][$rowRop['numRop']]['NA'] = 0;
+    $respinfo[$rowRop['numGroup']][$rowRop['numRop']] = "";
+  }
 }
 ?>
