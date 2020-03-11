@@ -42,7 +42,7 @@
 					<div class="section-title" style="padding-bottom: 40px;">
 						<h1 style="letter-spacing: 3px; text-transform: none;">Bem vindo, <?php echo $_SESSION['userUid']; ?></h1>
 						<p> <b id="dayweek" style="font-weight: 100; color: #595959;"></b>, <b id="day" style="font-weight: 100; color: #595959;"></b> de <b id="month" style="font-weight: 100; color: #595959;"></b> de <b id="year" style="font-weight: 100; color: #595959;"></b></p>
-						<p> Login número: <?php echo $_SESSION['countLogin']; ?>. Data do último login: <?php echo $_SESSION['lastLogin']; ?>.</p>
+						<p> Login número: <?php echo $_SESSION['countLogin']; ?>. Data do último login: <?php $datashow = date_create($_SESSION['lastLogin']); echo date_format($datashow, 'd/m/Y H:i:s'); ?>.</p>
 					</div>
 				</div>
 			</div>

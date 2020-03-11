@@ -190,13 +190,13 @@
 								<br>
 								<div class="row justify-content-between align-items-center" style="color: #8c8c8c;">
 									<div class="col-md-4" align="left">
-										<?php echo "Data e Hora (Formato): <br>AAAA-MM-DD HH:MM:SS"; ?>
+										<?php echo "Data e Hora"; ?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php if ($token) echo "Início: ".$dtini;   else echo "Início: --";?>
+										<?php if ($token) {$dtiniformatado = date_create($dtini); $dtiniformatado = date_format($dtiniformatado, 'd/m/Y H:i:s');echo "Início: ".$dtiniformatado; }  else echo "Início: --";?>
 									</div>
 									<div class="col-md-4" align="left">
-										<?php if ($token) echo "Término: ".$dtfim;   else echo "Término: : --";?>
+										<?php if ($token) {$dtfimformatado = date_create($dtfim); $dtfimformatado = date_format($dtfimformatado, 'd/m/Y H:i:s');echo "Término: ".$dtfimformatado; }  else echo "Término: : --";?>
 									</div>
 								</div>
 								<div class="border1"></div>
@@ -206,7 +206,7 @@
 									if ($token==1){
 								?>
 
-
+								<form action="inc/auditdel.inc.php" method="post">
 								<div class="row justify-content-center">
 									<div class="col-lg-6 col-md-8">
 										<!--button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button-->
@@ -232,7 +232,33 @@
 								<?php if ($_SESSION['admincheck']==1 || $_SESSION['admincheck']==7){ ?>
 									<div class="border1"></div>
 								<?php } ?>
-								
+
+								<input type="hidden" name="idauditoriadel" value="<?php echo $idaudit; ?>">
+
+								<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												Ao confirmar a exclusão da auditoria de ID <?php echo $idaudit; ?>,<br>
+												todas as respostas desta auditoria serão excluídas <br>
+												e esta ação não pode ser revertida. <br>
+												Deseja apagar esta auditoria?
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #ff4d5d; border: 2px solid #ff4d5d;">Não</button>
+												<button type="submit" name="antiauditar" class="btn btn-primary" id="submit-button">Sim, deletar auditoria</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+
 
 								<section class="team-area section-gap-top">
 									<div class="container">
