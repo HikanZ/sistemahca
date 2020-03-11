@@ -298,40 +298,21 @@
 		}
 	</script>
 	<script type="text/javascript">
-	var jump=function(e)
-	{
-	   if (e){
-	       e.preventDefault();
-	       var target = $(this).attr("href");
-	   }else{
-	       var target = location.hash;
-	   }
+	$(document).ready(function() {
+			 $('html, body').hide();
 
-	   $('html,body').animate(
-	   {
-	       scrollTop: $(target).offset().top
-	   },2000,function()
-	   {
-	       location.hash = target;
-	   });
-
-	}
-
-	$('html, body').hide();
-
-	$(document).ready(function()
-	{
-	    $('a[href^=#]').bind("click", jump);
-
-	    if (location.hash){
-	        setTimeout(function(){
-	            $('html, body').scrollTop(0).show();
-	            jump();
-	        }, 0);
-	    }else{
-	        $('html, body').show();
-	    }
-	});
+			 if (window.location.hash) {
+					 setTimeout(function() {
+							 $('html, body').scrollTop(0).show();
+							 $('html, body').animate({
+									 scrollTop: $(window.location.hash).offset().top
+									 }, 1000)
+					 }, 0);
+			 }
+			 else {
+					 $('html, body').show();
+			 }
+	 });
 </script>
 </body>
 
