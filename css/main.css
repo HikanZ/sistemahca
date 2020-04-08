@@ -1856,6 +1856,13 @@ h1, h2, h3, h4, h5, h6 {
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s; }
   @media (max-width: 991px) {
+    .logo{
+      margin: auto;
+    }
+    .mx-auto{
+      width: 0;
+      height: 0;
+    }
     .header-area {
       position: absolute;
       box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3); } }
@@ -3488,7 +3495,7 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   cursor: pointer;
   flex: 1 1 300px;
-  margin: 30px;
+  margin: 5px;
   //background-color: tomato;
 }
 
@@ -3531,6 +3538,26 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 26px;
 }
 .service-box:hover .service-icon{
+  background: #4db8ff;
+  color: white;
+}
+
+.service-icon-g{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #4db8ff;
+  color: #4db8ff;
+  transform: rotate(45deg);
+  margin-bottom: 10px;
+  transition: 0.3s linear;
+}
+.service-icon-g i{
+  line-height: 60px;
+  transform: rotate(-45deg);
+  font-size: 20px;
+}
+.service-box-g:hover .service-icon-g{
   background: #4db8ff;
   color: white;
 }
