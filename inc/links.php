@@ -8,6 +8,14 @@
   $linkacc = "window.location.href='minha-acc.php'";
   $linksetor = "window.location.href='setor.php'";
 
+  $linkguia = "window.location.href='guia.php'";
+  $linkusersguia = "window.location.href='guia.php'";
+  $linkaccguia = "window.location.href='guia.php'";
+  $linkropguia = "window.location.href='guia.php'";
+  $linkauditguia = "window.location.href='guia.php'";
+  $linkreportguia = "window.location.href='guia.php'";
+  $linksetorguia = "window.location.href='guia.php'";
+
 	$linkadduser = "window.location.href='usuarios-cadastro.php'";
 	$linksearchuser = "window.location.href='usuarios-pesquisa.php'";
 	$linkaccessuser = "window.location.href='usuarios-acesso.php'";
