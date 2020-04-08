@@ -1,6 +1,7 @@
 <!--================ Start Require Area =================-->
 <?php require "header.php" ?>
 <?php require "inc/links.php" ?>
+<?php require "inc/access.php"; ?>
 <!--================ End Require Area =================-->
 <!DOCTYPE html>
 <html lang="pt-br" class="">
@@ -13,7 +14,7 @@
 	<meta name="keywords" content="">	<!-- Meta Keyword -->
 	<meta charset="UTF-8">	<!-- meta character set -->
 
-	<title>Projeto | Sistema HcA</title> <!-- Site Title -->
+	<title>Guia | Sistema HcA</title> <!-- Site Title -->
 
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<!--link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,500i" rel="stylesheet"-->
@@ -130,40 +131,110 @@
 	<div id="page-container">
 	   <div id="content-wrap">
 			 <!--================ Start Team Area =================-->
-			 	<section class="team-area section-gap-top" style="padding-bottom: 50px;">
+			 	<section class="team-area section-gap-top" style="padding-bottom: 0px;">
 			 		<div class="container">
 			 			<div class="row justify-content-center">
 			 				<div class="col-md-8 text-center">
 			 					<div class="section-title" style="padding-bottom: 40px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;" id="pubprojeto">
 			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
-			 							Healthcare Assessment
+			 							Guia de utilização
 			 						</h1>
 			 					</div>
-			 					<div style="margin:50px auto;" class="border1"></div>
+			 					<div style="margin:50px auto auto auto;" class="border1"></div>
 			 				</div>
 			 			</div>
 			 		</div>
 			 	</section>
 		 	<!--================ End Team Area =================-->
 	   </div>
-		 <section class="whole-wrap" style="padding-top: 100px;">
+		 <section class="whole-wrap-2" >
+			<div class="container">
+				<div class="d-flex justify-content-around" style="padding-bottom: 50px;">
+						<div class="col-lg-3 col-md-3 flex">
+							<div class="service-box-g">
+								<div class="service-icon-g" onclick=" <?php echo $linkauditguia; ?> ">
+									<i class="fas fa-check-square"></i>
+								</div>
+								<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+									Auditoria
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-3 flex">
+							<div class="service-box-g">
+								<div class="service-icon-g" onclick=" <?php echo $linkreportguia; ?> ">
+									<i class="fas fa-chart-pie"></i>
+								</div>
+								<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+									Relatórios
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-3 flex">
+							<div class="service-box-g">
+								<div class="service-icon-g" onclick=" <?php echo $linkaccguia; ?> ">
+									<i class="fas fa-user-cog"></i>
+								</div>
+								<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+									Minha conta
+								</div>
+							</div>
+						</div>
+				</div>
+
+				<?php
+					if ( $_SESSION['admincheck']==1 || $_SESSION['admincheck']==7 ) {
+					?>
+				<div class="d-flex justify-content-around">
+					<div class="col-lg-3 col-md-3 flex">
+						<div class="service-box-g">
+							<div class="service-icon-g" onclick=" <?php echo $linkusersguia; ?> ">
+								<i class="fas fa-users"></i>
+							</div>
+							<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+								Usuários
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 flex">
+						<div class="service-box-g">
+							<div class="service-icon-g" onclick=" <?php echo $linkropguia; ?> ">
+								<i class="fas fa-calendar-check"></i>
+							</div>
+							<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+								ROPs
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-3 flex">
+						<div class="service-box-g">
+							<div class="service-icon-g" onclick=" <?php echo $linksetorguia; ?> ">
+								<i class="fas fa-hospital-alt"></i>
+							</div>
+							<div class="d-flex justify-content-center" style="font-family: OCR A Std, monospace; font-size: 15px; text-transform: uppercase; padding-top: 10px;">
+								Setores
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
+					}
+				?>
+			 </div>
+		 </section>
+		 <div style="margin:10px auto;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
 	 		<div class="container">
 				 <div class="section-top-border">
-					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" >Projeto</h3>
-					 <div class="row">
-						 <div class="col-md-3">
-							 <img src="img/d.jpg" alt="" class="img-fluid">
-						 </div>
-						 <div class="col-md-9 mt-sm-20 left-align-p text-justify">
-							 <p>O software foi idealizado frente à necessidade de contribuir com os esforços para garantia da segurança do paciente,
-								 conforme preconizado pela Organização Mundial da Saúde. Sua criação e validação foram desenvolvidas  no projeto de
-								 pesquisa da idealizadora, durante a obtenção de seu título de mestre em inovação tecnológica, pela Universidade
-								 Federal de São Paulo, Campus São José dos Campos. Enquanto as instituições de saúde precisam realizar o árduo trabalho
-								 de implantar e implementar medidas de segurança, o Healthcare Assessment traz uma proposta inovadora de acompanhamento
-								 de todo este processo, de forma informatizada e sistematizada, para a realização de auditoria de qualidade em unidades
-								 de saúde. </p>
-						 </div>
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" >Auditoria</h3>
+					 <br>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/auditoriaguia.png" alt="" width="610" height="880">
 					 </div>
 				 </div>
 			 </div>

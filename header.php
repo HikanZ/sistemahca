@@ -31,8 +31,11 @@
 	  <div class="container">
 	    <div class="header-wrap">
 	      <div class="header-top d-flex justify-content-between align-items-center navbar-expand-lg">
-	        <div class="col-3 logo">
-	          <a href="index.php"><!--img class="mx-auto" src="img/logo.png" alt=""-->Sistema HcA</a>
+          <div class="col-1">
+            <img class="mx-auto" src="img/logo.png" alt="" width="80" height="35">
+          </div>
+	        <div class="col-3 logo align-items-center">
+	          <a href="index.php">Sistema HcA</a>
 	        </div>
 	        <nav class="col navbar navbar-expand-lg justify-content-end">
 
@@ -50,17 +53,22 @@
 	                <a class="nav-link" href="index.php" data-tooltip="Página Principal" data-tooltip-location="bottom">Home</a>
 	              </li>
 	              <li class="nav-item">
-	                <a class="nav-link" href="pub-projeto.php#pubprojeto" data-tooltip="Saiba mais sobre o projeto" data-tooltip-location="bottom">Projeto</a>
+	                <a class="nav-link" href="pub-projeto.php" data-tooltip="Saiba mais sobre o projeto" data-tooltip-location="bottom">Projeto</a>
+	              </li>
+                <li class="nav-item">
+	                <a class="nav-link" href="pub-projeto.php#pubsobre" data-tooltip="Saiba mais sobre esta plataforma online" data-tooltip-location="bottom">Sobre</a>
 	              </li>
 	              <li class="nav-item">
 	                <a class="nav-link" href="pub-projeto.php#pubcontato" data-tooltip="Entre em contato" data-tooltip-location="bottom">Contato</a>
 	              </li>
-	              <li class="nav-item">
-	                <a class="nav-link" href="pub-projeto.php#pubsobre" data-tooltip="Saiba mais sobre esta plataforma online" data-tooltip-location="bottom">Sobre</a>
-	              </li>
+
+
                 <?php
                   if (empty($_SESSION['userId'])) {
                   }else{ ?>
+                    <li class="nav-item">
+    	                <a class="nav-link" href="guia.php" data-tooltip="Guia de uso do sistema" data-tooltip-location="bottom">?</a>
+    	              </li>
                     <li class="nav-item">
     	                <a class="nav-link sair" href="inc/logout.inc.php" data-tooltip="Sair da sua conta" data-tooltip-location="bottom">Sair</a>
     	              </li>

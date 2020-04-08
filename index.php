@@ -3,6 +3,7 @@
 	require "header.php";
 	require "inc/links.php";
 	require "inc/access.php";
+	$_SESSION['newuser'] = $_SESSION['countLogin'];
 ?>
 <!--================ End Require Area =================-->
 
@@ -31,6 +32,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="css/main.css">
+
 </head>
 
 <body style="background: url('img/MainPiclite.png') center; background-attachment: fixed;">
@@ -46,6 +48,7 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="border1"></div>
 			<?php
 				if ($_SESSION['admincheck']==1 || $_SESSION['admincheck']==7){
@@ -96,7 +99,7 @@
 							<div class="service-icon" onclick=" <?php echo $linkaudit; ?> ">
 								<i class="fas fa-check-square"></i>
 							</div>
-							<p class="title">Check-List</p>
+							<p class="title">Auditoria</p>
 							<p class="desc">Iniciar Auditoria</p>
 						</div>
 					</div>
@@ -121,6 +124,36 @@
 						</div>
 					</div>
 				</div>
+
+
+				<div id="myModal" class="modal fade" style="margin: 90px auto auto auto;">
+				    <div class="modal-dialog">
+				        <div class="modal-content">
+				            <div class="modal-header">
+				                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				            </div>
+				            <div class="modal-body">
+											<div class="d-flex justify-content-center"><h2> Seja bem vindo ao Sistema HcA </h2></div>
+											<br>
+											<div class="d-flex justify-content-center"><img class="mx-auto" src="img/logo.png" alt="" width="160" height="70"></div>
+
+
+
+											<br>
+				                <p>Esta é a primeira vez que você entra no sistema, clique no botão abaixo para conhecer as funcionalidades.</p>
+												<div class="d-flex justify-content-center">
+													<button class="btn btn-primary" style="width:300px;" onclick=" <?php echo $linkguia; ?> ">Guia do sistema</button>
+												</div>
+												<br>
+												<p>Caso prefira conhecer depois, você pode clicar no "?" localizado na barra superior.</p>
+												<div class="d-flex justify-content-center"><img class="mx-auto" src="img/guiaimg.png" alt="" width="400" height="70"></div>
+
+				            </div>
+				        </div>
+				    </div>
+				</div>
+
+
 		</div>
 	</section>
 	<!--================ End Team Area =================-->
@@ -149,6 +182,16 @@
 		var months = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
 		document.getElementById("month").innerHTML = months[d.getMonth()];
 		document.getElementById("year").innerHTML = d.getFullYear();
+	</script>
+	<script>
+		<?php
+
+			if ($_SESSION['newuser'] == 1){
+		?>
+						$(document).ready(function(){
+								$("#myModal").modal('show');
+						});
+			<?php $_SESSION['newuser']++; } ?>
 	</script>
 </body>
 
