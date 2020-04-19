@@ -130,37 +130,40 @@
 	<div id="page-container">
 	   <div id="content-wrap">
 			 <!--================ Start Team Area =================-->
-			 	<section class="team-area section-gap-top" style="padding-bottom: 50px;">
+			 	<section class="team-area section-gap-top" style="padding-bottom: 10px;">
 			 		<div class="container">
 			 			<div class="row justify-content-center">
 			 				<div class="col-md-8 text-center">
-			 					<div class="section-title" style="padding-bottom: 40px;">
+			 					<div class="section-title" style="padding-bottom: 80px;">
 			 						<h1 style="letter-spacing: 3px; text-transform: none;" id="pubprojeto">
 			 							<label class="backbtn" onclick="goBack()"><i class="fas fa-angle-left"></i></label>
 			 							Healthcare Assessment
 			 						</h1>
 			 					</div>
-			 					<div style="margin:50px auto;" class="border1"></div>
+			 					<div style="auto;" class="border1"></div>
 			 				</div>
 			 			</div>
 			 		</div>
 			 	</section>
 		 	<!--================ End Team Area =================-->
 	   </div>
-		 <section class="whole-wrap" style="padding-top: 100px;">
+		 <section class="whole-wrap" style="padding-top: 30px;">
 	 		<div class="container">
 				 <div class="section-top-border">
 					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" >Projeto</h3>
 					 <div class="row">
-						 <div class="col-md-3">
+						 <!--div class="col-md-3">
 							 <img src="img/d.jpg" alt="" class="img-fluid">
-						 </div>
-						 <div class="col-md-9 mt-sm-20 left-align-p text-justify">
-							 <p>O software foi idealizado frente à necessidade de contribuir com os esforços para garantia da segurança do paciente,
-								 conforme preconizado pela Organização Mundial da Saúde. Sua criação e validação foram desenvolvidas  no projeto de
-								 pesquisa da idealizadora, durante a obtenção de seu título de mestre em inovação tecnológica, pela Universidade
-								 Federal de São Paulo, Campus São José dos Campos. Enquanto as instituições de saúde precisam realizar o árduo trabalho
-								 de implantar e implementar medidas de segurança, o Healthcare Assessment traz uma proposta inovadora de acompanhamento
+						 </div-->
+						 <div class="col-md-12 mt-sm-20 left-align-p text-justify">
+							 <p>O <i>software</i> foi idealizado frente à necessidade de contribuir com os esforços para garantia da segurança do paciente,
+								 conforme preconizado pela Organização Mundial da Saúde.
+								 Sua criação e validação foram desenvolvidas  no projeto de
+								 pesquisa da idealizadora Renata, durante a obtenção de seu título de mestre em inovação tecnológica, pela Universidade
+								 Federal de São Paulo, Campus São José dos Campos. </p>
+								 <p>
+								 Enquanto as instituições de saúde precisam realizar o árduo trabalho
+								 de implantar e implementar medidas de segurança, o <i>Healthcare Assessment</i> traz uma proposta inovadora de acompanhamento
 								 de todo este processo, de forma informatizada e sistematizada, para a realização de auditoria de qualidade em unidades
 								 de saúde. </p>
 						 </div>
@@ -172,27 +175,31 @@
 		 <section class="section-gap-top about-area" id="pubsobre" style="padding-top: 150px;"	>
 			 <div class="container">
 				 <div class="single-about row align-items-center">
-					 <div class="col-lg-4 col-md-6 no-padding about-left">
-						 <div class="about-content">
+					 <div class="col-lg-9 col-md-6 no-padding about-left">
+						 <div class="about-content text-justify">
 							 <h1 style="color:#fff; font-size: 20px; margin-left:10px">Sobre</h1>
-							 <p style="margin-left:10px">O HCa foi criado com o intuito de automatizar os processos de auditoria ??interna?? de qualidade
-								 da assistência nos serviços de saúde, com base nos requisitos abordados pela Acreditação Canadense. A cada auditoria
-								 finalizada, o histórico de ROPs auditados é automaticamente salvo, ocorrendo a atualização do banco de dados de auditorias.
+							 <p style="margin-left:10px">O HcA foi criado com o intuito de automatizar os processos de auditoria interna de qualidade
+								 da assistência nos serviços de saúde, com base nos requisitos abordados pela Acreditação Canadense. </p> <br>
+
+							 <p style="margin-left:10px">
+								 A cada auditoria finalizada, o histórico de ROPs auditados é automaticamente salvo, ocorrendo a atualização do banco de dados de auditorias.
 								 Assim, este software proporciona o acompanhamento situacional da unidade de saúde que o implementar, de forma rápida,
-								 através da emissão de relatórios. Os relatórios permitem a visualização do panorama de qualidade da instituição por meio
+								 através da emissão de relatórios. </p> <br>
+							 <p style="margin-left:10px">
+								 Os relatórios permitem a visualização do panorama de qualidade da instituição por meio
 								 de tabelas e gráficos. Os resultados gerados podem ser obtidos a partir do histórico de auditorias, mensal ou anualmente,
 								 de toda instituição ou por diferentes setores. </p>
 							 <!-- a href="" class="primary-btn">Botão?</a-->
 						 </div>
 					 </div>
-					 <div class="col-lg-7 col-md-6 text-center no-padding about-right">
+					 <div class="col-lg-2 col-md-4 text-center no-padding about-right">
 						 <div class="about-thumb">
-							 <img src="img/about-img.jpg" class="img-fluid info-img" alt="">
+							 <img src="img/logologin.png" class="img-fluid info-img" alt="">
 						 </div>
 					 </div>
-					 <div class="bordered-img">
+					 <!--div class="bordered-img">
 						 <img src="img/about-img2.jpg" class="img-fluid info-img" alt="">
-					 </div>
+					 </div-->
 				 </div>
 			 </div>
 		 </section>

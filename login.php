@@ -59,6 +59,7 @@ if (isset($_SESSION['userId'])) {
         </form>
       </div>
     </div>
+		<br><br><br><br><br>
 	<!--================ End Content Area =================-->
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
