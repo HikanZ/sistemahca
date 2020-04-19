@@ -268,7 +268,7 @@
 							    <div class="col-lg-6 col-md-8">
 							      <small>&nbsp;</small>
 							      <!--button class="btn" type="submit" name="auditar" id="submit-button" style="display:none;">Gravar Auditoria</button-->
-										<button type="button" class="btn" data-toggle="modal" id="submit-button-modal" data-target="#exampleModalCenter" style="display:none;">Gravar Auditoria</button>
+										<button type="button" class="btn" data-toggle="modal" id="submit-button-modal" data-target="#exampleModalCenter" style="display:none;">Salvar Auditoria</button>
 
 							    </div>
 							  </div>
@@ -283,13 +283,13 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
-												Ao confirmar a gravação, não poderá alterar os dados depois. <br>
+												Ao confirmar os dados não poderão ser alterados posteriormente. <br>
 												Para excluir uma auditoria, somente um administrador poderá fazê-lo. <br>
-												Deseja gravar a auditoria?
+												Deseja salvar a auditoria?
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #ff4d5d; border: 2px solid #ff4d5d;">Não, vou revisar</button>
-								        <button type="submit" name="auditar" class="btn btn-primary" id="submit-button">Sim, gravar auditoria</button>
+								        <button type="submit" name="auditar" class="btn btn-primary" id="submit-button">Sim, salvar auditoria</button>
 								      </div>
 								    </div>
 								  </div>
