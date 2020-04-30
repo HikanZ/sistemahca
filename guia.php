@@ -228,129 +228,73 @@
 			 </div>
 		 </section>
 		 <div style="margin:10px auto;" class="border1"></div>
-		 <section class="whole-wrap" style="padding-top: 40px;">
+
+		 <section class="whole-wrap" style="padding-top: 40px;"  id="auditoria">
 	 		<div class="container">
 				 <div class="section-top-border">
-					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" >Auditoria</h3>
-					 <br>
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp; Auditoria</h3>
 					 <div class="d-flex justify-content-center">
 						 <img src="img/auditoriaguia.png" alt="" width="610" height="880">
 					 </div>
 				 </div>
 			 </div>
-
 		 </section>
-		 <section class="section-gap-top about-area" id="pubsobre" style="padding-top: 150px;"	>
-			 <div class="container">
-				 <div class="single-about row align-items-center">
-					 <div class="col-lg-4 col-md-6 no-padding about-left">
-						 <div class="about-content">
-							 <h1 style="color:#fff; font-size: 20px; margin-left:10px">Sobre</h1>
-							 <p style="margin-left:10px">O HCa foi criado com o intuito de automatizar os processos de auditoria ??interna?? de qualidade
-								 da assistência nos serviços de saúde, com base nos requisitos abordados pela Acreditação Canadense. A cada auditoria
-								 finalizada, o histórico de ROPs auditados é automaticamente salvo, ocorrendo a atualização do banco de dados de auditorias.
-								 Assim, este software proporciona o acompanhamento situacional da unidade de saúde que o implementar, de forma rápida,
-								 através da emissão de relatórios. Os relatórios permitem a visualização do panorama de qualidade da instituição por meio
-								 de tabelas e gráficos. Os resultados gerados podem ser obtidos a partir do histórico de auditorias, mensal ou anualmente,
-								 de toda instituição ou por diferentes setores. </p>
-							 <!-- a href="" class="primary-btn">Botão?</a-->
-						 </div>
+		 <div style="margin-top:60px;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
+			<div class="container" id="relatorio">
+				 <div class="section-top-border">
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp;Relatório</h3>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/relatorioguia.png" alt="" width="610" height="880">
 					 </div>
-					 <div class="col-lg-7 col-md-6 text-center no-padding about-right">
-						 <div class="about-thumb">
-							 <img src="img/about-img.jpg" class="img-fluid info-img" alt="">
-						 </div>
+				 </div>
+			 </div>
+		 </section>
+		 <div style="margin-top:60px;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
+			<div class="container" id="perfil">
+				 <div class="section-top-border">
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp;Minha conta</h3>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/perfilguia.png" alt="" width="610" height="380">
 					 </div>
-					 <div class="bordered-img">
-						 <img src="img/about-img2.jpg" class="img-fluid info-img" alt="">
+				 </div>
+			 </div>
+		 </section>
+		 <div style="margin-top:60px;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
+			<div class="container" id="usuario">
+				 <div class="section-top-border">
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp;Usuários</h3>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/usuarioguia.png" alt="" width="610" height="880">
+					 </div>
+				 </div>
+			 </div>
+		 </section>
+		 <div style="margin-top:60px;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
+			<div class="container" id="rops">
+				 <div class="section-top-border">
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp;ROPs</h3>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/ropsguia.png" alt="" width="610" height="440">
+					 </div>
+				 </div>
+			 </div>
+		 </section>
+		 <div style="margin-top:60px;" class="border1"></div>
+		 <section class="whole-wrap" style="padding-top: 40px;">
+			<div class="container" id="setores">
+				 <div class="section-top-border">
+					 <h3 class="mb-30"  style="color:#fff; font-size: 20px;" ><i class="fas fa-angle-up" style="color:#4db8ff;" onclick=" <?php echo $linkguia; ?> "></i>&nbsp;&nbsp;Setores</h3>
+					 <div class="d-flex justify-content-center">
+						 <img src="img/setoresguia.png" alt="" width="610" height="360">
 					 </div>
 				 </div>
 			 </div>
 		 </section>
 
-		 <section class="team-area section-gap" id="pubcontato" style="padding-top: 150px;">
-			<div class="container-fluid justify-content-md-center">
-				<div class="row justify-content-center">
-					<div class="col-md-8 text-center">
-						<div class="section-title">
-							<h3 style="color:#fff; font-size: 20px;">Conheça a nossa <br> equipe</h3>
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center" >
-
-					<div class="col-md-2 col-sm-6" style="margin: auto 25px;">
-							<div class="our-team">
-									<img src="img/card/card-2.jpg" alt="">
-									<ul class="social">
-											<li><a href="#" class="fab fa-facebook"></a></li>
-											<li><a href="#" class="fab fa-instagram"></a></li>
-											<li><a href="#" class="fab fa-google-plus"></a></li>
-											<li><a href="#" class="fab fa-linkedin"></a></li>
-											<li><a href="#" class="fab fa-twitter"></a></li>
-									</ul>
-									<div class="team-content">
-											<h3 class="title" style="font-size:18px;">Renata Siqueira</h3>
-											<span class="post">Idealizadora</span>
-									</div>
-							</div>
-					</div>
-
-					<div class="col-md-2 col-sm-6" style="margin: auto 25px;">
-						<div class="our-team">
-							<img src="img/card/card-3.png" alt="">
-							<ul class="social" style="height: 40%;">
-									<li><a href="https://www.instagram.com/zeron0s/" target="_blank" class="fab fa-instagram"></a></li>
-									<li><a href="https://twitter.com/CronicasOmeria" target="_blank" class="fab fa-twitter"></a></li>
-							</ul>
-							<div class="team-content">
-									<h3 class="title" style="font-size:18px;">Guilherme Kanashiro</h3>
-									<span class="post">Desenvolvedor</span>
-							</div>
-						</div>
-				 </div>
-
-					<div class="col-md-2 col-sm-6" style="margin: auto 25px;">
-							<div class="our-team">
-									<img src="img/card/card-1.png" alt="">
-									<ul class="social">
-											<li><a href="#" class="fab fa-facebook"></a></li>
-											<li><a href="#" class="fab fa-instagram"></a></li>
-											<li><a href="#" class="fab fa-google-plus"></a></li>
-											<li><a href="#" class="fab fa-linkedin"></a></li>
-											<li><a href="#" class="fab fa-twitter"></a></li>
-									</ul>
-									<div class="team-content">
-											<h3 class="title" style="font-size:18px;">Profª Dra Flávia Queiroz</h3>
-											<span class="post">Orientadora</span>
-									</div>
-							</div>
-					</div>
-
-
-
-
-
-				 <div class="col-md-2 col-sm-6" style="margin: auto 25px;">
-						 <div class="our-team">
-								 <img src="img/card/card-4.png" alt="">
-								 <ul class="social">
-										 <li><a href="#" class="fab fa-facebook"></a></li>
-										 <li><a href="#" class="fab fa-instagram"></a></li>
-										 <li><a href="#" class="fab fa-google-plus"></a></li>
-										 <li><a href="#" class="fab fa-linkedin"></a></li>
-										 <li><a href="#" class="fab fa-twitter"></a></li>
-								 </ul>
-								 <div class="team-content">
-										 <h3 class="title" style="font-size:18px;">Profª Dra Camila Martins</h3>
-										 <span class="post">Co-orientadora</span>
-								 </div>
-						 </div>
-				 </div>
-
-				</div>
-			</div>
-		</section>
 		 <!--================ Start Footer Area =================-->
 		 <br><br><br><br><br><br><br><br><br><br>
  	   <footer id="footer">
