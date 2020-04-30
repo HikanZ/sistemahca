@@ -152,20 +152,31 @@ var chart = new CanvasJS.Chart("chartContainerBar",{
 				name: "<?php echo $respostas[$i]; ?>",
 				showInLegend: "true",
 				yValueFormatString: "",
+				toolTipContent: "{y} (#percent%)",
 				dataPoints: [
 					<?php for ($j=1; $j<=$numGroup; $j++){
+						$totalc = $numAnswerMaior[$j]["C"]+$numAnswerMenor[$j]["C"];
+						$totalnc = $numAnswerMaior[$j]["NC"]+$numAnswerMenor[$j]["NC"];
+						$totalp = $numAnswerMaior[$j]["P"]+$numAnswerMenor[$j]["P"];
+						$totalna = $numAnswerMaior[$j]["NA"]+$numAnswerMenor[$j]["NA"];
+						$totalgrafico1 = $totalc+$totalnc+$totalp+$totalna;
+						$perc = ($totalc*100)/$totalgrafico1;
+						$pernc = ($totalnc*100)/$totalgrafico1;
+						$perp = ($totalp*100)/$totalgrafico1;
+						$perna = ($totalna*100)/$totalgrafico1;
+
 						switch ($i) {
 				    case 1:
-				        echo '{ y: '.($numAnswerMaior[$j]["C"]+$numAnswerMenor[$j]["C"]).', label: "'.$nameGroup[$j].'"}';
+				        echo '{ y: '.($totalc).', label: "'.$nameGroup[$j].' '.$perc.'%"}';
 				        break;
 				    case 2:
-				        echo '{ y: '.($numAnswerMaior[$j]["NC"]+$numAnswerMenor[$j]["NC"]).', label: "'.$nameGroup[$j].'"}';
+				        echo '{ y: '.($totalnc).', label: "'.$nameGroup[$j].'"}';
 				        break;
 				    case 3:
-				        echo '{ y: '.($numAnswerMaior[$j]["P"]+$numAnswerMenor[$j]["P"]).', label: "'.$nameGroup[$j].'"}';
+				        echo '{ y: '.($totalp).', label: "'.$nameGroup[$j].'"}';
 				        break;
 						case 4:
-						 		echo '{ y: '.($numAnswerMaior[$j]["NA"]+$numAnswerMenor[$j]["NA"]).', label: "'.$nameGroup[$j].'"}';
+						 		echo '{ y: '.($totalna).', label: "'.$nameGroup[$j].'"}';
 								break;
 						}
 
@@ -244,26 +255,30 @@ var chart = new CanvasJS.Chart("chartContainerLines",{
 						case 1:
 								if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["C"] = 0;
 								if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["C"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["C"] = 0;
+								$parcialc = $numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"];
 								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-									($numAnswerMaiorMes[$rowMonth['monthAudit']]["C"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["C"]).'},';
+									$parcialc.'},';
 								break;
 						case 2:
 						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"] = 0;
 						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NC"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NC"] = 0;
+						$parcialnc = $numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"];
 								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-									($numAnswerMaiorMes[$rowMonth['monthAudit']]["NC"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NC"]).'},';
+									$parcialnc.'},';
 								break;
 						case 3:
 						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["P"] = 0;
 						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["P"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["P"] = 0;
+						$parcialp = $numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"];
 								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-									($numAnswerMaiorMes[$rowMonth['monthAudit']]["P"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["P"]).'},';
+									$parcialp.'},';
 								break;
 						case 4:
 						if (!isset($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"] = 0;
 						if (!isset($numAnswerMenorMes[$rowMonth['monthAudit']]["NA"])) $numAnswerMenorMes[$rowMonth['monthAudit']]["NA"] = 0;
+						$parcialna = $numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"];
 								echo '{ x: new Date('.$anoSelecionado.','.($rowMonth['monthAudit']-1).',1) , y: '.
-									($numAnswerMaiorMes[$rowMonth['monthAudit']]["NA"]+$numAnswerMenorMes[$rowMonth['monthAudit']]["NA"]).'},';
+									$parcialna.'},';
 								break;
 						}
 				}//fim while

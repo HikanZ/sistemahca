@@ -135,6 +135,7 @@ var chart = new CanvasJS.Chart("chartContainerBar",{
 				name: "<?php echo $respostas[$i]; ?>",
 				showInLegend: "true",
 				yValueFormatString: "",
+				toolTipContent: "{y} (#percent%)",
 				dataPoints: [
 					<?php for ($j=1; $j<=$numGroup; $j++){
 						switch ($i) {
@@ -187,6 +188,7 @@ var chart = new CanvasJS.Chart("chartContainerBarMaior",{
 				name: "<?php echo $respostas[$i]; ?>",
 				showInLegend: "true",
 				yValueFormatString: "",
+				toolTipContent: "{y} (#percent%)",
 				dataPoints: [
 					<?php for ($j=1; $j<=$numGroup; $j++){
 						switch ($i) {
@@ -239,6 +241,7 @@ var chart = new CanvasJS.Chart("chartContainerBarMenor",{
 				name: "<?php echo $respostas[$i]; ?>",
 				showInLegend: "true",
 				yValueFormatString: "",
+				toolTipContent: "{y} (#percent%)",
 				dataPoints: [
 					<?php for ($j=1; $j<=$numGroup; $j++){
 						switch ($i) {
