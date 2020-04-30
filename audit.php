@@ -303,7 +303,7 @@
 	    <!--================ End Content Area =================-->
 		</div>
 	   <!--================ Start Footer Area =================-->
-	   <br><br><br><br><br>
+	   <br><br><br><br><br><br><br>
 	   <footer id="footer">
 	     <div class="container">
 	      <div class="row justify-content-md-center">
