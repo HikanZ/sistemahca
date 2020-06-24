@@ -261,7 +261,7 @@
 						 <div class="our-team">
 								 <img src="img/card/card-4.png" alt="">
 								 <ul class="social">
-										 <li><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4711448H5" target="_blank" class="fas fa-book-open"></li>
+										 <li><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4711448H5" target="_blank" class="fas fa-book-open"></a></li>
 								 </ul>
 								 <div class="team-content">
 										 <h3 class="title" style="font-size:18px;">Profª Dra Camila Martins</h3>
