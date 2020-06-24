@@ -232,8 +232,6 @@
 						<div class="our-team">
 							<img src="img/card/card-3.png" alt="">
 							<ul class="social" style="height: 40%;">
-									<li><a href="https://www.instagram.com/zeron0s/" target="_blank" class="fab fa-instagram"></a></li>
-									<li><a href="https://twitter.com/CronicasOmeria" target="_blank" class="fab fa-twitter"></a></li>
 							</ul>
 							<div class="team-content">
 									<h3 class="title" style="font-size:18px;">Guilherme Kanashiro</h3>
