@@ -232,6 +232,7 @@
 						<div class="our-team">
 							<img src="img/card/card-3.png" alt="">
 							<ul class="social" style="height: 40%;">
+									<li><a href="#" class="fas fa-envelope"></a></li>
 							</ul>
 							<div class="team-content">
 									<h3 class="title" style="font-size:18px;">Guilherme Kanashiro</h3>
