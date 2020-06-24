@@ -219,11 +219,7 @@
 							<div class="our-team">
 									<img src="img/card/card-2.jpg" alt="">
 									<ul class="social">
-											<li><a href="#" class="fab fa-facebook"></a></li>
-											<li><a href="#" class="fab fa-instagram"></a></li>
-											<li><a href="#" class="fab fa-google-plus"></a></li>
-											<li><a href="#" class="fab fa-linkedin"></a></li>
-											<li><a href="#" class="fab fa-twitter"></a></li>
+											<li><a href="#" class="fas fa-envelope"></a></li>
 									</ul>
 									<div class="team-content">
 											<h3 class="title" style="font-size:18px;">Renata Siqueira</h3>
@@ -250,11 +246,7 @@
 							<div class="our-team">
 									<img src="img/card/card-1.png" alt="">
 									<ul class="social">
-											<li><a href="#" class="fab fa-facebook"></a></li>
-											<li><a href="#" class="fab fa-instagram"></a></li>
-											<li><a href="#" class="fab fa-google-plus"></a></li>
-											<li><a href="#" class="fab fa-linkedin"></a></li>
-											<li><a href="#" class="fab fa-twitter"></a></li>
+											<li><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4279540D6" target="_blank" class="fas fa-book-open"></a></li>
 									</ul>
 									<div class="team-content">
 											<h3 class="title" style="font-size:18px;">Profª Dra Flávia Queiroz</h3>
@@ -271,11 +263,7 @@
 						 <div class="our-team">
 								 <img src="img/card/card-4.png" alt="">
 								 <ul class="social">
-										 <li><a href="#" class="fab fa-facebook"></a></li>
-										 <li><a href="#" class="fab fa-instagram"></a></li>
-										 <li><a href="#" class="fab fa-google-plus"></a></li>
-										 <li><a href="#" class="fab fa-linkedin"></a></li>
-										 <li><a href="#" class="fab fa-twitter"></a></li>
+										 <li><a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4711448H5" target="_blank" class="fas fa-book-open"></li>
 								 </ul>
 								 <div class="team-content">
 										 <h3 class="title" style="font-size:18px;">Profª Dra Camila Martins</h3>
